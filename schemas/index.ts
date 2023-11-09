@@ -1,1 +1,4 @@
-export const schemaTypes = []
+import Brev from './brev';
+
+
+export const schemaTypes = [Brev]
