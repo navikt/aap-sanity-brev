@@ -1,5 +1,5 @@
-import {defineType} from '@sanity/types'
-import {defineField} from 'sanity'
+import { defineType } from '@sanity/types';
+import { defineField } from 'sanity';
 
 const brevmal = defineType({
   name: 'brev',
@@ -7,17 +7,24 @@ const brevmal = defineType({
   title: 'Brevmal',
   fields: [
     defineField({
-      name: 'name',
+      name: 'brevtype',
       type: 'string',
-      title: 'Name',
+      title: 'Brevtype',
+      description: 'Brevtype, eks "Vedtak om avslag"',
     }),
     defineField({
-      title: 'Content',
-      name: 'content',
+      title: 'Vilkårsvurderinger',
+      name: 'vilkarsvurderinger',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'reference', to: [{ type: 'vilkarsvurdering' }] }],
+    }),
+    defineField({
+      title: 'Standardtekster',
+      name: 'standardtekster',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'standardtekst' }] }],
     }),
   ],
-})
+});
 
-export default brevmal
+export default brevmal;
