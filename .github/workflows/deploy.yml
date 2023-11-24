@@ -1,0 +1,23 @@
+name: Deploy sanity studio
+on:
+    push:
+      branches: [ main ]
+jobs:
+  sanity-deploy:
+    defaults:
+      run:
+        working-directory: sanity-studio
+    runs-on: ubuntu-latest
+    name: Deploy Sanity
+    env:
+      SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install deps
+        run: npm install
+      - name: Deploy sanity
+        run: sanity deploy
