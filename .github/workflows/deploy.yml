@@ -17,5 +17,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - name: Install deps
         run: npm install
+      - name: Setup sanity cli
+        run: npm install -g @sanity/cli
       - name: Deploy sanity
         run: sanity deploy
