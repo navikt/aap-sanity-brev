@@ -10,19 +10,25 @@ export const Content = defineArrayMember({
       { title: 'Fet', value: 'strong' },
       { title: 'Kursiv', value: 'em' },
     ],
-    annotations: [
-      defineField({
-        type: 'reference',
-        title: 'Referanse til variabel',
-        to: [{ type: 'variabel' }],
-        icon: () => '$',
-      }),
-      defineField({
-        type: 'reference',
-        title: 'Standard element',
-        to: [{ type: 'standardElement' }],
-        icon: () => 'SE',
-      }),
-    ],
+    annotations: [],
   },
+
+  of: [
+    defineField({
+      type: 'reference',
+      title: 'Referanse til variabel',
+      name: 'systemVariabel',
+      to: [{ type: 'systemVariabel' }],
+    }),
+    defineField({
+      name: 'inlineElement',
+      type: 'reference',
+      to: [{ type: 'inlineElement' }],
+    }),
+    defineField({
+      name: 'blockElement',
+      type: 'reference',
+      to: [{ type: 'blockElement' }],
+    }),
+  ],
 });

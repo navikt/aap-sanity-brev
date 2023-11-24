@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
-export const Variabel = defineType({
-  title: 'Variabel',
-  name: 'variabel',
+export const SystemVariabel = defineType({
+  title: 'Systemvariabel',
+  name: 'systemVariabel',
   type: 'document',
   fields: [
     defineField({

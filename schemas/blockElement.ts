@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity';
 
-export const StandardElement = defineType({
+export const BlockElement = defineType({
   type: 'document',
-  name: 'standardElement',
-  title: 'Standard element',
+  name: 'blockElement',
+  title: 'Block element',
   fields: [
     defineField({
       name: 'tittel',
@@ -11,9 +11,10 @@ export const StandardElement = defineType({
       title: 'Tittel',
     }),
     defineField({
-      type: 'string',
-      name: 'tekst',
+      name: 'innhold',
       title: 'Tekst',
+      type: 'array',
+      of: [{ type: 'content' }],
     }),
   ],
 });
