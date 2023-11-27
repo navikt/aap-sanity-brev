@@ -13,6 +13,12 @@ export const IndividuellVurdering = defineType({
       description: 'Tittel på den individuelle vurderingen fra AAP-Norge malen, eks "Yrkesskade ikke godkjent"',
     }),
     defineField({
+      title: 'Referanse til mal',
+      name: 'referanseTilMal',
+      type: 'string',
+      description: 'Eks: AAP Norge mal, med kapittelnummer og tittel.',
+    }),
+    defineField({
       title: 'Innhold',
       name: 'innhold',
       type: 'array',
@@ -28,6 +34,12 @@ export const IndividuellVurdering = defineType({
       name: 'kanRedigeres',
       type: 'boolean',
       title: 'Kan redigeres', // ja eller nei
+      initialValue: false,
+    }),
+    defineField({
+      name: 'erGodkjent',
+      type: 'boolean',
+      title: 'Er godkjent og kan publiseres i løsningen', // ja eller nei
       initialValue: false,
     }),
   ],
