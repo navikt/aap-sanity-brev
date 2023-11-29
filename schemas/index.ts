@@ -7,7 +7,7 @@ import { Vilkar } from './vilkar';
 import { Brevtittel } from './brevtittel';
 import { InlineElement } from './inlineElement';
 import { BlockElement } from './blockElement';
-import { Systeminnhold } from './fritekst';
+import { Systeminnhold } from './systeminnhold';
 
 export const schemaTypes = [
   BlockElement,
