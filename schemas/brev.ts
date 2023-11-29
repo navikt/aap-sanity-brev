@@ -23,7 +23,7 @@ const brevmal = defineType({
       title: 'innhold',
       name: 'innhold',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'standardtekst' }] }],
+      of: [{ type: 'reference', to: [{ type: 'standardtekst' }, { type: 'systeminnhold' }] }],
     }),
   ],
 });
