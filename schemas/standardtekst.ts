@@ -13,6 +13,18 @@ export const Standardtekst = defineType({
       description: 'Tittel på standardteksten.',
     }),
     defineField({
+      name: 'overskrift',
+      type: 'string',
+      title: 'Overskrift',
+      description: 'Overskrift på innholdet. Ikke obligatorisk',
+    }),
+    defineField({
+      name: 'niva',
+      type: 'reference',
+      title: 'Overskriftsnivå',
+      to: { type: 'overskriftsniva' },
+    }),
+    defineField({
       title: 'Innhold',
       name: 'innhold',
       type: 'array',

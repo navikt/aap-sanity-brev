@@ -8,6 +8,7 @@ import { Brevtittel } from './brevtittel';
 import { InlineElement } from './inlineElement';
 import { BlockElement } from './blockElement';
 import { Systeminnhold } from './systeminnhold';
+import { Overskriftsniva } from './overskriftsniva';
 
 export const schemaTypes = [
   BlockElement,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   Vilkar,
   Standardtekst,
   InlineElement,
+  Overskriftsniva,
 ];
