@@ -10,7 +10,7 @@ const brevmal = defineType({
       name: 'brevtype',
       type: 'string',
       title: 'Brevtype',
-      description: 'Brevtype, eks "Vedtak"',
+      description: 'Brevtype, eks "Vedtak". Vises kun i Sanity',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

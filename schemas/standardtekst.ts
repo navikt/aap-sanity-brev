@@ -9,8 +9,8 @@ export const Standardtekst = defineType({
     defineField({
       name: 'tittel',
       type: 'string',
-      title: 'Tittel',
-      description: 'Tittel på standardteksten.',
+      title: 'Beskrivelse',
+      description: 'Denne vises kun i Sanity.',
     }),
     defineField({
       name: 'overskrift',

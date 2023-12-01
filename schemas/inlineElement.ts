@@ -9,6 +9,7 @@ export const InlineElement = defineType({
       name: 'tittel',
       type: 'string',
       title: 'Tittel',
+      description: 'Vises kun i Sanity.',
     }),
     defineField({
       type: 'string',

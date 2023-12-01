@@ -25,10 +25,5 @@ export const Content = defineArrayMember({
       type: 'reference',
       to: [{ type: 'inlineElement' }],
     }),
-    defineField({
-      name: 'blockElement',
-      type: 'reference',
-      to: [{ type: 'blockElement' }],
-    }),
   ],
 });

@@ -9,6 +9,7 @@ export const SystemVariabel = defineType({
       title: 'Visningsnavn',
       name: 'visningsnavn',
       type: 'string',
+      description: 'Vises kun i Sanity.',
     }),
     defineField({
       title: 'Teknisk navn',
