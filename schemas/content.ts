@@ -9,6 +9,7 @@ export const Content = defineArrayMember({
     decorators: [
       { title: 'Fet', value: 'strong' },
       { title: 'Kursiv', value: 'em' },
+      { title: 'Understrek', value: 'underline' },
     ],
     annotations: [],
   },
