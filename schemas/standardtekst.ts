@@ -1,6 +1,12 @@
 import { defineType } from '@sanity/types';
 import { defineField } from 'sanity';
 
+interface Context {
+  parent: {
+    niva: string;
+    overskrift: string;
+  };
+}
 export const Standardtekst = defineType({
   name: 'standardtekst',
   type: 'document',
@@ -18,10 +24,10 @@ export const Standardtekst = defineType({
       title: 'Overskrift',
       description: 'Overskrift på innholdet. Ikke obligatorisk',
       validation: (Rule) =>
-        Rule.custom((overskrift, context) =>
-          /* @ts-ignore-line Parent er unknown :'( */
-          context.parent.niva && overskrift === undefined ? 'Overskrift må være satt når overskriftsnivå er satt' : true
-        ),
+        Rule.custom((overskrift, context) => {
+          const { parent } = context as Context;
+          return parent.niva && overskrift === undefined ? 'Overskrift må være satt når overskriftsnivå er satt' : true;
+        }),
     }),
     defineField({
       name: 'niva',
@@ -29,10 +35,10 @@ export const Standardtekst = defineType({
       title: 'Overskriftsnivå',
       to: { type: 'overskriftsniva' },
       validation: (Rule) =>
-        Rule.custom((niva, context) =>
-          /* @ts-ignore-line Parent er unknown :'( */
-          context.parent.overskrift && niva === undefined ? 'Overskriftsnivå må være satt når overskrift er satt' : true
-        ),
+        Rule.custom((niva, context) => {
+          const { parent } = context as Context;
+          return parent.overskrift && niva === undefined ? 'Overskriftsnivå må være satt når overskrift er satt' : true;
+        }),
     }),
     defineField({
       title: 'Innhold',
