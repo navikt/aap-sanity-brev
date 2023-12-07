@@ -17,12 +17,22 @@ export const Standardtekst = defineType({
       type: 'string',
       title: 'Overskrift',
       description: 'Overskrift på innholdet. Ikke obligatorisk',
+      validation: (Rule) =>
+        Rule.custom((overskrift, context) =>
+          /* @ts-ignore-line Parent er unknown :'( */
+          context.parent.niva && overskrift === undefined ? 'Overskrift må være satt når overskriftsnivå er satt' : true
+        ),
     }),
     defineField({
       name: 'niva',
       type: 'reference',
       title: 'Overskriftsnivå',
       to: { type: 'overskriftsniva' },
+      validation: (Rule) =>
+        Rule.custom((niva, context) =>
+          /* @ts-ignore-line Parent er unknown :'( */
+          context.parent.overskrift && niva === undefined ? 'Overskriftsnivå må være satt når overskrift er satt' : true
+        ),
     }),
     defineField({
       title: 'Innhold',
@@ -36,6 +46,14 @@ export const Standardtekst = defineType({
       type: 'boolean',
       title: 'Kan redigeres', // ja eller nei
       initialValue: false,
+    }),
+    defineField({
+      title: 'Hjelpetekst',
+      name: 'hjelpetekst',
+      type: 'array',
+      of: [{ type: 'contentUtenVariabler' }],
+      description:
+        'IKKE OBLIGATORISK. En tekst som forklarer saksbehandler hvordan de kan bruke denne standardteksten. Vises som et hjelpeikon i brevløsningen.',
     }),
   ],
 });

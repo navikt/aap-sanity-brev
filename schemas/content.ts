@@ -1,8 +1,6 @@
 import { defineArrayMember, defineField } from 'sanity';
 
-export const Content = defineArrayMember({
-  type: 'block',
-  name: 'content',
+const blockContent = {
   styles: [{ title: 'Normal', value: 'normal' }],
   lists: [],
   marks: {
@@ -13,7 +11,12 @@ export const Content = defineArrayMember({
     ],
     annotations: [],
   },
+};
 
+export const Content = defineArrayMember({
+  ...blockContent,
+  type: 'block',
+  name: 'content',
   of: [
     defineField({
       type: 'reference',
@@ -28,3 +31,5 @@ export const Content = defineArrayMember({
     }),
   ],
 });
+
+export const ContentUtenVariabler = defineArrayMember({ ...blockContent, type: 'block', name: 'contentUtenVariabler' });
