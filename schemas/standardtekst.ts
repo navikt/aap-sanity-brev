@@ -50,7 +50,7 @@ export const Standardtekst = defineType({
     defineField({
       name: 'kanRedigeres',
       type: 'boolean',
-      title: 'Kan redigeres', // ja eller nei
+      title: 'Kan redigeres',
       initialValue: false,
     }),
     defineField({
