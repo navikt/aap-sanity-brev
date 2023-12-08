@@ -2,7 +2,7 @@ import { defineArrayMember, defineField } from 'sanity';
 
 const blockContent = {
   styles: [{ title: 'Normal', value: 'normal' }],
-  lists: [],
+  lists: [{ title: 'Punktliste', value: 'bullet' }],
   marks: {
     decorators: [
       { title: 'Fet', value: 'strong' },
