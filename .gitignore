@@ -27,3 +27,7 @@
 
 # Dotenv and similar local-only files
 *.local
+
+#ignorer co-author hook
+.husky/prepare-commit-msg
+.git-co-authors.yaml
