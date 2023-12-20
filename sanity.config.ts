@@ -1,7 +1,7 @@
-import {AuthConfig, defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { AuthConfig, defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemas';
 
 const auth: AuthConfig = {
   redirectOnSingle: true,
@@ -29,4 +29,9 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+  document: {
+    unstable_comments: {
+      enabled: true, // Comments enabled
+    },
+  },
+});
