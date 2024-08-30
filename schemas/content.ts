@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 const blockContent = {
   styles: [{ title: 'Normal', value: 'normal' }],
@@ -13,7 +13,7 @@ const blockContent = {
   },
 };
 
-export const Content = defineArrayMember({
+export const Content = defineType({
   ...blockContent,
   type: 'block',
   name: 'content',
@@ -32,4 +32,4 @@ export const Content = defineArrayMember({
   ],
 });
 
-export const ContentUtenVariabler = defineArrayMember({ ...blockContent, type: 'block', name: 'contentUtenVariabler' });
+export const ContentUtenVariabler = defineType({ ...blockContent, type: 'block', name: 'contentUtenVariabler' });
