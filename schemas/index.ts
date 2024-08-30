@@ -1,4 +1,4 @@
-import Brev from './brev';
+import { Brevmal } from './brev';
 import { Content, ContentUtenVariabler } from './content';
 import { Standardtekst } from './standardtekst';
 import { SystemVariabel } from './systemVariabel';
@@ -7,7 +7,7 @@ import { Systeminnhold } from './systeminnhold';
 import { Overskriftsniva } from './overskriftsniva';
 
 export const schemaTypes = [
-  Brev,
+  Brevmal,
   Content,
   ContentUtenVariabler,
   Systeminnhold,

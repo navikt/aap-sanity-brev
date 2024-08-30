@@ -1,7 +1,7 @@
 import { defineType } from '@sanity/types';
 import { defineField } from 'sanity';
 
-const brevmal = defineType({
+export const Brevmal = defineType({
   name: 'brev',
   type: 'document',
   title: 'Brevmal',
@@ -27,5 +27,3 @@ const brevmal = defineType({
     }),
   ],
 });
-
-export default brevmal;

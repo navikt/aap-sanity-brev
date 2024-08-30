@@ -28,6 +28,11 @@
 # Dotenv and similar local-only files
 *.local
 
+# next.js
+/.next/
+/out/
+.eslintcache
+
 #ignorer co-author hook
 .husky/prepare-commit-msg
 .git-co-authors.yaml
