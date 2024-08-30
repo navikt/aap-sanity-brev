@@ -16,6 +16,12 @@
   ],
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
+    "@navikt/aap-felles-css": "^1.6.3",
+    "@navikt/aap-felles-react": "^1.6.3",
+    "@navikt/aksel-icons": "^6.16.2",
+    "@navikt/ds-css": "^6.16.2",
+    "@navikt/ds-react": "^6.16.2",
+    "@portabletext/editor": "^1.0.19",
     "@sanity/vision": "^3.56.0",
     "next": "14.2.7",
     "next-sanity": "^9.4.7",
