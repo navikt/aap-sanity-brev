@@ -1,4 +1,4 @@
-import { Brevmal } from './brev';
+import { Brevmal } from 'lib/services/sanity/model/brevmal/brevmalSchema';
 import { Content, ContentUtenVariabler } from './content';
 import { Standardtekst } from './standardtekst';
 import { SystemVariabel } from './systemVariabel';
