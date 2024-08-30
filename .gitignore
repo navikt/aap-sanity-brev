@@ -31,3 +31,6 @@
 #ignorer co-author hook
 .husky/prepare-commit-msg
 .git-co-authors.yaml
+
+# Yarn
+.yarn/install-state.gz
