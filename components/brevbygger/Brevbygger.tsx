@@ -1,7 +1,9 @@
 'use client';
 
 import { Heading } from '@navikt/ds-react';
+import { Breveditor } from 'components/breveditor/Breveditor';
 import { Brevmal } from 'lib/services/sanity/model/brevmal/brevmalQuery';
+import { deserialize } from 'lib/services/tiptap/tipTapService';
 
 export const Brevbygger = ({ brevmal }: { brevmal: Brevmal }) => {
   return (
@@ -16,6 +18,11 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brevmal }) => {
               <Heading level="2" size="large">
                 {innhold.overskrift}
               </Heading>
+              <Breveditor
+                initialValue={deserialize(innhold.innhold)}
+                setContent={() => {}}
+                brukEditor={innhold.kanRedigeres}
+              />
             </div>
           );
         }
