@@ -53,13 +53,5 @@ export const Standardtekst = defineType({
       title: 'Kan redigeres',
       initialValue: false,
     }),
-    defineField({
-      title: 'Hjelpetekst',
-      name: 'hjelpetekst',
-      type: 'array',
-      of: [{ type: 'contentUtenVariabler' }],
-      description:
-        'IKKE OBLIGATORISK. En tekst som forklarer saksbehandler hvordan de kan bruke denne standardteksten. Vises som et hjelpeikon i brevløsningen.',
-    }),
   ],
 });

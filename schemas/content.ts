@@ -1,6 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
-const blockContent = {
+export const Content = defineType({
+  type: 'block',
+  name: 'content',
   styles: [{ title: 'Normal', value: 'normal' }],
   lists: [{ title: 'Punktliste', value: 'bullet' }],
   marks: {
@@ -11,25 +13,12 @@ const blockContent = {
     ],
     annotations: [],
   },
-};
-
-export const Content = defineType({
-  ...blockContent,
-  type: 'block',
-  name: 'content',
   of: [
     defineField({
       type: 'reference',
       title: 'Referanse til variabel',
-      name: 'systemVariabel',
-      to: [{ type: 'systemVariabel' }],
-    }),
-    defineField({
-      name: 'inlineElement',
-      type: 'reference',
-      to: [{ type: 'inlineElement' }],
+      name: 'faktagrunnlag',
+      to: [{ type: 'faktagrunnlag' }],
     }),
   ],
 });
-
-export const ContentUtenVariabler = defineType({ ...blockContent, type: 'block', name: 'contentUtenVariabler' });
