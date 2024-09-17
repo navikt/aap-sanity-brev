@@ -1,10 +1,30 @@
 import { defineField, defineType } from 'sanity';
+import { supportedLanguages } from 'sanity.config';
 
 export const Innhold = defineType({
   name: 'innhold',
   type: 'document',
   title: 'Innhold',
+  preview: {
+    select: {
+      title: 'tittel',
+      language: 'language',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title,
+        subtitle: supportedLanguages.find((lang) => lang.id === selection.language)?.title,
+      };
+    },
+  },
   fields: [
+    defineField({
+      title: 'Teknisk navn',
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: 'tittel',
       type: 'string',

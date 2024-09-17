@@ -5,6 +5,13 @@ import { structureTool } from 'sanity/structure';
 import { dataset, projectId } from 'lib/services/sanity/env';
 
 import { schemaTypes } from './schemas';
+import { documentInternationalization } from '@sanity/document-internationalization';
+
+export const supportedLanguages = [
+  { id: 'nb', title: 'Norsk bokmål' },
+  { id: 'nn', title: 'Norsk nynorsk' },
+  { id: 'en', title: 'English' },
+];
 
 export default defineConfig({
   basePath: '/studio',
@@ -20,6 +27,11 @@ export default defineConfig({
       },
     }),
     visionTool(),
+    documentInternationalization({
+      supportedLanguages,
+      schemaTypes: ['innhold'],
+      languageField: 'language',
+    }),
   ],
 
   schema: {
