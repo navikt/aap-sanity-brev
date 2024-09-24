@@ -1,5 +1,5 @@
 import { Brevmal } from 'lib/services/sanity/model/brevmal/brevmalSchema';
-import { Content } from './content';
+import { Content } from '../lib/services/sanity/model/content/contentSchema';
 import { Standardtekst } from './standardtekst';
 import { SystemVariabel } from './systemVariabel';
 import { Systeminnhold } from './systeminnhold';
@@ -8,6 +8,7 @@ import { Faktagrunnlag } from 'lib/services/sanity/model/faktagrunnlag/faktagrun
 import { Innhold } from 'lib/services/sanity/model/innhold/innholdSchema';
 import { Brevtype } from 'lib/services/sanity/model/brevtype/brevtypeSchema';
 import { Tekstbolk } from 'lib/services/sanity/model/tekstbolk/tekstbolkSchema';
+import { LocaleString } from 'lib/services/sanity/model/localization/localeStringSchema';
 
 export const schemaTypes = [
   Brevmal,
@@ -15,6 +16,7 @@ export const schemaTypes = [
   Content,
   Faktagrunnlag,
   Innhold,
+  LocaleString,
   Systeminnhold,
   SystemVariabel,
   Standardtekst,

@@ -1,15 +1,15 @@
-import { getAlleBrevmaler } from 'lib/services/sanity/model/brevmal/brevmalQuery';
+import { getAlleBrevtyper } from 'lib/services/sanity/model/brevtype/brevtypeQuery';
 import Link from 'next/link';
 
 const Page = async () => {
-  const brevmaler = await getAlleBrevmaler();
+  const brevtyper = await getAlleBrevtyper();
   return (
     <div>
-      <h1>Brevmaler</h1>
+      <h1>Brev</h1>
       <ul>
-        {brevmaler.map((brevmal) => (
-          <li key={brevmal._id}>
-            <Link href={`/${brevmal._id}`}>{brevmal.brevtittel}</Link>
+        {brevtyper.map((brevtype) => (
+          <li key={brevtype._id}>
+            <Link href={`/${brevtype._id}`}>{brevtype.overskrift}</Link>
           </li>
         ))}
       </ul>

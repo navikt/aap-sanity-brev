@@ -4,11 +4,16 @@ export const Tekstbolk = defineType({
   name: 'tekstbolk',
   type: 'document',
   title: 'Tekstbolk',
+  preview: {
+    select: {
+      title: 'overskrift.nb',
+    },
+  },
   fields: [
     defineField({
       title: 'Overskrift',
       name: 'overskrift',
-      type: 'string',
+      type: 'localeString',
       description: 'Overskrift på teksten',
     }),
     defineField({

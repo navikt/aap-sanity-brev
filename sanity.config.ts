@@ -6,12 +6,7 @@ import { dataset, projectId } from 'lib/services/sanity/env';
 
 import { schemaTypes } from './schemas';
 import { documentInternationalization } from '@sanity/document-internationalization';
-
-export const supportedLanguages = [
-  { id: 'nb', title: 'Norsk bokmål' },
-  { id: 'nn', title: 'Norsk nynorsk' },
-  { id: 'en', title: 'English' },
-];
+import { supportedLanguages } from 'lib/services/sanity/model/localization/languages';
 
 export default defineConfig({
   basePath: '/studio',

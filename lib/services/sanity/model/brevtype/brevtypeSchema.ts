@@ -4,12 +4,16 @@ export const Brevtype = defineType({
   name: 'brevtype',
   type: 'document',
   title: 'Brevtype',
+  preview: {
+    select: {
+      title: 'overskrift.nb',
+    },
+  },
   fields: [
-    // Støtte flere språk
     defineField({
       title: 'Overskrift',
       name: 'overskrift',
-      type: 'string',
+      type: 'localeString',
       description: 'Overskrift på brevet',
     }),
     defineField({

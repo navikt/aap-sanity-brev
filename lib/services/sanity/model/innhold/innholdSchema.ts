@@ -1,5 +1,5 @@
+import { supportedLanguages } from 'lib/services/sanity/model/localization/languages';
 import { defineField, defineType } from 'sanity';
-import { supportedLanguages } from 'sanity.config';
 
 export const Innhold = defineType({
   name: 'innhold',
@@ -19,7 +19,7 @@ export const Innhold = defineType({
   },
   fields: [
     defineField({
-      title: 'Teknisk navn',
+      title: 'Language',
       name: 'language',
       type: 'string',
       readOnly: true,
@@ -37,7 +37,6 @@ export const Innhold = defineType({
       title: 'Overskrift',
       description: 'Overskrift på innholdet. Ikke obligatorisk',
     }),
-    // TODO: Lokalisering av riktekst. Støtte for bokmål, nynorsk og kanskje engelsk.
     defineField({
       title: 'Riktekst',
       name: 'riktekst',
