@@ -1,0 +1,3 @@
+{
+    "generates": "packages/aap-sanity-schema-types/sanity-schema.d.ts"
+}
