@@ -10,6 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest --run",
+    "changeset": "changeset",
+    "generateSchemaTypes": "sanity schema extract && sanity typegen generate",
     "sanity": "sanity"
   },
   "keywords": [
@@ -17,6 +19,7 @@
   ],
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
+    "@changesets/cli": "^2.27.8",
     "@navikt/aap-felles-css": "^1.9.0",
     "@navikt/aap-felles-react": "^1.9.0",
     "@navikt/aksel-icons": "^7.0.1",
@@ -33,6 +36,7 @@
     "@tiptap/extension-underline": "^2.7.2",
     "@tiptap/react": "^2.7.2",
     "@tiptap/starter-kit": "^2.7.2",
+    "changeset": "^0.2.6",
     "next": "14.2.13",
     "next-sanity": "^9.5.0",
     "react": "^18.3.1",
@@ -64,5 +68,8 @@
     "*.{js,ts,tsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,css,md}": "prettier --write"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "packageManager": "yarn@4.4.1"
 }

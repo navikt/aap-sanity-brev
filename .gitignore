@@ -39,3 +39,5 @@
 
 # Yarn
 .yarn/install-state.gz
+
+schema.json

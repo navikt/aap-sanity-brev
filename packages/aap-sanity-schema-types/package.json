@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "name": "@navikt/aap-sanity-schema-types",
+  "author": "NAV",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.ts",
+  "packageManager": "yarn@4.4.1"
+}
