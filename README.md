@@ -27,6 +27,20 @@ yarn dev
 
 ---
 
+## Publisere schema typer til GitHub package registry
+
+Vi eksporterer typer fra Sanity schema og publiserer disse slik at andre applikasjoner som bruker Sanity dataene kan importere disse.
+
+Ved endring av schema i Sanity må følgende gjøres for at det skal bygges og publiseres nye typer
+
+```
+yarn generateSchemaTypes
+yarn changeset
+yarn changeset version
+```
+
+Det er en egen GitHub action som vil publisere schema typene ved commit og push til main.
+
 ## Kode generert av GitHub Copilot
 
 Dette repoet bruker GitHub Copilot til å generere kode.
