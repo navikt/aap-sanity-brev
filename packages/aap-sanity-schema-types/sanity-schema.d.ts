@@ -147,82 +147,6 @@ export type Tekstbolk = {
   }>;
 };
 
-export type Standardtekst = {
-  _id: string;
-  _type: 'standardtekst';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  tittel?: string;
-  overskrift?: string;
-  niva?: {
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'overskriftsniva';
-  };
-  innhold?: Array<{
-    children?: Array<
-      | {
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }
-      | {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          _key: string;
-          [internalGroqTypeReferenceTo]?: 'faktagrunnlag';
-        }
-    >;
-    style?: 'normal';
-    listItem?: 'bullet';
-    markDefs?: null;
-    level?: number;
-    _type: 'content';
-    _key: string;
-  }>;
-  kanRedigeres?: boolean;
-};
-
-export type SystemVariabel = {
-  _id: string;
-  _type: 'systemVariabel';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  visningsnavn?: string;
-  tekniskNavn?: string;
-};
-
-export type Systeminnhold = {
-  _id: string;
-  _type: 'systeminnhold';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  tittel?: string;
-  overskrift?: string;
-  niva?: {
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'overskriftsniva';
-  };
-  systemNokkel?: string;
-};
-
-export type Overskriftsniva = {
-  _id: string;
-  _type: 'overskriftsniva';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  level?: string;
-};
-
 export type Faktagrunnlag = {
   _id: string;
   _type: 'faktagrunnlag';
@@ -278,30 +202,6 @@ export type LocaleString = {
   nb?: string;
   nn?: string;
   en?: string;
-};
-
-export type Brev = {
-  _id: string;
-  _type: 'brev';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  brevtype?: string;
-  brevtittel?: string;
-  innhold?: Array<
-    | {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'standardtekst';
-      }
-    | {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'systeminnhold';
-      }
-  >;
 };
 
 export type TranslationMetadata = {
@@ -365,15 +265,10 @@ export type AllSanitySchemaTypes =
   | Slug
   | SanityAssetSourceData
   | Tekstbolk
-  | Standardtekst
-  | SystemVariabel
-  | Systeminnhold
-  | Overskriftsniva
   | Faktagrunnlag
   | Content
   | Brevtype
   | LocaleString
-  | Brev
   | TranslationMetadata
   | InternationalizedArrayReferenceValue
   | Innhold

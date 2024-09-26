@@ -2,16 +2,16 @@
 
 import { Heading } from '@navikt/ds-react';
 import { Breveditor } from 'components/breveditor/Breveditor';
-import { Brevmal } from 'lib/services/sanity/model/brevmal/brevmalQuery';
 import { deserialize } from 'lib/services/tiptap/tipTapService';
 
-export const Brevbygger = ({ brevmal }: { brevmal: Brevmal }) => {
+// TODO: Oppdatere brevbygger til å følge ny brevmal
+export const Brevbygger = ({ brevmal }: { brevmal: any }) => {
   return (
     <div>
       <Heading level="1" size="xlarge">
         {brevmal.brevtittel}
       </Heading>
-      {brevmal.innhold.map((innhold) => {
+      {brevmal.innhold.map((innhold: any) => {
         if (innhold._type === 'standardtekst') {
           return (
             <div key={innhold._id}>
