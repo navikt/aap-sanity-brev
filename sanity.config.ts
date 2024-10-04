@@ -3,6 +3,7 @@ import { visionTool } from '@sanity/vision';
 import { presentationTool } from 'sanity/presentation';
 import { structureTool } from 'sanity/structure';
 import { dataset, projectId } from 'lib/services/sanity/env';
+import { locate } from 'lib/services/sanity/presentation/locate';
 
 import { schemaTypes } from './schemas';
 import { documentInternationalization } from '@sanity/document-internationalization';
@@ -15,6 +16,9 @@ export default defineConfig({
   plugins: [
     structureTool(),
     presentationTool({
+      resolve: {
+        locations: locate,
+      },
       previewUrl: {
         previewMode: {
           enable: '/api/draft',
