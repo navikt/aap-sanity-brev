@@ -54,7 +54,6 @@ export const Breveditor = ({ initialValue, brukEditor }: Props) => {
 
   return (
     <div className={styles.editor}>
-      {/*{brukEditor && <Toolbar editor={editor} />}*/}
       {editor && (
         <BubbleMenu editor={editor}>
           <Boblemeny editor={editor} />

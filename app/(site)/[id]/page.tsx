@@ -1,5 +1,7 @@
 import { Heading } from '@navikt/ds-react';
+import { Brevbygger, Brevmal } from 'components/brevbygger/Brevbygger';
 import { Breveditor } from 'components/breveditor/Breveditor';
+import { id } from 'date-fns/locale';
 import { getBrevtypeById } from 'lib/services/sanity/model/brevtype/brevtypeQuery';
 import { innholdByIdQuery } from 'lib/services/sanity/model/innhold/innholdQuery';
 import { tekstbolkByIdQuery } from 'lib/services/sanity/model/tekstbolk/tekstbolkQuery';
@@ -23,34 +25,38 @@ const BrevmalPage = async ({ params }: { params: Props }) => {
     .filter((ref) => ref != undefined);
   const innhold = await Promise.all(innholdRef.map((ref) => innholdByIdQuery(ref)));
 
+  const brevmal: Brevmal = {
+    brevtittel: brev?.overskrift?.nb ?? '',
+    personalia: {
+      navn: 'Ola Nordmann',
+      fødselsnummer: '12345678910',
+      dato: new Date(),
+      saksnnummer: '123456789',
+    },
+    blokker: tekstbolker.map((tekstbolk) => ({
+      id: tekstbolk._id,
+      overskrift: tekstbolk.overskrift?.nb ?? '',
+      innhold:
+        tekstbolk.innhold
+          ?.map((innholdRef) => {
+            const innholdByRef = innhold.find((innhold) => innhold._id === innholdRef._ref);
+            if (!innholdByRef) {
+              return null;
+            }
+            return {
+              id: innholdByRef._id,
+              type: 'tekst',
+              riktekst: deserialize(innholdByRef.riktekst as PortableTextBlock[]),
+              kanRedigeres: innholdByRef.kanRedigeres ?? false,
+            };
+          })
+          .filter((innhold) => innhold != null) ?? [],
+    })),
+  };
+
   return (
     <div>
-      <Heading level="1" size="xlarge">
-        {brev?.overskrift?.nb}
-      </Heading>
-      {tekstbolker.map((tekstbolk) => {
-        return (
-          <div key={tekstbolk._id}>
-            <Heading level="2" size="large">
-              {tekstbolk.overskrift?.nb}
-            </Heading>
-            {tekstbolk.innhold?.map((innholdRef) => {
-              const innholdByRef = innhold.find((innhold) => innhold._id === innholdRef._ref);
-              if (!innholdByRef) {
-                return null;
-              }
-              return (
-                <div key={innholdByRef._id}>
-                  <Breveditor
-                    initialValue={deserialize(innholdByRef.riktekst as PortableTextBlock[])}
-                    brukEditor={innholdByRef.kanRedigeres ?? false}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+      <Brevbygger brevmal={brevmal} />
     </div>
   );
 };
