@@ -1,12 +1,10 @@
-import { Heading } from '@navikt/ds-react';
 import { Brevbygger, Brevmal } from 'components/brevbygger/Brevbygger';
-import { Breveditor } from 'components/breveditor/Breveditor';
-import { id } from 'date-fns/locale';
 import { getBrevtypeById } from 'lib/services/sanity/model/brevtype/brevtypeQuery';
 import { innholdByIdQuery } from 'lib/services/sanity/model/innhold/innholdQuery';
 import { tekstbolkByIdQuery } from 'lib/services/sanity/model/tekstbolk/tekstbolkQuery';
 import { deserialize } from 'lib/services/tiptap/tipTapService';
 import { PortableTextBlock } from 'next-sanity';
+import styles from './page.module.css';
 
 interface Props {
   id: string;
@@ -55,7 +53,7 @@ const BrevmalPage = async ({ params }: { params: Props }) => {
   };
 
   return (
-    <div>
+    <div className={styles.page}>
       <Brevbygger brevmal={brevmal} />
     </div>
   );
