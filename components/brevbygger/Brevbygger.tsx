@@ -24,6 +24,7 @@ export interface Brevmal {
     innhold: Array<{
       id: string;
       type: string;
+      overskrift?: string;
       riktekst: JSONContent;
       kanRedigeres: boolean;
     }>;
@@ -53,6 +54,11 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brevmal }) => {
             </div>
             {blokk.innhold.map((innhold) => (
               <div key={innhold.id} className={innhold.kanRedigeres ? styles.editableContent : ''}>
+                {innhold.overskrift && (
+                  <Heading level="3" size="medium" className={styles.heading}>
+                    {innhold.overskrift}
+                  </Heading>
+                )}
                 <Breveditor initialValue={innhold.riktekst} setContent={() => {}} brukEditor={innhold.kanRedigeres} />
               </div>
             ))}

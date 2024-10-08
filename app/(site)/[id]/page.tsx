@@ -45,6 +45,7 @@ const BrevmalPage = async ({ params }: { params: Props }) => {
               id: innholdByRef._id,
               type: 'tekst',
               riktekst: deserialize(innholdByRef.riktekst as PortableTextBlock[]),
+              overskrift: innholdByRef.overskrift,
               kanRedigeres: innholdByRef.kanRedigeres ?? false,
             };
           })
