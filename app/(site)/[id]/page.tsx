@@ -1,10 +1,15 @@
-import { Brevbygger, Brevmal } from 'components/brevbygger/Brevbygger';
+import { Brevbygger } from 'components/brevbygger/Brevbygger';
 import { getBrevtypeById } from 'lib/services/sanity/model/brevtype/brevtypeQuery';
 import { innholdByIdQuery } from 'lib/services/sanity/model/innhold/innholdQuery';
 import { tekstbolkByIdQuery } from 'lib/services/sanity/model/tekstbolk/tekstbolkQuery';
-import { deserialize } from 'lib/services/tiptap/tipTapService';
-import { PortableTextBlock } from 'next-sanity';
 import styles from './page.module.css';
+import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
+import {
+  Content,
+  Tekstbolk as SanityTekstBolk,
+  Innhold as SanityInnhold,
+  Brevtype,
+} from 'packages/aap-sanity-schema-types';
 
 interface Props {
   id: string;
@@ -23,35 +28,7 @@ const BrevmalPage = async ({ params }: { params: Props }) => {
     .filter((ref) => ref != undefined);
   const innhold = await Promise.all(innholdRef.map((ref) => innholdByIdQuery(ref)));
 
-  const brevmal: Brevmal = {
-    brevtittel: brev?.overskrift?.nb ?? '',
-    personalia: {
-      navn: 'Ola Nordmann',
-      fødselsnummer: '12345678910',
-      dato: new Date(),
-      saksnnummer: '123456789',
-    },
-    blokker: tekstbolker.map((tekstbolk) => ({
-      id: tekstbolk._id,
-      overskrift: tekstbolk.overskrift?.nb ?? '',
-      innhold:
-        tekstbolk.innhold
-          ?.map((innholdRef) => {
-            const innholdByRef = innhold.find((innhold) => innhold._id === innholdRef._ref);
-            if (!innholdByRef) {
-              return null;
-            }
-            return {
-              id: innholdByRef._id,
-              type: 'tekst',
-              riktekst: deserialize(innholdByRef.riktekst as PortableTextBlock[]),
-              overskrift: innholdByRef.overskrift,
-              kanRedigeres: innholdByRef.kanRedigeres ?? false,
-            };
-          })
-          .filter((innhold) => innhold != null) ?? [],
-    })),
-  };
+  const brevmal = mapBrevFraSanity(brev, tekstbolker, innhold);
 
   return (
     <div className={styles.page}>
@@ -61,3 +38,80 @@ const BrevmalPage = async ({ params }: { params: Props }) => {
 };
 
 export default BrevmalPage;
+
+export const mapBlokkInnholdFraSanity = (content: Content): BlokkInnhold[] => {
+  const blokkInnhold: BlokkInnhold[] =
+    content.children
+      ?.map((child) => {
+        if (child._type === 'span') {
+          const innhold: FormattertTekst = {
+            type: 'TEKST',
+            tekst: child.text ?? '',
+            formattering: child.marks?.map((mark) => mapMarkFraSanity(mark)).filter((mark) => mark != undefined) ?? [],
+          };
+          return innhold;
+        }
+        // TODO: Støtte faktagrunnlag
+        return null;
+      })
+      .filter((child) => child != null) ?? [];
+  return blokkInnhold;
+};
+
+export const mapBlokkerFraSanity = (content?: Content[]): Blokk[] => {
+  return (
+    content?.map((blokk) => {
+      return {
+        type: blokk.listItem ? 'LISTE' : 'AVSNITT',
+        innhold: mapBlokkInnholdFraSanity(blokk),
+      };
+    }) ?? []
+  );
+};
+
+export const mapTekstBolkBlokkInnholdFraSanity = (
+  sanityTekstBolk: SanityTekstBolk,
+  innhold: SanityInnhold[]
+): Innhold[] => {
+  return (
+    sanityTekstBolk.innhold
+      ?.map((sanityInnhold) => {
+        const innholdByRef = innhold.find((innhold) => innhold._id === sanityInnhold._ref);
+        if (!innholdByRef) {
+          return null;
+        }
+        return {
+          overskrift: innholdByRef.overskrift ?? '',
+          erFullstendig: innholdByRef.erFullstendig ?? false,
+          kanRedigeres: innholdByRef.kanRedigeres ?? false,
+          blokker: mapBlokkerFraSanity(innholdByRef.riktekst),
+        };
+      })
+      .filter((innhold) => innhold != null) ?? []
+  );
+};
+
+export const mapTekstBolkerFraSanity = (tekstbolker: SanityTekstBolk[], innhold: SanityInnhold[]): Tekstbolk[] => {
+  return tekstbolker.map((tekstbolk) => ({
+    overskrift: tekstbolk.overskrift?.nb ?? '',
+    innhold: mapTekstBolkBlokkInnholdFraSanity(tekstbolk, innhold),
+  }));
+};
+
+export const mapBrevFraSanity = (brev: Brevtype, tekstbolker: SanityTekstBolk[], innhold: SanityInnhold[]): Brev => {
+  return {
+    overskrift: brev?.overskrift?.nb ?? '',
+    tekstbolker: mapTekstBolkerFraSanity(tekstbolker, innhold),
+  };
+};
+
+export const mapMarkFraSanity = (mark: string): 'FET' | 'KURSIV' | 'UNDERSTREK' | undefined => {
+  switch (mark) {
+    case 'strong':
+      return 'FET';
+    case 'italic':
+      return 'KURSIV';
+    case 'underline':
+      return 'UNDERSTREK';
+  }
+};
