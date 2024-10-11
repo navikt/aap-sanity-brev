@@ -10,6 +10,9 @@ import { formaterDatoForFrontend } from 'lib/services/date';
 import NavLogo from 'public/nav_logo.png';
 import { JSONContent } from '@tiptap/core';
 import { Blokk, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
+import { useState } from 'react';
+
+import { v4 as uuidv4 } from 'uuid';
 
 export interface TipTapBrev {
   brevtittel: string;
@@ -30,7 +33,24 @@ export interface TipTapInnhold {
 }
 
 export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
-  const brev = mapBrevTilTipTap(brevmal);
+  const [tipTapBrev, setTipTapBrev] = useState<TipTapBrev>(mapBrevTilTipTap(brevmal));
+
+  const updateBrev = (content: JSONContent, id: string) => {
+    setTipTapBrev({
+      ...tipTapBrev,
+      blokker: tipTapBrev.blokker.map((blokk) => {
+        return {
+          ...blokk,
+          innhold: blokk.innhold.map((innhold) => {
+            if (innhold.id === id) {
+              return { ...innhold, riktekst: content };
+            }
+            return innhold;
+          }),
+        };
+      }),
+    });
+  };
 
   return (
     <div className={styles.brevbygger}>
@@ -43,9 +63,9 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
           <Detail>Saksnnummer: AABBCC112233</Detail>
         </div>
         <Heading level="1" size="xlarge" className={styles.brevtittel}>
-          {brev.brevtittel}
+          {tipTapBrev.brevtittel}
         </Heading>
-        {brev.blokker.map((blokk) => (
+        {tipTapBrev.blokker.map((blokk) => (
           <div key={blokk.id}>
             <div className={styles.headerRow}>
               <Heading level="2" size="large" className={styles.heading}>
@@ -59,7 +79,13 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
                     {innhold.overskrift}
                   </Heading>
                 )}
-                <Breveditor initialValue={innhold.riktekst} setContent={() => {}} brukEditor={innhold.kanRedigeres} />
+                <Breveditor
+                  initialValue={innhold.riktekst}
+                  setContent={(content) => {
+                    updateBrev(content, innhold.id);
+                  }}
+                  brukEditor={innhold.kanRedigeres}
+                />
               </div>
             ))}
           </div>
@@ -79,7 +105,7 @@ export const mapBrevTilTipTap = (brev: Brev): TipTapBrev => {
 export const mapBlokkerTilTipTap = (blokker: Tekstbolk[]): TipTopBlokk[] => {
   return blokker.map((blokk) => {
     return {
-      id: '123', //uuid.v4(),
+      id: uuidv4(),
       overskrift: blokk.overskrift ?? '',
       innhold: mapInnholdTilTipTap(blokk.innhold),
     };
@@ -89,7 +115,7 @@ export const mapBlokkerTilTipTap = (blokker: Tekstbolk[]): TipTopBlokk[] => {
 export const mapInnholdTilTipTap = (innhold: Innhold[]): TipTapInnhold[] => {
   return innhold.map((innhold) => {
     return {
-      id: '123', //uuid.v4(),
+      id: uuidv4(),
       overskrift: innhold.overskrift ?? '',
       riktekst: mapBlokkInnholdToTipTapJsonContent(innhold.blokker),
       kanRedigeres: innhold.kanRedigeres ?? false,
