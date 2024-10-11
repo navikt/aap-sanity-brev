@@ -142,7 +142,9 @@ export const mapBlokkInnholdToTipTapJsonContent = (blokkInnhold: Blokk[]): JSONC
                   }
                 })
                 .filter((mark) => mark != undefined) ?? [];
-
+            if (blockType === 'LISTE') {
+              return { type: 'listItem', content: [{ type: 'text', text: tekstInnhold.tekst }] };
+            }
             return { type: 'text', text: tekstInnhold.tekst, marks };
           }
         })
@@ -167,13 +169,13 @@ function mapPortableTextMarkToTipTapMarks(value: string): TipTapMark | null {
   }
 }
 
-type TipTapElement = 'paragraph' | 'listItem';
+type TipTapElement = 'paragraph' | 'bulletList';
 function mapPortableTextElementToTipTapElement(value: Blokk['type']): TipTapElement {
   switch (value) {
     case 'AVSNITT':
       return 'paragraph';
     case 'LISTE':
-      return 'listItem';
+      return 'bulletList';
     default:
       return 'paragraph';
   }
