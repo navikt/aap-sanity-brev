@@ -11,12 +11,13 @@ import {
   Brevtype,
 } from 'packages/aap-sanity-schema-types';
 
-interface Props {
+type Params = Promise<{
   id: string;
-}
+}>;
 
-const BrevmalPage = async ({ params }: { params: Props }) => {
-  const brev = await getBrevtypeById(params.id);
+const BrevmalPage = async ({ params }: { params: Params }) => {
+  const { id } = await params;
+  const brev = await getBrevtypeById(id);
 
   const tekstbolker = await Promise.all(
     brev?.tekstbolker?.map((tekstbolk) => tekstbolkByIdQuery(tekstbolk._ref)) ?? []
