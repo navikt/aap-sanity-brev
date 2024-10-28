@@ -6,10 +6,17 @@ export const Tekstbolk = defineType({
   title: 'Tekstbolk',
   preview: {
     select: {
-      title: 'overskrift.nb',
+      title: 'tittel',
+      subtitle: 'overskrift.nb',
     },
   },
   fields: [
+    defineField({
+      name: 'tittel',
+      type: 'string',
+      title: 'Beskrivelse',
+      description: 'Denne vises kun i Sanity.',
+    }),
     defineField({
       title: 'Overskrift',
       name: 'overskrift',
