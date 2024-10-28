@@ -73,6 +73,22 @@ export interface paths {
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/bestilling/{referanse}/oppdater': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
     put: {
       parameters: {
         query?: never;
@@ -99,6 +115,43 @@ export interface paths {
       };
     };
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/ferdigstill': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.FerdigstillBrevRequest'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
     delete?: never;
     options?: never;
     head?: never;
@@ -369,18 +422,24 @@ export interface components {
       brevtype: 'INNVILGELSE' | 'AVSLAG';
       /**
        * Format: date-time
-       * @example 2024-10-10T10:51:40.867039
+       * @example 2024-10-28T13:41:23.406283
        */
       oppdatert: string;
       /**
        * Format: date-time
-       * @example 2024-10-10T10:51:40.867039
+       * @example 2024-10-28T13:41:23.406283
        */
       opprettet: string;
       /** Format: uuid */
       referanse: string;
       /** @enum {string} */
       'spr\u00E5k': 'EN' | 'NB' | 'NN';
+      /** @enum {string} */
+      status: 'REGISTRERT' | 'UNDER_ARBEID' | 'FERDIGSTILT' | 'BESTILT';
+    };
+    'no.nav.aap.brev.kontrakt.FerdigstillBrevRequest': {
+      /** Format: uuid */
+      referanse: string;
     };
     'no.nav.aap.brev.kontrakt.Innhold': {
       blokker: components['schemas']['no.nav.aap.brev.kontrakt.Blokk'][];
@@ -406,7 +465,7 @@ export interface components {
       navn: string;
       /**
        * Format: date-time
-       * @example 2024-10-10T10:51:40.867039
+       * @example 2024-10-28T13:41:23.406283
        */
       'planlagtKj\u00F8retidspunkt': string;
       /** @enum {string} */
