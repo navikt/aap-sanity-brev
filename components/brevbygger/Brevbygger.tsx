@@ -12,16 +12,15 @@ import { JSONContent } from '@tiptap/core';
 import { Brev } from 'packages/aap-breveditor/types';
 import { useEffect, useState } from 'react';
 
-import { mapBrevTilTipTap, mapTipTapBrevTilBrev, TipTapBrev } from 'packages/aap-breveditor/tiptapMapper';
+import { mapBlokkerTilTipTap, mapTipTapBolkerTilTekstbolker, TipTopBlokk } from 'packages/aap-breveditor/tiptapMapper';
 
 export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
-  const [tipTapBrev, setTipTapBrev] = useState<TipTapBrev>(mapBrevTilTipTap(brevmal));
+  const [tipTapBrev, setTipTapBrev] = useState<TipTopBlokk[]>(mapBlokkerTilTipTap(brevmal.tekstbolker));
   const [fellesformat, setFellesformat] = useState<Brev>(brevmal);
 
   const updateBrev = (content: JSONContent, id: string) => {
-    setTipTapBrev({
-      ...tipTapBrev,
-      blokker: tipTapBrev.blokker.map((blokk) => {
+    setTipTapBrev(
+      tipTapBrev.map((blokk) => {
         return {
           ...blokk,
           innhold: blokk.innhold.map((innhold) => {
@@ -31,13 +30,16 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
             return innhold;
           }),
         };
-      }),
-    });
+      })
+    );
   };
 
   useEffect(() => {
-    setFellesformat(mapTipTapBrevTilBrev(tipTapBrev));
-  }, [tipTapBrev, setFellesformat]);
+    setFellesformat({
+      ...fellesformat,
+      tekstbolker: mapTipTapBolkerTilTekstbolker(tipTapBrev),
+    });
+  }, [tipTapBrev, fellesformat, setFellesformat]);
 
   useEffect(() => {
     console.log('fellesformat', fellesformat);
@@ -54,9 +56,9 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
           <Detail>Saksnnummer: AABBCC112233</Detail>
         </div>
         <Heading level="1" size="xlarge" className={styles.brevtittel}>
-          {tipTapBrev.brevtittel}
+          {fellesformat.overskrift}
         </Heading>
-        {tipTapBrev.blokker.map((blokk) => (
+        {tipTapBrev.map((blokk) => (
           <div key={blokk.id}>
             <div className={styles.headerRow}>
               <Heading level="2" size="large" className={styles.heading}>

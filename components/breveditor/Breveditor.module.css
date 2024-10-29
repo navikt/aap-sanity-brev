@@ -28,7 +28,7 @@
   padding-block: 1rem;
 }
 
-.editorContent > .ProseMirror-focused {
+.editorContent :global(.ProseMirror-focused) {
   outline: none;
 }
 

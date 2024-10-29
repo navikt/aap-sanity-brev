@@ -1,11 +1,6 @@
 import { JSONContent } from '@tiptap/core';
-import { Blokk, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
+import { Blokk, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
 import { v4 as uuidv4 } from 'uuid';
-
-export interface TipTapBrev {
-  brevtittel: string;
-  blokker: Array<TipTopBlokk>;
-}
 
 export interface TipTopBlokk {
   id: string;
@@ -19,13 +14,6 @@ export interface TipTapInnhold {
   riktekst: JSONContent;
   kanRedigeres: boolean;
 }
-
-export const mapBrevTilTipTap = (brev: Brev): TipTapBrev => {
-  return {
-    brevtittel: brev.overskrift ?? '',
-    blokker: mapBlokkerTilTipTap(brev.tekstbolker ?? []),
-  };
-};
 
 export const mapBlokkerTilTipTap = (blokker: Tekstbolk[]): TipTopBlokk[] => {
   return blokker.map((blokk) => {
@@ -105,13 +93,6 @@ function mapPortableTextElementToTipTapElement(value: Blokk['type']): TipTapElem
       return 'paragraph';
   }
 }
-
-export const mapTipTapBrevTilBrev = (tipTapBrev: TipTapBrev): Brev => {
-  return {
-    overskrift: tipTapBrev.brevtittel,
-    tekstbolker: mapTipTapBolkerTilTekstbolker(tipTapBrev.blokker),
-  };
-};
 
 export const mapTipTapBolkerTilTekstbolker = (blokker: TipTopBlokk[]): Tekstbolk[] => {
   return blokker.map((blokk) => {
