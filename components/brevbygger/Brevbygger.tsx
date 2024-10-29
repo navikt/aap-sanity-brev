@@ -9,31 +9,14 @@ import { formaterDatoForFrontend } from 'lib/services/date';
 
 import NavLogo from 'public/nav_logo.png';
 import { JSONContent } from '@tiptap/core';
-import { Blokk, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
-import { useState } from 'react';
+import { Brev } from 'packages/aap-breveditor/types';
+import { useEffect, useState } from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
-
-export interface TipTapBrev {
-  brevtittel: string;
-  blokker: Array<TipTopBlokk>;
-}
-
-export interface TipTopBlokk {
-  id: string;
-  overskrift?: string;
-  innhold: Array<TipTapInnhold>;
-}
-
-export interface TipTapInnhold {
-  id: string;
-  overskrift?: string;
-  riktekst: JSONContent;
-  kanRedigeres: boolean;
-}
+import { mapBrevTilTipTap, mapTipTapBrevTilBrev, TipTapBrev } from 'packages/aap-breveditor/tiptapMapper';
 
 export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
   const [tipTapBrev, setTipTapBrev] = useState<TipTapBrev>(mapBrevTilTipTap(brevmal));
+  const [fellesformat, setFellesformat] = useState<Brev>(brevmal);
 
   const updateBrev = (content: JSONContent, id: string) => {
     setTipTapBrev({
@@ -51,6 +34,14 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
       }),
     });
   };
+
+  useEffect(() => {
+    setFellesformat(mapTipTapBrevTilBrev(tipTapBrev));
+  }, [tipTapBrev, setFellesformat]);
+
+  useEffect(() => {
+    console.log('fellesformat', fellesformat);
+  }, [fellesformat]);
 
   return (
     <div className={styles.brevbygger}>
@@ -94,89 +85,3 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
     </div>
   );
 };
-
-export const mapBrevTilTipTap = (brev: Brev): TipTapBrev => {
-  return {
-    brevtittel: brev.overskrift ?? '',
-    blokker: mapBlokkerTilTipTap(brev.tekstbolker ?? []),
-  };
-};
-
-export const mapBlokkerTilTipTap = (blokker: Tekstbolk[]): TipTopBlokk[] => {
-  return blokker.map((blokk) => {
-    return {
-      id: uuidv4(),
-      overskrift: blokk.overskrift ?? '',
-      innhold: mapInnholdTilTipTap(blokk.innhold),
-    };
-  });
-};
-
-export const mapInnholdTilTipTap = (innhold: Innhold[]): TipTapInnhold[] => {
-  return innhold.map((innhold) => {
-    return {
-      id: uuidv4(),
-      overskrift: innhold.overskrift ?? '',
-      riktekst: mapBlokkInnholdToTipTapJsonContent(innhold.blokker),
-      kanRedigeres: innhold.kanRedigeres ?? false,
-    };
-  });
-};
-
-export const mapBlokkInnholdToTipTapJsonContent = (blokkInnhold: Blokk[]): JSONContent => {
-  const content = blokkInnhold?.map((block) => {
-    const blockType = block.type;
-
-    const innhold =
-      block.innhold
-        .map((innhold) => {
-          const type = innhold.type;
-          if (type === 'TEKST') {
-            const tekstInnhold = innhold as FormattertTekst;
-            const marks =
-              tekstInnhold.formattering
-                .map((mark) => {
-                  const markType = mapPortableTextMarkToTipTapMarks(mark);
-                  if (markType) {
-                    return { type: markType };
-                  }
-                })
-                .filter((mark) => mark != undefined) ?? [];
-            if (blockType === 'LISTE') {
-              return { type: 'listItem', content: [{ type: 'text', text: tekstInnhold.tekst }] };
-            }
-            return { type: 'text', text: tekstInnhold.tekst, marks };
-          }
-        })
-        .filter((innhold) => innhold != undefined) ?? [];
-
-    return { type: mapPortableTextElementToTipTapElement(blockType), content: innhold };
-  });
-  return { type: 'doc', content };
-};
-
-type TipTapMark = 'bold' | 'italic' | 'underline' | 'normal';
-function mapPortableTextMarkToTipTapMarks(value: string): TipTapMark | null {
-  switch (value) {
-    case 'FET':
-      return 'bold';
-    case 'KURSIV':
-      return 'italic';
-    case 'UNDERSTREK':
-      return 'underline';
-    default:
-      return null;
-  }
-}
-
-type TipTapElement = 'paragraph' | 'bulletList';
-function mapPortableTextElementToTipTapElement(value: Blokk['type']): TipTapElement {
-  switch (value) {
-    case 'AVSNITT':
-      return 'paragraph';
-    case 'LISTE':
-      return 'bulletList';
-    default:
-      return 'paragraph';
-  }
-}

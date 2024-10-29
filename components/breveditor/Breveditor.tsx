@@ -5,7 +5,7 @@ import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 
 import styles from 'components/breveditor/Breveditor.module.css';
 import { JSONContent } from '@tiptap/core';
-import { Dispatch, useState } from 'react';
+import { Dispatch } from 'react';
 import { Boblemeny } from 'components/breveditor/toolbar/boblemeny/Boblemeny';
 import { TableCell } from '@tiptap/extension-table-cell';
 import { TableHeader } from '@tiptap/extension-table-header';
@@ -18,7 +18,7 @@ import { PencilIcon } from '@navikt/aksel-icons';
 interface Props {
   initialValue?: JSONContent;
   className?: string;
-  setContent?: Dispatch<JSONContent>;
+  setContent: Dispatch<JSONContent>;
   brukEditor: boolean;
 }
 
@@ -31,14 +31,12 @@ const extensions = [
   Underline,
 ];
 
-export const Breveditor = ({ initialValue, brukEditor }: Props) => {
-  const [content, setContent] = useState<JSONContent | undefined>(initialValue);
+export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
   const editor = useEditor({
     extensions,
     content: initialValue,
     immediatelyRender: false,
     onUpdate({ editor }) {
-      console.log('tiptapjson', editor.getJSON());
       setContent(editor.getJSON());
     },
     editable: brukEditor,
