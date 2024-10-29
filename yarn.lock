@@ -3748,17 +3748,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/comlink@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@sanity/comlink@npm:1.1.0"
-  dependencies:
-    rxjs: "npm:^7.8.1"
-    uuid: "npm:^10.0.0"
-    xstate: "npm:^5.18.2"
-  checksum: 10c0/c9e46bdf2d9138e8616bc0c58106cf7395377e74f8196f687c62ce70af70a79a10884b3e26433b5abeb58e657b6120776fcfa9824c5640d5c6e5657bf715c7e1
-  languageName: node
-  linkType: hard
-
 "@sanity/comlink@npm:1.1.1":
   version: 1.1.1
   resolution: "@sanity/comlink@npm:1.1.1"
@@ -4312,14 +4301,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/visual-editing@npm:2.4.0":
-  version: 2.4.0
-  resolution: "@sanity/visual-editing@npm:2.4.0"
+"@sanity/visual-editing@npm:2.4.2":
+  version: 2.4.2
+  resolution: "@sanity/visual-editing@npm:2.4.2"
   dependencies:
-    "@sanity/comlink": "npm:1.1.0"
+    "@sanity/comlink": "npm:1.1.1"
     "@sanity/mutate": "npm:0.10.1-canary.5"
     "@sanity/preview-url-secret": "npm:2.0.0"
     "@vercel/stega": "npm:0.1.2"
+    get-random-values-esm: "npm:^1.0.2"
     rxjs: "npm:^7.8.1"
     scroll-into-view-if-needed: "npm:^3.1.0"
     use-effect-event: "npm:^1.0.2"
@@ -4344,7 +4334,7 @@ __metadata:
       optional: true
     svelte:
       optional: true
-  checksum: 10c0/4b588de4aae4587245ecd7d26cce2a45c92633c8f59d7e17872b1cf3fe730e6b4cb59cbeac43640ef42d3a25f4b001398ffa3073708d4e24b6fb38639a34245a
+  checksum: 10c0/a828402bb59de2c2c2e8f00047b5c18bcffe1efe0fa2f2b6d76930bb107c745015680952c824c5c59a963d51f8c4e5f014ba27c83f6feb82a33cc48b11f13456
   languageName: node
   linkType: hard
 
@@ -5672,7 +5662,7 @@ __metadata:
     husky: "npm:^8.0.3"
     lint-staged: "npm:^15.2.10"
     next: "npm:15.0.1"
-    next-sanity: "npm:^9.8.7"
+    next-sanity: "npm:^9.8.8"
     openapi-typescript: "npm:^7.4.2"
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
@@ -9145,7 +9135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-random-values-esm@npm:1.0.2":
+"get-random-values-esm@npm:1.0.2, get-random-values-esm@npm:^1.0.2":
   version: 1.0.2
   resolution: "get-random-values-esm@npm:1.0.2"
   dependencies:
@@ -11442,16 +11432,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sanity@npm:^9.8.7":
-  version: 9.8.7
-  resolution: "next-sanity@npm:9.8.7"
+"next-sanity@npm:^9.8.8":
+  version: 9.8.8
+  resolution: "next-sanity@npm:9.8.8"
   dependencies:
     "@portabletext/react": "npm:^3.1.0"
     "@sanity/client": "npm:^6.22.2"
     "@sanity/next-loader": "npm:1.1.0"
     "@sanity/preview-kit": "npm:5.1.10"
     "@sanity/preview-url-secret": "npm:2.0.0"
-    "@sanity/visual-editing": "npm:2.4.0"
+    "@sanity/visual-editing": "npm:2.4.2"
     groq: "npm:^3.62.2"
     history: "npm:^5.3.0"
   peerDependencies:
@@ -11464,7 +11454,7 @@ __metadata:
     react-dom: ^18.3 || ^19.0.0-0
     sanity: ^3.62.0
     styled-components: ^6.1
-  checksum: 10c0/0f09c4d7c2150108b0b14867d43e11829286d99914aa35818f0872701dc417210c4acd8454fcfa0ef1a641b040fc39a1c875185ac69f4b24d1fe3771937716d8
+  checksum: 10c0/5e78267786b680047aa18e25ef65ad7f6244daf3ed9c96e610271c7e4d60db438f5991c8959c146be673c10b4af32663cd108f4fdb11847ac191ffe489a7a12d
   languageName: node
   linkType: hard
 

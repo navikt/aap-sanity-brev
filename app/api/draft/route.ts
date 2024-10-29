@@ -14,8 +14,8 @@ export async function GET(request: Request) {
     return new Response('Invalid secret', { status: 401 });
   }
 
-  const { enable } = await draftMode();
-  enable();
+  const draft = await draftMode();
+  draft.enable();
 
   redirect(redirectTo);
 }
