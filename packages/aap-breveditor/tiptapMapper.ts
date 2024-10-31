@@ -41,7 +41,7 @@ export const mapFormattertTekstToTipTapJsonContent = (
   if (blockType === 'LISTE') {
     return {
       type: 'listItem',
-      content: [{ type: 'text', text: tekstInnhold.tekst }],
+      content: [{ type: 'paragraph', content: [{ type: 'text', text: tekstInnhold.tekst }] }],
       fellesformatFormattertTekstId: tekstInnhold.id,
     };
   }
