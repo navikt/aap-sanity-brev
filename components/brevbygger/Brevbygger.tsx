@@ -12,34 +12,33 @@ import { JSONContent } from '@tiptap/core';
 import { Brev } from 'packages/aap-breveditor/types';
 import { useEffect, useState } from 'react';
 
-import { mapBlokkerTilTipTap, mapTipTapBolkerTilTekstbolker, TipTopBlokk } from 'packages/aap-breveditor/tiptapMapper';
+import {
+  mapBlokkInnholdToTipTapJsonContent,
+  mapTipTapJsonContentToBlokkInnhold,
+} from 'packages/aap-breveditor/tiptapMapper';
 
 export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
-  const [tipTapBrev, setTipTapBrev] = useState<TipTopBlokk[]>(mapBlokkerTilTipTap(brevmal.tekstbolker));
   const [fellesformat, setFellesformat] = useState<Brev>(brevmal);
 
-  const updateBrev = (content: JSONContent, id: string) => {
-    setTipTapBrev(
-      tipTapBrev.map((blokk) => {
+  const updateBrev = (content: JSONContent, innholdId: string, blokkId: string) => {
+    const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
+
+    const oppdatertFellesformat: Brev = {
+      ...fellesformat,
+      tekstbolker: fellesformat.tekstbolker.map((blokk) => {
         return {
           ...blokk,
           innhold: blokk.innhold.map((innhold) => {
-            if (innhold.id === id) {
-              return { ...innhold, riktekst: content };
-            }
-            return innhold;
+            return {
+              ...innhold,
+              blokker: innhold.id === innholdId ? oppdatertInnhold : innhold.blokker,
+            };
           }),
         };
-      })
-    );
+      }),
+    };
+    setFellesformat(oppdatertFellesformat);
   };
-
-  useEffect(() => {
-    setFellesformat({
-      ...fellesformat,
-      tekstbolker: mapTipTapBolkerTilTekstbolker(tipTapBrev),
-    });
-  }, [tipTapBrev, fellesformat, setFellesformat]);
 
   useEffect(() => {
     console.log('fellesformat', fellesformat);
@@ -58,7 +57,7 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
         <Heading level="1" size="xlarge" className={styles.brevtittel}>
           {fellesformat.overskrift}
         </Heading>
-        {tipTapBrev.map((blokk) => (
+        {fellesformat.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
             <div className={styles.headerRow}>
               <Heading level="2" size="large" className={styles.heading}>
@@ -73,9 +72,9 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
                   </Heading>
                 )}
                 <Breveditor
-                  initialValue={innhold.riktekst}
+                  initialValue={mapBlokkInnholdToTipTapJsonContent(innhold.blokker)}
                   setContent={(content) => {
-                    updateBrev(content, innhold.id);
+                    updateBrev(content, innhold.id, blokk.id);
                   }}
                   brukEditor={innhold.kanRedigeres}
                 />

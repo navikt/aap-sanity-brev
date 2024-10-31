@@ -10,6 +10,7 @@ import {
   Innhold as SanityInnhold,
   Brevtype,
 } from 'packages/aap-sanity-schema-types';
+import { v4 as uuidV4 } from 'uuid';
 
 type Params = Promise<{
   id: string;
@@ -46,6 +47,7 @@ export const mapBlokkInnholdFraSanity = (content: Content): BlokkInnhold[] => {
       ?.map((child) => {
         if (child._type === 'span') {
           const innhold: FormattertTekst = {
+            id: uuidV4(),
             type: 'TEKST',
             tekst: child.text ?? '',
             formattering: child.marks?.map((mark) => mapMarkFraSanity(mark)).filter((mark) => mark != undefined) ?? [],
@@ -60,9 +62,25 @@ export const mapBlokkInnholdFraSanity = (content: Content): BlokkInnhold[] => {
 };
 
 export const mapBlokkerFraSanity = (content?: Content[]): Blokk[] => {
+  // Merge liste elementger slik at de ikke rendres som separate lister
+  const mergedContent = content?.reduce((accumulator: Content[], content: Content) => {
+    if (accumulator.length === 0) return accumulator.concat(content);
+    if (content.listItem === 'bullet' && accumulator[accumulator.length - 1]?.listItem === 'bullet') {
+      const prevItem = accumulator[accumulator.length - 1];
+      accumulator[accumulator.length - 1] = {
+        ...prevItem,
+        // Støtter foreløpig ikke nestede lister, eller lister med ulik formatering etc.
+        children: prevItem.children?.concat(content.children ?? []),
+      };
+      return accumulator;
+    }
+    return accumulator.concat(content);
+  }, []);
+
   return (
-    content?.map((blokk) => {
+    mergedContent?.map((blokk) => {
       return {
+        id: uuidV4(),
         type: blokk.listItem ? 'LISTE' : 'AVSNITT',
         innhold: mapBlokkInnholdFraSanity(blokk),
       };
@@ -82,6 +100,7 @@ export const mapTekstBolkBlokkInnholdFraSanity = (
           return null;
         }
         return {
+          id: uuidV4(),
           overskrift: innholdByRef.overskrift ?? '',
           erFullstendig: innholdByRef.erFullstendig ?? false,
           kanRedigeres: innholdByRef.kanRedigeres ?? false,
@@ -94,6 +113,7 @@ export const mapTekstBolkBlokkInnholdFraSanity = (
 
 export const mapTekstBolkerFraSanity = (tekstbolker: SanityTekstBolk[], innhold: SanityInnhold[]): Tekstbolk[] => {
   return tekstbolker.map((tekstbolk) => ({
+    id: uuidV4(),
     overskrift: tekstbolk.overskrift?.nb ?? '',
     innhold: mapTekstBolkBlokkInnholdFraSanity(tekstbolk, innhold),
   }));

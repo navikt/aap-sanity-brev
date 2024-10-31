@@ -391,6 +391,8 @@ export interface components {
       referanse: string;
     };
     'no.nav.aap.brev.kontrakt.Blokk': {
+      /** Format: uuid */
+      id: string;
       innhold: components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold'][];
       /** @enum {string} */
       type: 'AVSNITT' | 'LISTE';
@@ -399,6 +401,8 @@ export interface components {
       | components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag']
       | components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst'];
     'no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag': {
+      /** Format: uuid */
+      id: string;
       tekniskNavn: string;
       visningsnavn: string;
       /** @enum {string} */
@@ -406,6 +410,8 @@ export interface components {
     };
     'no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst': {
       formattering: ('UNDERSTREK' | 'KURSIV' | 'FET')[];
+      /** Format: uuid */
+      id: string;
       tekst: string;
       /** @enum {string} */
       type: 'TEKST' | 'FAKTAGRUNNLAG';
@@ -422,12 +428,12 @@ export interface components {
       brevtype: 'INNVILGELSE' | 'AVSLAG';
       /**
        * Format: date-time
-       * @example 2024-10-28T13:41:23.406283
+       * @example 2024-10-29T14:07:28.388865
        */
       oppdatert: string;
       /**
        * Format: date-time
-       * @example 2024-10-28T13:41:23.406283
+       * @example 2024-10-29T14:07:28.388865
        */
       opprettet: string;
       /** Format: uuid */
@@ -435,7 +441,7 @@ export interface components {
       /** @enum {string} */
       'spr\u00E5k': 'EN' | 'NB' | 'NN';
       /** @enum {string} */
-      status: 'REGISTRERT' | 'UNDER_ARBEID' | 'FERDIGSTILT' | 'BESTILT';
+      status: 'REGISTRERT' | 'UNDER_ARBEID' | 'FERDIGSTILT';
     };
     'no.nav.aap.brev.kontrakt.FerdigstillBrevRequest': {
       /** Format: uuid */
@@ -444,10 +450,14 @@ export interface components {
     'no.nav.aap.brev.kontrakt.Innhold': {
       blokker: components['schemas']['no.nav.aap.brev.kontrakt.Blokk'][];
       erFullstendig: boolean;
+      /** Format: uuid */
+      id: string;
       kanRedigeres: boolean;
       overskrift: string;
     };
     'no.nav.aap.brev.kontrakt.Tekstbolk': {
+      /** Format: uuid */
+      id: string;
       innhold: components['schemas']['no.nav.aap.brev.kontrakt.Innhold'][];
       overskrift?: string | null;
     };
@@ -465,7 +475,7 @@ export interface components {
       navn: string;
       /**
        * Format: date-time
-       * @example 2024-10-28T13:41:23.406283
+       * @example 2024-10-29T14:07:28.388865
        */
       'planlagtKj\u00F8retidspunkt': string;
       /** @enum {string} */
