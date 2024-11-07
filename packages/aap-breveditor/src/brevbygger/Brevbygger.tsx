@@ -1,25 +1,22 @@
 'use client';
+import React from 'react';
 
 import { Detail, Heading } from '@navikt/ds-react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { Breveditor } from '../breveditor/Breveditor';
 
-import { formaterDatoForFrontend } from 'lib/services/date';
+import { formaterDatoForFrontend } from '../lib/date';
 
-import NavLogo from 'public/nav_logo.png';
 import { JSONContent } from '@tiptap/core';
-import { Brev } from 'packages/aap-breveditor/types';
+import { Brev } from '../types';
 import { useEffect, useState } from 'react';
 
-import {
-  mapBlokkInnholdToTipTapJsonContent,
-  mapTipTapJsonContentToBlokkInnhold,
-} from 'packages/aap-breveditor/tiptapMapper';
+import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
 
-export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
+export const Brevbygger = ({ brevmal, logo }: { brevmal: Brev; logo: StaticImageData }) => {
   const [fellesformat, setFellesformat] = useState<Brev>(brevmal);
 
-  const updateBrev = (content: JSONContent, innholdId: string, blokkId: string) => {
+  const updateBrev = (content: JSONContent, innholdId: string) => {
     const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
 
     const oppdatertFellesformat: Brev = {
@@ -47,7 +44,7 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
     <div className="aap-brev-brevbygger">
       <div className="aap-brev-brev">
         <div className="aap-brev-personalia">
-          <Image src={NavLogo} width={110} height={70} alt={'NAV logo'} />
+          <Image src={logo} width={110} height={70} alt={'NAV logo'} />
           <Detail>Navn: Ola Nordmann</Detail>
           <Detail>Fødselsnummer: 1234567890</Detail>
           <Detail>Dato: {formaterDatoForFrontend(new Date())}</Detail>
@@ -73,7 +70,7 @@ export const Brevbygger = ({ brevmal }: { brevmal: Brev }) => {
                 <Breveditor
                   initialValue={mapBlokkInnholdToTipTapJsonContent(innhold.blokker)}
                   setContent={(content) => {
-                    updateBrev(content, innhold.id, blokk.id);
+                    updateBrev(content, innhold.id);
                   }}
                   brukEditor={innhold.kanRedigeres}
                 />

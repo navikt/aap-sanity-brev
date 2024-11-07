@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, test, expect, beforeEach } from 'vitest';
 import { Toolbar } from './Toolbar';
 import { render, screen } from '@testing-library/react';

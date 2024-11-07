@@ -2,7 +2,7 @@ import { getBrevtypeById } from 'lib/services/sanity/model/brevtype/brevtypeQuer
 import { innholdByIdQuery } from 'lib/services/sanity/model/innhold/innholdQuery';
 import { tekstbolkByIdQuery } from 'lib/services/sanity/model/tekstbolk/tekstbolkQuery';
 import styles from './page.module.css';
-import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/types';
+import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Tekstbolk } from 'packages/aap-breveditor/src/types';
 import {
   Content,
   Tekstbolk as SanityTekstBolk,
@@ -11,6 +11,7 @@ import {
 } from 'packages/aap-sanity-schema-types';
 import { v4 as uuidV4 } from 'uuid';
 import { Brevbygger } from 'packages/aap-breveditor/src/brevbygger/Brevbygger';
+import NavLogo from 'public/nav_logo.png';
 
 type Params = Promise<{
   id: string;
@@ -34,7 +35,7 @@ const BrevmalPage = async ({ params }: { params: Params }) => {
 
   return (
     <div className={styles.page}>
-      <Brevbygger brevmal={brevmal} />
+      <Brevbygger brevmal={brevmal} logo={NavLogo} />
     </div>
   );
 };

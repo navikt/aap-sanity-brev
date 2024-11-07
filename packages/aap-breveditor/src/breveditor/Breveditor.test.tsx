@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, test, expect, vi } from 'vitest';
 import { Breveditor } from './Breveditor';
 import { render, screen } from '@testing-library/react';

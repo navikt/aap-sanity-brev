@@ -1,5 +1,5 @@
 import { JSONContent } from '@tiptap/core';
-import { Blokk, FormattertTekst } from 'packages/aap-breveditor/types';
+import { Blokk, FormattertTekst } from './types';
 import { v4 as uuidV4 } from 'uuid';
 
 export const mapBlokkInnholdToTipTapJsonContent = (blokkInnhold: Blokk[]): JSONContent => {

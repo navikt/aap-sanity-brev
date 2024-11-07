@@ -2,8 +2,8 @@ import {
   mapBlokkInnholdToTipTapJsonContent,
   mapPortableTextElementToTipTapElement,
   mapPortableTextMarkToTipTapMarks,
-} from 'packages/aap-breveditor/tiptapMapper';
-import { Blokk } from 'packages/aap-breveditor/types';
+} from './tiptapMapper';
+import { Blokk } from './types';
 import { describe, expect, it } from 'vitest';
 
 describe('mapPortableTextMarkToTipTapMarks', () => {

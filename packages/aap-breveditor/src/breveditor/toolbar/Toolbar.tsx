@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Editor } from '@tiptap/react';
 
 import { ArrowUndoIcon, BulletListIcon, NumberListIcon } from '@navikt/aksel-icons';

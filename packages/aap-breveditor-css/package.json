@@ -1,11 +1,11 @@
 {
-    "version": "0.0.3",
+    "version": "0.1.0",
     "name": "@navikt/aap-breveditor-css",
     "author": "NAV",
-    "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
+    "homepage": "https://github.com/navikt/aap-sanity-brev#readme",
     "repository": {
         "type": "git",
-        "url": "https://github.com/navikt/aap-felles-frontend"
+        "url": "https://github.com/navikt/aap-sanity-brev"
     },
     "license": "MIT",
     "publishConfig": {
@@ -14,7 +14,8 @@
     "main": "./dist/index.css",
     "scripts": {
         "build": "postcss --use postcss-import postcss-combine-duplicated-selectors -o dist/index.css src/index.css",
-        "watch": "postcss --watch --use postcss-import -o dist/index.css src/index.css"
+        "watch": "postcss --watch --use postcss-import -o dist/index.css src/index.css",
+        "test": "echo \"No test specified\" && exit 0"
     },
     "devDependencies": {
         "postcss": "^8.4.47",

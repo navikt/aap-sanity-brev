@@ -41,3 +41,6 @@
 .yarn/install-state.gz
 
 schema.json
+
+node_modules
+dist

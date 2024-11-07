@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, test, expect, vi } from 'vitest';
 import { ToolbarButton } from './ToolbarButton';
 import { render, screen } from '@testing-library/react';
