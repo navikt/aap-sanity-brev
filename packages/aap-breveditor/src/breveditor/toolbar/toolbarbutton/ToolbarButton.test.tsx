@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
-import { ToolbarButton } from 'components/breveditor/toolbar/toolbarbutton/ToolbarButton';
+import { ToolbarButton } from './ToolbarButton';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 

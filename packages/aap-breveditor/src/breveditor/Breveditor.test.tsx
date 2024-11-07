@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
-import { Breveditor } from 'components/breveditor/Breveditor';
+import { Breveditor } from './Breveditor';
 import { render, screen } from '@testing-library/react';
 
 describe('Breveditor', () => {

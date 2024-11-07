@@ -1,4 +1,3 @@
-import { Brevbygger } from 'components/brevbygger/Brevbygger';
 import { getBrevtypeById } from 'lib/services/sanity/model/brevtype/brevtypeQuery';
 import { innholdByIdQuery } from 'lib/services/sanity/model/innhold/innholdQuery';
 import { tekstbolkByIdQuery } from 'lib/services/sanity/model/tekstbolk/tekstbolkQuery';
@@ -11,6 +10,7 @@ import {
   Brevtype,
 } from 'packages/aap-sanity-schema-types';
 import { v4 as uuidV4 } from 'uuid';
+import { Brevbygger } from 'packages/aap-breveditor/src/brevbygger/Brevbygger';
 
 type Params = Promise<{
   id: string;

@@ -1,7 +1,6 @@
 import { Editor } from '@tiptap/react';
 import { Button } from '@navikt/ds-react';
 
-import styles from './Boblemeny.module.css';
 import { BulletListIcon } from '@navikt/aksel-icons';
 
 interface BubbleMenuProps {
@@ -13,12 +12,12 @@ export const Boblemeny = ({ editor }: BubbleMenuProps) => {
     return;
   }
   return (
-    <div className={styles.boblemeny}>
+    <div className="aap-brev-boblemeny">
       <Button
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={editor.isActive('heading', { level: 3 }) ? `${styles.active}` : ''}
+        className={editor.isActive('heading', { level: 3 }) ? `aap-brev-boblemeny-active` : ''}
       >
         H3
       </Button>
@@ -26,7 +25,7 @@ export const Boblemeny = ({ editor }: BubbleMenuProps) => {
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor.chain().focus().toggleBold().run()}
-        className={editor.isActive('bold') ? `${styles.active}` : ''}
+        className={editor.isActive('bold') ? `aap-brev-boblemeny-active` : ''}
       >
         <b>B</b>
       </Button>
@@ -34,7 +33,7 @@ export const Boblemeny = ({ editor }: BubbleMenuProps) => {
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={editor.isActive('italic') ? `${styles.active}` : ''}
+        className={editor.isActive('italic') ? `aap-brev-boblemeny-active` : ''}
       >
         <i>I</i>
       </Button>
@@ -42,7 +41,7 @@ export const Boblemeny = ({ editor }: BubbleMenuProps) => {
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={editor.isActive('strike') ? `${styles.active}` : ''}
+        className={editor.isActive('strike') ? `aap-brev-boblemeny-active` : ''}
       >
         <s>S</s>
       </Button>
@@ -50,15 +49,15 @@ export const Boblemeny = ({ editor }: BubbleMenuProps) => {
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={editor.isActive('underline') ? `${styles.active}` : ''}
+        className={editor.isActive('underline') ? `aap-brev-boblemeny-active` : ''}
       >
-        <span className={styles.underline}>U</span>
+        <span className="aap-brev-boblemeny-underline">U</span>
       </Button>
       <Button
         type={'button'}
         variant={'tertiary-neutral'}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive('bulletlist') ? `${styles.active}` : ''}
+        className={editor.isActive('bulletlist') ? `aap-brev-boblemeny-active` : ''}
       >
         <BulletListIcon title={'Punktliste'} />
       </Button>

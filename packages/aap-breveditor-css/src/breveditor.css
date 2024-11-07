@@ -1,0 +1,117 @@
+.aap-brev-brevbygger {
+  background-color: var(--a-surface-default);
+  padding: 2rem;
+  border: 1px solid var(--a-border-default);
+  max-width: 210mm;
+}
+
+.aap-brev-brevbygger h1,
+h2,
+h3 {
+  padding-left: calc(2rem + 5px);
+}
+
+.aap-brev-brev {
+  background-color: var(--a-bg-default);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aap-brev-personalia {
+  padding-inline-start: calc(2rem + 5px);
+}
+
+.aap-brev-headerRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--a-spacing-1);
+}
+
+.aap-brev-editableContent {
+  background-color: var(--a-bg-default);
+}
+
+.aap-brev-centerLoader {
+  display: flex;
+  justify-content: center;
+}
+
+.aap-brev-editor {
+  width: 100%;
+}
+
+aap-brev-editor .tiptap {
+  padding-inline: 2rem;
+}
+
+.aap-brev-editorContainer {
+  display: flex;
+  gap: var(--a-spacing-4);
+}
+
+.aap-brev-editorContent {
+  padding-block: 0.5rem;
+  width: 100%;
+}
+
+.aap-brev-editorContent:focus {
+  border: 2px solid;
+  border-color: var(--a-blue-800);
+}
+
+/* Bytter margin med padding i tiptap paragrafer for å gjøre hele elementet klikkbart */
+.aap-brev-editorContent p {
+  margin-block: 0;
+  padding-block: 1rem;
+}
+
+.aap-brev-editorContent .ProseMirror-focused {
+  outline: none;
+}
+
+.aap-brev-editorContent:focus-within {
+  box-shadow: var(--a-shadow-focus);
+}
+
+.aap-brev-disabledEditor {
+  padding-inline: 5px;
+}
+
+.aap-brev-boblemeny {
+  background-color: var(--a-bg-default);
+  box-shadow: 0 0 5px hsla(0deg, 0%, 0%, 0.8);
+  border: 1px solid var(--a-border-subtle);
+}
+
+.aap-brev-boblemeny-active {
+  background: var(--a-surface-neutral-subtle-hover);
+}
+
+.aap-brev-boblemeny-underline {
+  text-decoration: underline;
+}
+
+.aap-brev-toolbar-toolbarbutton {
+  padding: 0.5rem;
+  font-family: Monospaced, serif;
+  border: none;
+}
+
+.aap-brev-toolbar-toolbarbutton-active {
+  background: var(--a-surface-neutral-subtle-hover);
+}
+
+.aap-brev-toolbar {
+  display: flex;
+  gap: 0.25rem;
+  background-color: var(--a-bg-subtle);
+  padding: 0.25rem;
+  border: 2px solid var(--a-border-strong);
+  border-bottom: transparent;
+}
+
+.aap-brev-toolbar-icon {
+  font-size: 1.5rem;
+}

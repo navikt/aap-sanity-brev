@@ -1,5 +1,6 @@
 import '@navikt/ds-css';
 import '@navikt/aap-felles-css';
+import 'packages/aap-breveditor-css/src/breveditor.css';
 
 import { VisualEditing } from 'next-sanity';
 import { draftMode } from 'next/headers';

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Button } from '@navikt/ds-react';
-import styles from './ToolbarButton.module.css';
 
 interface ToolbarButtonProps {
   onClick: () => void;
@@ -10,7 +9,7 @@ interface ToolbarButtonProps {
 }
 
 export const ToolbarButton = ({ onClick, active = false, children, disabled = false }: ToolbarButtonProps) => {
-  const classNames = `${styles.toolbarbutton} ${active ? styles.active : ''}`;
+  const classNames = `aap-brev-toolbar-toolbarbutton ${active ? 'aap-brev-toolbar-toolbarbutton-active' : ''}`;
   return (
     <Button
       type={'button'}

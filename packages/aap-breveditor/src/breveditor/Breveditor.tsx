@@ -3,14 +3,9 @@
 import { StarterKit } from '@tiptap/starter-kit';
 import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 
-import styles from 'components/breveditor/Breveditor.module.css';
 import { JSONContent } from '@tiptap/core';
 import { Dispatch } from 'react';
-import { Boblemeny } from 'components/breveditor/toolbar/boblemeny/Boblemeny';
-import { TableCell } from '@tiptap/extension-table-cell';
-import { TableHeader } from '@tiptap/extension-table-header';
-import { TableRow } from '@tiptap/extension-table-row';
-import { Table } from '@tiptap/extension-table';
+import { Boblemeny } from './toolbar/boblemeny/Boblemeny';
 import { Loader } from '@navikt/ds-react';
 import { Underline } from '@tiptap/extension-underline';
 import { PencilIcon } from '@navikt/aksel-icons';
@@ -24,10 +19,10 @@ interface Props {
 
 const extensions = [
   StarterKit,
-  Table.configure({ HTMLAttributes: { class: styles.table } }),
+  /*Table.configure({ HTMLAttributes: { class: styles.table } }),
   TableCell,
   TableHeader,
-  TableRow,
+  TableRow,*/
   Underline,
 ];
 
@@ -44,23 +39,23 @@ export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
 
   if (!editor) {
     return (
-      <div className={styles.centerLoader}>
+      <div className="aap-brev-centerLoader">
         <Loader size={'2xlarge'} title={'Laster breveditor...'} />
       </div>
     );
   }
 
   return (
-    <div className={styles.editor}>
+    <div className="aap-brev-editor">
       {editor && (
         <BubbleMenu editor={editor}>
           <Boblemeny editor={editor} />
         </BubbleMenu>
       )}
-      <div className={styles.editorContainer}>
+      <div className="aap-brev-editorContainer">
         <EditorContent
           editor={editor}
-          className={brukEditor ? styles.editorContent : styles.disabledEditor}
+          className={brukEditor ? 'aap-brev-editorContent' : 'aap-brev-disabledEditor'}
           data-testid={'breveditor'}
         />
         {brukEditor && !editor.isFocused && <PencilIcon />}

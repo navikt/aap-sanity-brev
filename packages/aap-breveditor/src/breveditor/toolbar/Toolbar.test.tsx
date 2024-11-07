@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach } from 'vitest';
-import { Toolbar } from 'components/breveditor/toolbar/Toolbar';
+import { Toolbar } from './Toolbar';
 import { render, screen } from '@testing-library/react';
 import { useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
@@ -53,11 +53,6 @@ describe('Toolbar', () => {
 
   test('har knapp for nummerert liste', async () => {
     const button = await screen.findByRole('button', { name: 'Nummerert liste' });
-    expect(button).toBeVisible();
-  });
-
-  test('har knapp for å sette inn tabell', async () => {
-    const button = await screen.findByRole('button', { name: 'Sett inn tabell' });
     expect(button).toBeVisible();
   });
 });

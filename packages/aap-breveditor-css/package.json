@@ -1,0 +1,25 @@
+{
+    "version": "0.0.3",
+    "name": "@navikt/aap-breveditor-css",
+    "author": "NAV",
+    "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/aap-felles-frontend"
+    },
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "main": "./dist/index.css",
+    "scripts": {
+        "build": "postcss --use postcss-import postcss-combine-duplicated-selectors -o dist/index.css src/index.css",
+        "watch": "postcss --watch --use postcss-import -o dist/index.css src/index.css"
+    },
+    "devDependencies": {
+        "postcss": "^8.4.47",
+        "postcss-cli": "^11.0.0",
+        "postcss-combine-duplicated-selectors": "^10.0.3",
+        "postcss-import": "^16.1.0"
+    }
+}

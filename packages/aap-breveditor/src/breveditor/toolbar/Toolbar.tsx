@@ -1,8 +1,7 @@
 import { Editor } from '@tiptap/react';
 
-import styles from './Toolbar.module.css';
-import { ArrowUndoIcon, BulletListIcon, NumberListIcon, TableIcon } from '@navikt/aksel-icons';
-import { ToolbarButton } from 'components/breveditor/toolbar/toolbarbutton/ToolbarButton';
+import { ArrowUndoIcon, BulletListIcon, NumberListIcon } from '@navikt/aksel-icons';
+import { ToolbarButton } from './toolbarbutton/ToolbarButton';
 
 interface Props {
   editor: Editor | null;
@@ -17,9 +16,9 @@ export const Toolbar = ({ editor }: Props) => {
   };
 
   return (
-    <div className={`${styles.toolbar} ${editor.isFocused ? styles.visible : styles.hidden}`} role={'toolbar'}>
+    <div className={`aap-brev-toolbar`} role={'toolbar'}>
       <ToolbarButton onClick={() => editor?.chain().focus().undo().run()} disabled={!editor.can().undo()}>
-        <ArrowUndoIcon className={styles.icon} title={'Angre'} />
+        <ArrowUndoIcon className="aap-brev-toolbar-icon" title={'Angre'} />
       </ToolbarButton>
       <ToolbarButton
         onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
@@ -55,20 +54,14 @@ export const Toolbar = ({ editor }: Props) => {
         onClick={() => editor?.chain().focus().toggleBulletList().run()}
         active={markIsActive('bulletList')}
       >
-        <BulletListIcon className={styles.icon} title={'Punktliste'} />
+        <BulletListIcon className="aap-brev-toolbar-icon" title={'Punktliste'} />
       </ToolbarButton>
       <ToolbarButton
         onClick={() => editor?.chain().focus().toggleOrderedList().run()}
         active={markIsActive('orderedList')}
       >
-        <NumberListIcon className={styles.icon} title={'Nummerert liste'} />
+        <NumberListIcon className="aap-brev-toolbar-icon" title={'Nummerert liste'} />
       </ToolbarButton>
-      <ToolbarButton
-        onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}
-      >
-        <TableIcon className={styles.icon} title={'Sett inn tabell'} />
-      </ToolbarButton>
-      <ToolbarButton onClick={() => editor?.chain().focus().deleteTable().run()}>NO TBL</ToolbarButton>
     </div>
   );
 };
