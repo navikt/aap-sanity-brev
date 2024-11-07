@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.2
+
+### Patch Changes
+
+- Ny versjon grunnet oppdateringer i bygg på GHA
+
 ## 0.1.1
 
 ### Patch Changes
