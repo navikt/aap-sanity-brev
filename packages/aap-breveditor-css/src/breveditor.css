@@ -6,8 +6,8 @@
 }
 
 .aap-brev-brevbygger h1,
-h2,
-h3 {
+.aap-brev-brevbygger h2,
+.aap-brev-brevbygger h3 {
   padding-left: calc(2rem + 5px);
 }
 
