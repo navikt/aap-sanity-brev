@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.3
+
+### Patch Changes
+
+- bumper minor og patch versjoner av avhengigheter
+
 ## 0.1.2
 
 ### Patch Changes
