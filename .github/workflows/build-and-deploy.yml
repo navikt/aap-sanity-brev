@@ -18,7 +18,7 @@ jobs:
     secrets: inherit
     with:
       cluster: dev-gcp
-      appname: 'aap-saksbehandling'
+      appname: 'aap-sanity-brev'
       playwright: false
       cdn: true
 

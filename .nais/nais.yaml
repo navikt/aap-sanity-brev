@@ -50,3 +50,4 @@ spec:
         - host: apicdn.sanity.io
         - host: 948n95rd.apicdn.sanity.io
         - host: cdn.sanity.io
+        - host: "cdn.nav.no"
