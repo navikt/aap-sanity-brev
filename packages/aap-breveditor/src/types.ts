@@ -1,5 +1,7 @@
 import { components } from '@navikt/aap-brev-typescript-types';
 
+export type Brevbestilling = components['schemas']['no.nav.aap.brev.kontrakt.BrevbestillingResponse'];
+
 export type Brev = components['schemas']['no.nav.aap.brev.kontrakt.Brev'];
 
 export type Innhold = components['schemas']['no.nav.aap.brev.kontrakt.Innhold'];

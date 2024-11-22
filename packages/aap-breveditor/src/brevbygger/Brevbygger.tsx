@@ -9,19 +9,24 @@ import { formaterDatoForFrontend } from '../lib/date';
 
 import { JSONContent } from '@tiptap/core';
 import { Brev } from '../types';
-import { useEffect, useState } from 'react';
 
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
 
-export const Brevbygger = ({ brevmal, logo }: { brevmal: Brev; logo: StaticImageData }) => {
-  const [fellesformat, setFellesformat] = useState<Brev>(brevmal);
-
+export const Brevbygger = ({
+  brevmal,
+  logo,
+  onBrevChange,
+}: {
+  brevmal: Brev;
+  logo: StaticImageData;
+  onBrevChange: (brev: Brev) => void;
+}) => {
   const updateBrev = (content: JSONContent, innholdId: string) => {
     const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
 
     const oppdatertFellesformat: Brev = {
-      ...fellesformat,
-      tekstbolker: fellesformat.tekstbolker.map((blokk) => {
+      ...brevmal,
+      tekstbolker: brevmal.tekstbolker.map((blokk) => {
         return {
           ...blokk,
           innhold: blokk.innhold.map((innhold) => {
@@ -33,12 +38,8 @@ export const Brevbygger = ({ brevmal, logo }: { brevmal: Brev; logo: StaticImage
         };
       }),
     };
-    setFellesformat(oppdatertFellesformat);
+    onBrevChange(oppdatertFellesformat);
   };
-
-  useEffect(() => {
-    console.log('fellesformat', fellesformat);
-  }, [fellesformat]);
 
   return (
     <div className="aap-brev-brevbygger">
@@ -51,9 +52,9 @@ export const Brevbygger = ({ brevmal, logo }: { brevmal: Brev; logo: StaticImage
           <Detail>Saksnnummer: AABBCC112233</Detail>
         </div>
         <Heading level="1" size="xlarge">
-          {fellesformat.overskrift}
+          {brevmal.overskrift}
         </Heading>
-        {fellesformat.tekstbolker.map((blokk) => (
+        {brevmal.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
             <div className="aap-brev-headerRow">
               <Heading level="2" size="large">

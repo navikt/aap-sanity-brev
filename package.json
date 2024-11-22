@@ -12,7 +12,6 @@
     "test": "vitest --run",
     "changeset": "changeset",
     "generateSchemaTypes": "sanity schema extract && sanity typegen generate",
-    "gentypes": "openapi-typescript http://localhost:8080/openapi.json -o packages/aap-breveditor/schema.d.ts",
     "sanity": "sanity"
   },
   "keywords": [

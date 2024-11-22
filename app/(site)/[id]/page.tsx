@@ -10,8 +10,7 @@ import {
   Brevtype,
 } from 'packages/aap-sanity-schema-types';
 import { v4 as uuidV4 } from 'uuid';
-import { Brevbygger } from 'packages/aap-breveditor/src/brevbygger/Brevbygger';
-import NavLogo from 'public/nav_logo.png';
+import { BrevmalWrapper } from 'components/BrevmalWrapper';
 
 type Params = Promise<{
   id: string;
@@ -35,7 +34,7 @@ const BrevmalPage = async ({ params }: { params: Params }) => {
 
   return (
     <div className={styles.page}>
-      <Brevbygger brevmal={brevmal} logo={NavLogo} />
+      <BrevmalWrapper brevmal={brevmal} />
     </div>
   );
 };

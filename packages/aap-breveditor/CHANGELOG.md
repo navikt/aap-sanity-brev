@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.5
+
+### Patch Changes
+
+- Flytter state håndtering ut av komponentet slik at dataene kan brukes utenfor editor"
+
 ## 0.1.4
 
 ### Patch Changes
