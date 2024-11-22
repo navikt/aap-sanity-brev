@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.4
+
+### Patch Changes
+
+- Legger til typedefinisjoner fra fellesbibliotek i stedet for å bruke typegen lokalt"
+
 ## 0.1.3
 
 ### Patch Changes

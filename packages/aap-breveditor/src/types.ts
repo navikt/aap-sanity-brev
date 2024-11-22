@@ -1,4 +1,4 @@
-import { components } from './schema';
+import { components } from '@navikt/aap-brev-typescript-types';
 
 export type Brev = components['schemas']['no.nav.aap.brev.kontrakt.Brev'];
 
