@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.6
+
+### Patch Changes
+
+- Alltid sette en id dersom denne er undefined for formattert tekst"
+
 ## 0.1.5
 
 ### Patch Changes

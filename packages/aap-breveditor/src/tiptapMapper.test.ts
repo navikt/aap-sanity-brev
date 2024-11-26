@@ -2,6 +2,7 @@ import {
   mapBlokkInnholdToTipTapJsonContent,
   mapPortableTextElementToTipTapElement,
   mapPortableTextMarkToTipTapMarks,
+  mapTipTapToFormattertTekst,
 } from './tiptapMapper';
 import { Blokk } from './types';
 import { describe, expect, it } from 'vitest';
@@ -60,5 +61,31 @@ describe('mapBlokkInnholdToTipTapJsonContent', () => {
     expect(content?.content?.[0].type).toBe('listItem');
     expect(content?.content?.[0].content?.[0].type).toBe('paragraph');
     expect(content?.content?.[0].content?.[0].content?.[0].text).toBe('Dette er en liste');
+  });
+});
+
+describe('mapTipTapToFormattertTekst', () => {
+  it('skal ha id lik fellesformatFormattertTekstId', () => {
+    const jsonContent = {
+      fellesformatFormattertTekstId: '1',
+      text: 'Dette er en tekst',
+    };
+    const result = mapTipTapToFormattertTekst(jsonContent);
+    expect(result.id).toBe('1');
+  });
+  it('skal ha type lik TEKST', () => {
+    const jsonContent = {
+      fellesformatFormattertTekstId: '1',
+      text: 'Dette er en tekst',
+    };
+    const result = mapTipTapToFormattertTekst(jsonContent);
+    expect(result.type).toBe('TEKST');
+  });
+  it('skal få id satt dersom fellesformatFormattertTekstId er undefined', () => {
+    const jsonContent = {
+      text: 'Dette er en tekst',
+    };
+    const result = mapTipTapToFormattertTekst(jsonContent);
+    expect(result.id).toBeDefined();
   });
 });

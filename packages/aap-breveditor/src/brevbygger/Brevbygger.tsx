@@ -9,6 +9,7 @@ import { formaterDatoForFrontend } from '../lib/date';
 
 import { JSONContent } from '@tiptap/core';
 import { Brev } from '../types';
+import { v4 as uuidV4 } from 'uuid';
 
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
 
@@ -29,6 +30,7 @@ export const Brevbygger = ({
       tekstbolker: brevmal.tekstbolker.map((blokk) => {
         return {
           ...blokk,
+          id: blokk.id ?? uuidV4(),
           innhold: blokk.innhold.map((innhold) => {
             return {
               ...innhold,

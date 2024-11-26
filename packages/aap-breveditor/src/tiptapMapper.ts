@@ -83,15 +83,8 @@ export const mapTipTapJsonContentToBlokkInnhold = (jsonContent: JSONContent): Bl
         innhold:
           block.content
             ?.map((content) => {
-              console.log('content', content);
               if (content.type === 'text') {
-                const tekst: FormattertTekst = {
-                  id: content.fellesformatFormattertTekstId,
-                  type: 'TEKST',
-                  tekst: content.text ?? '',
-                  formattering: [], // content.marks?.map((mark) => mark.type) ?? [],
-                };
-                return tekst;
+                return mapTipTapToFormattertTekst(content);
               }
               return;
             })
@@ -99,4 +92,13 @@ export const mapTipTapJsonContentToBlokkInnhold = (jsonContent: JSONContent): Bl
       };
     }) ?? []
   );
+};
+
+export const mapTipTapToFormattertTekst = (jsonContent: JSONContent): FormattertTekst => {
+  return {
+    id: jsonContent.fellesformatFormattertTekstId ?? uuidV4(),
+    type: 'TEKST',
+    tekst: jsonContent.text ?? '',
+    formattering: [], // content.marks?.map((mark) => mark.type) ?? [],
+  };
 };
