@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.1.7
+
+### Patch Changes
+
+- Styling for å bedre lesbarhet og redigeringsopplevelse i editoren
+
 ## 0.1.6
 
 ### Patch Changes

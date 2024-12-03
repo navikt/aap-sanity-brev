@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.1.3
+
+### Patch Changes
+
+- Styling for å bedre lesbarhet og redigeringsopplevelse i editoren
+
 ## 0.1.2
 
 ### Patch Changes

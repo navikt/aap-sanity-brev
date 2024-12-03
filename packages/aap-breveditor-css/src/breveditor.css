@@ -5,6 +5,15 @@
   max-width: 210mm;
 }
 
+.aap-brev-brevbygger ul {
+  margin-block: 0.5rem;
+}
+
+.aap-brev-brevbygger li p {
+  padding-block: 0;
+  margin-block: 0;
+}
+
 .aap-brev-brevbygger h1,
 .aap-brev-brevbygger h2,
 .aap-brev-brevbygger h3 {
@@ -49,16 +58,27 @@ aap-brev-editor .tiptap {
 .aap-brev-editorContainer {
   display: flex;
   gap: var(--a-spacing-4);
+  padding-left: calc(2rem + 5px);
 }
 
 .aap-brev-editorContent {
   padding-block: 0.5rem;
   width: 100%;
+  padding-right: calc(0.5rem + 5px);
 }
 
 .aap-brev-editorContent:focus {
   border: 2px solid;
   border-color: var(--a-blue-800);
+}
+
+.aap-brev-redigerIkon {
+  width: 1.5rem;
+  padding-block: 0.5rem;
+}
+
+.aap-brev-redigerIkon svg {
+  width: 100%;
 }
 
 /* Bytter margin med padding i tiptap paragrafer for å gjøre hele elementet klikkbart */

@@ -60,7 +60,7 @@ export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
           className={brukEditor ? 'aap-brev-editorContent' : 'aap-brev-disabledEditor'}
           data-testid={'breveditor'}
         />
-        {brukEditor && !editor.isFocused && <PencilIcon />}
+        <div className="aap-brev-redigerIkon">{brukEditor && !editor.isFocused && <PencilIcon />}</div>
       </div>
     </div>
   );
