@@ -118,12 +118,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: 'slug';
-  current?: string;
-  source?: string;
-};
-
 export type SanityAssetSourceData = {
   _type: 'sanity.assetSourceData';
   name?: string;
@@ -137,6 +131,7 @@ export type Tekstbolk = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  tittel?: string;
   overskrift?: LocaleString;
   innhold?: Array<{
     _ref: string;
@@ -188,6 +183,7 @@ export type Brevtype = {
   _updatedAt: string;
   _rev: string;
   overskrift?: LocaleString;
+  slug?: Slug;
   tekstbolker?: Array<{
     _ref: string;
     _type: 'reference';
@@ -195,6 +191,12 @@ export type Brevtype = {
     _key: string;
     [internalGroqTypeReferenceTo]?: 'tekstbolk';
   }>;
+};
+
+export type Slug = {
+  _type: 'slug';
+  current?: string;
+  source?: string;
 };
 
 export type LocaleString = {
@@ -262,12 +264,12 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | SanityImageMetadata
   | Geopoint
-  | Slug
   | SanityAssetSourceData
   | Tekstbolk
   | Faktagrunnlag
   | Content
   | Brevtype
+  | Slug
   | LocaleString
   | TranslationMetadata
   | InternationalizedArrayReferenceValue

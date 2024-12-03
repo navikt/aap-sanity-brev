@@ -1,5 +1,11 @@
 # @navikt/aap-sanity-schema-types
 
+## 0.0.4
+
+### Patch Changes
+
+- Legger til slug i schema for brevtype
+
 ## 0.0.3
 
 ### Patch Changes
