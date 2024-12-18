@@ -18,6 +18,19 @@ export const Brevtype = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      title: 'Journalpost tittel',
+      name: 'journalpostTittel',
+      type: 'localeString',
+      description: 'Tittel på journalposten',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      title: 'Kan overstyre brevtittel',
+      name: 'kanOverstyreBrevtittel',
+      type: 'boolean',
+      description: 'Styrer om brevtittelen kan overstyres i breveditoren',
+    }),
+    defineField({
       title: 'Slug',
       name: 'slug',
       type: 'slug',

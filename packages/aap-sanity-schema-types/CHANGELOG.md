@@ -1,5 +1,11 @@
 # @navikt/aap-sanity-schema-types
 
+## 0.0.5
+
+### Patch Changes
+
+- Oppdaterer schema typer med journalposttittel og valg for overstyring av brevtittel i editor
+
 ## 0.0.4
 
 ### Patch Changes

@@ -183,6 +183,8 @@ export type Brevtype = {
   _updatedAt: string;
   _rev: string;
   overskrift?: LocaleString;
+  journalpostTittel?: LocaleString;
+  kanOverstyreBrevtittel?: boolean;
   slug?: Slug;
   tekstbolker?: Array<{
     _ref: string;
