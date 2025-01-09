@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.0
+
+### Minor Changes
+
+- Oppgraderer avhengigheter, ink react til v19
+
 ## 0.1.7
 
 ### Patch Changes
