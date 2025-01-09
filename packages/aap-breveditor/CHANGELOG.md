@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.1
+
+### Patch Changes
+
+- Setter resolution for prosemirror-model som har fått konflikt i versjoner etter bumping av tiptap
+
 ## 0.2.0
 
 ### Minor Changes
