@@ -15,10 +15,17 @@ import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold 
 
 export const Brevbygger = ({
   brevmal,
+  mottaker,
+  saksnummer,
   logo,
   onBrevChange,
 }: {
   brevmal: Brev;
+  mottaker: {
+    ident: string;
+    navn: string;
+  };
+  saksnummer?: string;
   logo: StaticImageData;
   onBrevChange: (brev: Brev) => void;
 }) => {
@@ -48,10 +55,10 @@ export const Brevbygger = ({
       <div className="aap-brev-brev">
         <div className="aap-brev-personalia">
           <Image src={logo} width={110} height={70} alt={'NAV logo'} />
-          <Detail>Navn: Ola Nordmann</Detail>
-          <Detail>Fødselsnummer: 1234567890</Detail>
+          <Detail>Navn: {mottaker.navn}</Detail>
+          <Detail>Fødselsnummer: {mottaker.ident}</Detail>
           <Detail>Dato: {formaterDatoForFrontend(new Date())}</Detail>
-          <Detail>Saksnnummer: AABBCC112233</Detail>
+          {saksnummer && <Detail>Saksnnummer: {saksnummer}</Detail>}
         </div>
         <Heading level="1" size="xlarge">
           {brevmal.overskrift}

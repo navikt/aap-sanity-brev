@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.2
+
+### Patch Changes
+
+- Støtter mottaker og saksnummer i breveditor
+
 ## 0.2.1
 
 ### Patch Changes
