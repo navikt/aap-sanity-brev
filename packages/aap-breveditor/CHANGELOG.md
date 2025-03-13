@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.3
+
+### Patch Changes
+
+- Oppdaterer tiptap
+
 ## 0.2.2
 
 ### Patch Changes
