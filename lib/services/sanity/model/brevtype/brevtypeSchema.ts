@@ -43,5 +43,14 @@ export const Brevtype = defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'tekstbolk' }] }],
     }),
+    defineField({
+      title: 'Kan sendes automatisk',
+      name: 'kanSendesAutomatisk',
+      type: 'boolean',
+      description:
+        'Vil la brevløsningen sende brevet automatisk til bruker uten manuell input fra saksbehandler eller veileder. Forutsetter at alle tekster i brevet er markert som ferdigstilt og ikke redigerbare.',
+      validation: (Rule) => Rule.required(),
+      initialValue: false,
+    }),
   ],
 });

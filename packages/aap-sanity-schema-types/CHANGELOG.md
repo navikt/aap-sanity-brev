@@ -1,5 +1,11 @@
 # @navikt/aap-sanity-schema-types
 
+## 0.0.6
+
+### Patch Changes
+
+- Legger til nytt felt for automatisering av brev
+
 ## 0.0.5
 
 ### Patch Changes

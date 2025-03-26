@@ -193,6 +193,7 @@ export type Brevtype = {
     _key: string;
     [internalGroqTypeReferenceTo]?: 'tekstbolk';
   }>;
+  kanSendesAutomatisk?: boolean;
 };
 
 export type Slug = {
