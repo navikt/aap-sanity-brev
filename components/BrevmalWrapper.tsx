@@ -8,5 +8,12 @@ import NavLogo from 'public/nav_logo.png';
 export const BrevmalWrapper = ({ brevmal }: { brevmal: Brev }) => {
   const [mal, setMal] = useState(brevmal);
 
-  return <Brevbygger brevmal={mal} onBrevChange={setMal} logo={NavLogo} />;
+  return (
+    <Brevbygger
+      brevmal={mal}
+      onBrevChange={setMal}
+      logo={NavLogo}
+      mottaker={{ ident: 'XXXXX', navn: 'Test Testesen' }}
+    />
+  );
 };
