@@ -14,6 +14,10 @@ export const BrevmalWrapper = ({ brevmal }: { brevmal: Brev }) => {
       onBrevChange={setMal}
       logo={NavLogo}
       mottaker={{ ident: 'XXXXX', navn: 'Test Testesen' }}
+      signatur={[
+        { navn: 'Ola Saksbehandler', enhet: 'NAY Testenhet' },
+        { navn: 'Kari Veileder', enhet: 'Nav Testkontor' },
+      ]}
     />
   );
 };

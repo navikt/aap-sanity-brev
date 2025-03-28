@@ -135,3 +135,10 @@ aap-brev-editor .tiptap {
 .aap-brev-toolbar-icon {
   font-size: 1.5rem;
 }
+
+.aap-brev-signatur {
+  display: flex;
+  flex-direction: row;
+  gap: var(--a-spacing-24);
+  margin-inline: calc(2rem + 5px);
+}

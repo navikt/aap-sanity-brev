@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.1.4
+
+### Patch Changes
+
+- Legger til støtte for signatur i brev
+
 ## 0.1.3
 
 ### Patch Changes

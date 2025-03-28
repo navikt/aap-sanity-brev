@@ -15,3 +15,5 @@ export type BlokkInnhold = components['schemas']['no.nav.aap.brev.kontrakt.Blokk
 export type Faktagrunnlag = components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag'];
 
 export type FormattertTekst = components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst'];
+
+export type Signatur = components['schemas']['no.nav.aap.brev.kontrakt.Signatur'];

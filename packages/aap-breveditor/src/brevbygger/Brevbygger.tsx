@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
 
-import { Detail, Heading } from '@navikt/ds-react';
+import { BodyShort, Detail, Heading } from '@navikt/ds-react';
 import Image, { StaticImageData } from 'next/image';
 import { Breveditor } from '../breveditor/Breveditor';
 
 import { formaterDatoForFrontend } from '../lib/date';
 
 import { JSONContent } from '@tiptap/core';
-import { Brev } from '../types';
+import { Brev, Signatur } from '../types';
 import { v4 as uuidV4 } from 'uuid';
 
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
@@ -17,6 +17,7 @@ export const Brevbygger = ({
   brevmal,
   mottaker,
   saksnummer,
+  signatur,
   logo,
   onBrevChange,
 }: {
@@ -26,6 +27,7 @@ export const Brevbygger = ({
     navn: string;
   };
   saksnummer?: string;
+  signatur: Signatur[];
   logo: StaticImageData;
   onBrevChange: (brev: Brev) => void;
 }) => {
@@ -88,6 +90,14 @@ export const Brevbygger = ({
             ))}
           </div>
         ))}
+        <div className="aap-brev-signatur">
+          {signatur.map((signatur, index) => (
+            <div key={index}>
+              <BodyShort>{signatur.navn}</BodyShort>
+              <BodyShort>{signatur.enhet}</BodyShort>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

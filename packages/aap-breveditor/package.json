@@ -1,5 +1,5 @@
 {
-    "version": "0.2.3",
+    "version": "0.2.4",
     "name": "@navikt/aap-breveditor",
     "author": "NAV",
     "homepage": "https://github.com/navikt/aap-sanity-brev#readme",
@@ -38,7 +38,7 @@
         "uuid": "^10.0.0"
     },
     "devDependencies": {
-        "@navikt/aap-brev-typescript-types": "^0.0.86",
+        "@navikt/aap-brev-typescript-types": "^0.0.149",
         "@testing-library/dom": "^10.4.0",
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/react": "^16.1.0",
