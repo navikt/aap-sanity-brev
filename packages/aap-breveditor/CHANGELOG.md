@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.6
+
+### Patch Changes
+
+- Legger til default blokk dersom vi ikke har noe tekstlig innhold i blokken
+
 ## 0.2.5
 
 ### Patch Changes

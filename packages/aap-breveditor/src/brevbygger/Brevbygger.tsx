@@ -8,7 +8,7 @@ import { Breveditor } from '../breveditor/Breveditor';
 import { formaterDatoForFrontend } from '../lib/date';
 
 import { JSONContent } from '@tiptap/core';
-import { Brev, Signatur } from '../types';
+import { Blokk, Brev, Signatur } from '../types';
 import { v4 as uuidV4 } from 'uuid';
 
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
@@ -80,7 +80,9 @@ export const Brevbygger = ({
                   </Heading>
                 )}
                 <Breveditor
-                  initialValue={mapBlokkInnholdToTipTapJsonContent(innhold.blokker)}
+                  initialValue={mapBlokkInnholdToTipTapJsonContent(
+                    innhold.blokker.length > 0 ? innhold.blokker : defaultTomBlokk
+                  )}
                   setContent={(content) => {
                     updateBrev(content, innhold.id);
                   }}
@@ -102,3 +104,18 @@ export const Brevbygger = ({
     </div>
   );
 };
+
+const defaultTomBlokk: Blokk[] = [
+  {
+    id: uuidV4(),
+    type: 'AVSNITT',
+    innhold: [
+      {
+        id: uuidV4(),
+        type: 'TEKST',
+        tekst: 'Sett inn egen tekst her',
+        formattering: [],
+      },
+    ],
+  },
+];
