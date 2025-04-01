@@ -36,7 +36,7 @@ export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
     onUpdate({ editor }) {
       setContent(editor.getJSON());
     },
-    editable: brukEditor,
+    editable: true, // brukEditor,
   });
 
   if (!editor) {

@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.5
+
+### Patch Changes
+
+- Midlertidig skru på redigering av alle felter
+
 ## 0.2.4
 
 ### Patch Changes
