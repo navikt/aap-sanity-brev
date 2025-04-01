@@ -79,12 +79,25 @@ export const mapTipTapJsonContentToBlokkInnhold = (jsonContent: JSONContent): Bl
     jsonContent.content?.map((block) => {
       return {
         id: block.fellesformatBlokkId ?? uuidV4(),
-        type: block.type === 'listItem' ? 'LISTE' : 'AVSNITT',
+        type: getBlockType(block.type),
         innhold:
           block.content
             ?.map((content) => {
               if (content.type === 'text') {
-                return mapTipTapToFormattertTekst(content);
+                const lol = mapTipTapToFormattertTekst(content);
+                return lol;
+              }
+              if (content.type === 'listItem') {
+                if (
+                  content.content &&
+                  content.content[0] &&
+                  content.content[0].content &&
+                  content.content[0].content[0]
+                ) {
+                  const item = content.content[0].content[0];
+
+                  return mapTipTapToFormattertTekst(item);
+                }
               }
               return;
             })
@@ -92,6 +105,17 @@ export const mapTipTapJsonContentToBlokkInnhold = (jsonContent: JSONContent): Bl
       };
     }) ?? []
   );
+};
+
+const getBlockType = (type?: string): Blokk['type'] => {
+  switch (type) {
+    case 'listItem':
+      return 'LISTE';
+    case 'bulletList':
+      return 'LISTE';
+    default:
+      return 'AVSNITT';
+  }
 };
 
 export const mapTipTapToFormattertTekst = (jsonContent: JSONContent): FormattertTekst => {

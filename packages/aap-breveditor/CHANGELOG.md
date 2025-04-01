@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.7
+
+### Patch Changes
+
+- Bedre mapping av lister
+
 ## 0.2.6
 
 ### Patch Changes

@@ -49,6 +49,8 @@ export const Brevbygger = ({
         };
       }),
     };
+
+    console.log('oppdatertFellesformat', oppdatertFellesformat);
     onBrevChange(oppdatertFellesformat);
   };
 
