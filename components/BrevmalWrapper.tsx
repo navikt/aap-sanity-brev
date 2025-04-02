@@ -18,6 +18,7 @@ export const BrevmalWrapper = ({ brevmal }: { brevmal: Brev }) => {
         { navn: 'Ola Saksbehandler', enhet: 'NAY Testenhet' },
         { navn: 'Kari Veileder', enhet: 'Nav Testkontor' },
       ]}
+      readOnly={true}
     />
   );
 };

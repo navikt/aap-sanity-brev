@@ -20,6 +20,7 @@ export const Brevbygger = ({
   signatur,
   logo,
   onBrevChange,
+  readOnly = false,
 }: {
   brevmal: Brev;
   mottaker: {
@@ -30,6 +31,7 @@ export const Brevbygger = ({
   signatur: Signatur[];
   logo: StaticImageData;
   onBrevChange: (brev: Brev) => void;
+  readOnly?: boolean;
 }) => {
   const updateBrev = (content: JSONContent, innholdId: string) => {
     const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
@@ -87,6 +89,7 @@ export const Brevbygger = ({
                     updateBrev(content, innhold.id);
                   }}
                   brukEditor={innhold.kanRedigeres}
+                  readOnly={readOnly}
                 />
               </div>
             ))}

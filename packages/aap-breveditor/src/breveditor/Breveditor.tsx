@@ -17,18 +17,12 @@ interface Props {
   className?: string;
   setContent: Dispatch<JSONContent>;
   brukEditor: boolean;
+  readOnly: boolean;
 }
 
-const extensions = [
-  StarterKit,
-  /*Table.configure({ HTMLAttributes: { class: styles.table } }),
-  TableCell,
-  TableHeader,
-  TableRow,*/
-  Underline,
-];
+const extensions = [StarterKit, Underline];
 
-export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
+export const Breveditor = ({ initialValue, brukEditor, setContent, readOnly }: Props) => {
   const editor = useEditor({
     extensions,
     content: initialValue,
@@ -36,7 +30,7 @@ export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
     onUpdate({ editor }) {
       setContent(editor.getJSON());
     },
-    editable: true, // brukEditor,
+    editable: !readOnly,
   });
 
   if (!editor) {
@@ -60,7 +54,9 @@ export const Breveditor = ({ initialValue, brukEditor, setContent }: Props) => {
           className={brukEditor ? 'aap-brev-editorContent' : 'aap-brev-disabledEditor'}
           data-testid={'breveditor'}
         />
-        <div className="aap-brev-redigerIkon">{brukEditor && !editor.isFocused && <PencilIcon />}</div>
+        <div className="aap-brev-redigerIkon">
+          {brukEditor && !editor.isFocused && !readOnly && <PencilIcon title={'Rediger tekst'} />}
+        </div>
       </div>
     </div>
   );
