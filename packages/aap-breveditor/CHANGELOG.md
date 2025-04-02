@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.2.8
+
+### Patch Changes
+
+- Fjerner console log
+
 ## 0.2.7
 
 ### Patch Changes
