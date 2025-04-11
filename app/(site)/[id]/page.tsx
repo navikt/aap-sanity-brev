@@ -34,7 +34,9 @@ const BrevmalPage = async ({ params }: { params: Params }) => {
 
   return (
     <div className={styles.page}>
-      <BrevmalWrapper brevmal={brevmal} />
+      <div className={styles.wrapper}>
+        <BrevmalWrapper brevmal={brevmal} />
+      </div>
     </div>
   );
 };
@@ -99,6 +101,7 @@ export const mapTekstBolkBlokkInnholdFraSanity = (
         if (!innholdByRef) {
           return null;
         }
+        console.log('innholdByRef', { overskrift: innholdByRef.overskrift, kanRedigere: innholdByRef.kanRedigeres });
         return {
           id: uuidV4(),
           overskrift: innholdByRef.overskrift ?? '',

@@ -9,7 +9,7 @@ export const client = createClient({
   projectId,
   useCdn,
   token: sanityReadToken,
-  perspective: 'published',
+  perspective: 'drafts',
   stega: {
     enabled: true,
     studioUrl: '/studio',
