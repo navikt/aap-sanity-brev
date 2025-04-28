@@ -1,11 +1,10 @@
 'use client';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Brev, FormattertTekst, Signatur } from '../types';
 import Image, { StaticImageData } from 'next/image';
 import { BodyShort, Button, Detail, Heading, Textarea, TextField } from '@navikt/ds-react';
 import { formaterDatoForFrontend } from '../lib/date';
 import { TrashIcon } from '@navikt/aksel-icons';
-import { b } from 'vitest/dist/chunks/suite.B2jumIFP';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
   return !readonly && kanRedigeres;
@@ -31,7 +30,7 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  const updateBrev = (tekstbolkId: string, blokkInnholdId: string, tekst: string) => {
+  const updateBrev = () => {
     onBrevChange({
       ...brevmal,
       // TODO: Gjøre ferdig mapping
@@ -90,7 +89,7 @@ export const BrevbyggerBeta = ({
                 {kanRedigeres(readonly, innhold.kanRedigeres) && innhold.blokker.length === 0 && (
                   <Textarea
                     label="Redigerbar tekst"
-                    onChange={(tekst) => updateBrev(blokk.id, innhold.id, tekst.target.value)}
+                    onChange={() => updateBrev()}
                     hideLabel
                   />
                 )}
