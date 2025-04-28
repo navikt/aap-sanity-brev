@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.2.0
+
+### Minor Changes
+
+- Midlertidig skru på redigering av alle tekster frem til vi finner ut hvorfor noen tekster ikke kommer med
+
 ## 0.1.4
 
 ### Patch Changes

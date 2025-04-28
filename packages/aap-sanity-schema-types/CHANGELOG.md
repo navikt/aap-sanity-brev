@@ -1,5 +1,11 @@
 # @navikt/aap-sanity-schema-types
 
+## 0.1.0
+
+### Minor Changes
+
+- Midlertidig skru på redigering av alle tekster frem til vi finner ut hvorfor noen tekster ikke kommer med
+
 ## 0.0.6
 
 ### Patch Changes
