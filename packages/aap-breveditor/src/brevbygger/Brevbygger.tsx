@@ -88,7 +88,7 @@ export const Brevbygger = ({
                   setContent={(content) => {
                     updateBrev(content, innhold.id);
                   }}
-                  brukEditor={innhold.kanRedigeres}
+                  brukEditor={true}
                   readOnly={readOnly}
                 />
               </div>
