@@ -3,6 +3,7 @@ import {
   mapPortableTextElementToTipTapElement,
   mapPortableTextMarkToTipTapMarks,
   mapTipTapToFormattertTekst,
+  removeIllegalCharacters,
 } from './tiptapMapper';
 import { Blokk } from './types';
 import { describe, expect, it } from 'vitest';
@@ -88,4 +89,10 @@ describe('mapTipTapToFormattertTekst', () => {
     const result = mapTipTapToFormattertTekst(jsonContent);
     expect(result.id).toBeDefined();
   });
+});
+
+describe('Filtrering av ugyldige teng', () => {
+  it('Fjerner ugyldige tegn', () => {
+    expect(removeIllegalCharacters('tekst﻿‌‍123')).toBe('tekst123')
+  })
 });
