@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.3.1
+
+### Patch Changes
+
+- Fjern tegn som bryter PDF/A validering Dette er en quick fix, bør flyttes slik at fjerning av tegn reflekteres i input-felt.
+
 ## 0.3.0
 
 ### Minor Changes
