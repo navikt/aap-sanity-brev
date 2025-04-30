@@ -8,12 +8,14 @@ Frontendapplikasjon for ny redigering av brevmaler i AAP
 
 Vi bruker Github sitt package registry for npm pakker, siden flere av Nav sine pakker kun blir publisert her.
 
-For å kunne kjøre `yarn install` lokalt må du logge inn mot Github package registry. Legg til følgende i .bashrc eller .zshrc lokalt på din maskin:
+For å kunne kjøre `yarn install` lokalt må du logge inn mot Github package registry.
+Legg til følgende i .bashrc eller .zshrc lokalt på din maskin:
 I .bashrc eller .zshrc:
 
 `export NPM_AUTH_TOKEN=github_pat`
 
-Hvor github_pat er din personal access token laget på github (settings -> developer settings). Husk `read:packages`-rettighet og enable SSO når du oppdaterer/lager PAT.
+Hvor github_pat er din personal access token laget på github (settings -> developer settings).
+Husk`read:packages`-rettighet og enable SSO når du oppdaterer/lager PAT.
 
 ### .env.local-fil
 
@@ -29,7 +31,8 @@ yarn dev
 
 ## Publisere schema typer til GitHub package registry
 
-Vi eksporterer typer fra Sanity schema og publiserer disse slik at andre applikasjoner som bruker Sanity dataene kan importere disse.
+Vi eksporterer typer fra Sanity schema og publiserer disse slik at andre applikasjoner som bruker Sanity dataene kan
+importere disse.
 
 Ved endring av schema i Sanity må følgende gjøres for at det skal bygges og publiseres nye typer
 

@@ -84,8 +84,7 @@ export const mapTipTapJsonContentToBlokkInnhold = (jsonContent: JSONContent): Bl
           block.content
             ?.map((content) => {
               if (content.type === 'text') {
-                const lol = mapTipTapToFormattertTekst(content);
-                return lol;
+                return mapTipTapToFormattertTekst(content);
               }
               if (content.type === 'listItem') {
                 if (
@@ -122,7 +121,14 @@ export const mapTipTapToFormattertTekst = (jsonContent: JSONContent): Formattert
   return {
     id: jsonContent.fellesformatFormattertTekstId ?? uuidV4(),
     type: 'TEKST',
-    tekst: jsonContent.text ?? '',
+    tekst: removeIllegalCharacters(jsonContent.text ?? ''),
     formattering: [], // content.marks?.map((mark) => mark.type) ?? [],
   };
+};
+
+export const removeIllegalCharacters = (text: string) => {
+  return text
+    .replace(/\uFEFF/g, '') // ZWNBSP
+    .replace(/\u200C/g, '') // ZWNJ
+    .replace(/\u200D/g, ''); // ZWJ
 };
