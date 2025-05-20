@@ -125,6 +125,7 @@ export const mapTekstBolkerFraSanity = (tekstbolker: SanityTekstBolk[], innhold:
 export const mapBrevFraSanity = (brev: Brevtype, tekstbolker: SanityTekstBolk[], innhold: SanityInnhold[]): Brev => {
   return {
     overskrift: brev?.overskrift?.nb ?? '',
+    kanOverstyreBrevtittel: brev?.kanOverstyreBrevtittel,
     tekstbolker: mapTekstBolkerFraSanity(tekstbolker, innhold),
   };
 };

@@ -33,7 +33,17 @@ export const Brevbygger = ({
   onBrevChange: (brev: Brev) => void;
   readOnly?: boolean;
 }) => {
-  const updateBrev = (content: JSONContent, innholdId: string) => {
+  const kanRedigereOverskrift = !!brevmal.kanOverstyreBrevtittel;
+
+  const oppdaterOverskrift = (overskrift: string) => {
+    const oppdatertFellesformat: Brev = {
+      ...brevmal,
+      overskrift
+    };
+    onBrevChange(oppdatertFellesformat);
+  };
+
+  const oppdaterTekstbolker = (content: JSONContent, innholdId: string) => {
     const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
 
     const oppdatertFellesformat: Brev = {
@@ -64,9 +74,19 @@ export const Brevbygger = ({
           <Detail>Dato: {formaterDatoForFrontend(new Date())}</Detail>
           {saksnummer && <Detail>Saksnnummer: {saksnummer}</Detail>}
         </div>
-        <Heading level="1" size="xlarge">
-          {brevmal.overskrift}
-        </Heading>
+        <div className={kanRedigereOverskrift ? 'aap-brev-editableContent' : ''}>
+          <Breveditor
+            initialValue={{
+              type: 'heading',
+              text: brevmal.overskrift || ''
+            }}
+            setContent={(content) => {
+              oppdaterOverskrift(content.text || '');
+            }}
+            brukEditor={!!brevmal.kanOverstyreBrevtittel}
+            readOnly={!brevmal.kanOverstyreBrevtittel}
+          />
+        </div>
         {brevmal.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
             <div className="aap-brev-headerRow">
@@ -86,7 +106,7 @@ export const Brevbygger = ({
                     innhold.blokker.length > 0 ? innhold.blokker : defaultTomBlokk
                   )}
                   setContent={(content) => {
-                    updateBrev(content, innhold.id);
+                    oppdaterTekstbolker(content, innhold.id);
                   }}
                   brukEditor={true}
                   readOnly={readOnly}
