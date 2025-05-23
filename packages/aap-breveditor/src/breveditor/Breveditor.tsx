@@ -8,7 +8,7 @@ import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 import { JSONContent } from '@tiptap/core';
 import { Dispatch } from 'react';
 import { Boblemeny } from './toolbar/boblemeny/Boblemeny';
-import { Loader } from '@navikt/ds-react';
+import { Button, Loader } from '@navikt/ds-react';
 import { Underline } from '@tiptap/extension-underline';
 import { PencilIcon } from '@navikt/aksel-icons';
 
@@ -55,7 +55,13 @@ export const Breveditor = ({ initialValue, brukEditor, setContent, readOnly }: P
           data-testid={'breveditor'}
         />
         <div className="aap-brev-redigerIkon">
-          {brukEditor && !editor.isFocused && !readOnly && <PencilIcon title={'Rediger tekst'} />}
+          {brukEditor && !readOnly && (
+            <Button
+              variant={'tertiary'}
+              icon={<PencilIcon title={'Rediger tekst'} />}
+              onClick={() => editor.commands.focus('end')}
+            />
+          )}
         </div>
       </div>
     </div>

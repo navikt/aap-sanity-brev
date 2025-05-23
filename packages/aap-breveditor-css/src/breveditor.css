@@ -65,20 +65,13 @@ aap-brev-editor .tiptap {
   padding-block: 0.5rem;
   width: 100%;
   padding-right: calc(0.5rem + 5px);
-}
-
-.aap-brev-editorContent:focus {
   border: 2px solid;
-  border-color: var(--a-blue-800);
+  border-color: var(--a-border-subtle);
 }
 
 .aap-brev-redigerIkon {
   width: 1.5rem;
   padding-block: 0.5rem;
-}
-
-.aap-brev-redigerIkon svg {
-  width: 100%;
 }
 
 /* Bytter margin med padding i tiptap paragrafer for å gjøre hele elementet klikkbart */
@@ -93,6 +86,7 @@ aap-brev-editor .tiptap {
 
 .aap-brev-editorContent:focus-within {
   box-shadow: var(--a-shadow-focus);
+  border-color: transparent;
 }
 
 .aap-brev-disabledEditor {

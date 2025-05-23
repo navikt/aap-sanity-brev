@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.2.1
+
+### Patch Changes
+
+- Visuelle forbedringer i breveditor
+
 ## 0.2.0
 
 ### Minor Changes
