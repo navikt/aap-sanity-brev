@@ -27,6 +27,51 @@
   gap: 1rem;
 }
 
+.aap-brev-redigerbar-seksjon {
+  display: flex;
+  width: 200mm;
+}
+
+.aap-brev-redigerbar-tekst {
+  width: 95%;
+  margin-left: 1.8rem;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.aap-brev-redigerbar-liste-tekst {
+  width: 95%;
+  margin-left: 1.8rem;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.aap-brev-ikke-redigerbar-tekst {
+  width: 175mm;
+  margin-left: 2.4rem;
+}
+
+.aap-brev-liste {
+  margin-left: 2.5rem;
+  list-style-type: disc;
+  width: 100%;
+}
+
+.aap-brev-liste-element {
+  width: 100%;
+}
+
+.aap-brev-redigerbart-listeelement {
+  margin-right: 0.8rem;
+}
+
+.aap-brev-redigerbar-listeelement-tekst {
+  margin-right: 1rem;
+  width: 100%
+}
+
+.aap-brev-rediger-knapp {
+  margin: 0 0.25rem 0 0.30rem;
+}
+
 .aap-brev-personalia {
   padding-inline-start: calc(2rem + 5px);
 }

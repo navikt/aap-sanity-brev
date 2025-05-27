@@ -1,25 +1,27 @@
 'use client';
 import React from 'react';
-import { Brev, FormattertTekst, Signatur } from '../types';
+import { BlokkInnhold, Brev, Signatur } from '../types';
+import { TekstElement } from './TekstElement';
 import Image, { StaticImageData } from 'next/image';
-import { BodyShort, Button, Detail, Heading, Textarea, TextField } from '@navikt/ds-react';
+import { BodyShort, Detail, Heading } from '@navikt/ds-react';
 import { formaterDatoForFrontend } from '../lib/date';
-import { TrashIcon } from '@navikt/aksel-icons';
 import { v4 as uuidV4 } from 'uuid';
+import { BlokkInnholdTekst } from './types';
+import { InnholdType } from './enums';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
   return !readonly && kanRedigeres;
 };
 
 export const BrevbyggerBeta = ({
-                                 brevmal,
-                                 mottaker,
-                                 saksnummer,
-                                 signatur,
-                                 logo,
-                                 onBrevChange,
-                                 readonly = false,
-                               }: {
+  brevmal,
+  mottaker,
+  saksnummer,
+  signatur,
+  logo,
+  onBrevChange,
+  readonly = false,
+}: {
   brevmal: Brev;
   mottaker: {
     ident: string;
@@ -31,33 +33,92 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  const updateBrev = () => {
-    onBrevChange({
-      ...brevmal,
-      tekstbolker: brevmal.tekstbolker.map((blokk) => {
+  // TODO 2025-06-25
+  // midlertidig mapping for å legge inn tomme blokker for fritekst-felt.
+  // flyttes til egen mapper-funksjon når breveditor byttes ut
+  const mappetBrevmal: Brev = {
+    ...brevmal,
+    tekstbolker: brevmal.tekstbolker.map((blokk) => {
+      return {
+        ...blokk,
+        innhold: blokk.innhold.map((innhold) => {
+          if (innhold.blokker.length) {
+            return { ...innhold };
+          }
+          return {
+            ...innhold,
+            blokker: [
+              {
+                id: uuidV4(),
+                type: 'AVSNITT',
+                innhold: [
+                  {
+                    id: uuidV4(),
+                    type: 'TEKST',
+                    tekst: '',
+                    formattering: [],
+                  },
+                ],
+              },
+            ],
+          };
+        }),
+      };
+    }),
+  };
+
+  const utledOppdatertBlokkInnhold = (blokkinnholdId: string, blokkinnholdTekst: string): BlokkInnhold => {
+    return {
+      formattering: [],
+      id: blokkinnholdId,
+      tekst: blokkinnholdTekst,
+      type: InnholdType.TEKST,
+    };
+  };
+
+  const oppdaterBrev = (brevElementId: string, oppdatertTekst: string) => {
+    const blokkInnholdTekst = oppdatertTekst ?? '';
+    const oppdatertFellesformat: Brev = {
+      ...mappetBrevmal,
+      tekstbolker: mappetBrevmal.tekstbolker.map((blokk) => {
         return {
           ...blokk,
           id: blokk.id ?? uuidV4(),
-          innhold: blokk.innhold.map((innholdElement) => {
+          innhold: blokk.innhold.map((innhold) => {
+            if (innhold.id === brevElementId) {
+              const nyttBlokkInnholdId = uuidV4();
+              return {
+                ...innhold,
+                blokker: [
+                  {
+                    id: nyttBlokkInnholdId,
+                    innhold: [utledOppdatertBlokkInnhold(nyttBlokkInnholdId, blokkInnholdTekst)],
+                    type: InnholdType.AVSNITT,
+                    formattering: [],
+                  },
+                ],
+              };
+            }
             return {
-              ...innholdElement,
-              blokker: innholdElement.blokker.length > 0 ? innholdElement.blokker : defaultBlokker,
+              ...innhold,
+              blokker: innhold.blokker.map((blokk) => {
+                return {
+                  ...blokk,
+                  id: blokk.id ?? uuidV4(),
+                  innhold: blokk.innhold.map((innhold) => {
+                    return innhold.id === brevElementId
+                      ? utledOppdatertBlokkInnhold(brevElementId, blokkInnholdTekst)
+                      : innhold;
+                  }),
+                };
+              }),
             };
           }),
         };
       }),
-    });
+    };
+    onBrevChange(oppdatertFellesformat);
   };
-
-  type InnholdType = 'LISTE' | 'AVSNITT'
-
-  const defaultBlokker = [
-    {
-      id: uuidV4(),
-      type: 'LISTE' as InnholdType,
-      innhold: [],
-    },
-  ];
 
   return (
     <div className="aap-brev-brevbygger">
@@ -70,9 +131,9 @@ export const BrevbyggerBeta = ({
           {saksnummer && <Detail>Saksnnummer: {saksnummer}</Detail>}
         </div>
         <Heading level="1" size="xlarge">
-          {brevmal.overskrift}
+          {mappetBrevmal.overskrift}
         </Heading>
-        {brevmal.tekstbolker.map((blokk) => (
+        {mappetBrevmal.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
             <div className="aap-brev-headerRow">
               <Heading level="2" size="large">
@@ -86,64 +147,41 @@ export const BrevbyggerBeta = ({
                     {innhold.overskrift}
                   </Heading>
                 )}
-                {kanRedigeres(readonly, innhold.kanRedigeres) && innhold.blokker.length === 0 && (
-                  <Textarea label="Redigerbar tekst" onChange={() => updateBrev()} hideLabel />
-                )}
                 {innhold.blokker.map((blokkInnhold) => {
-                  if (kanRedigeres(readonly, innhold.kanRedigeres)) {
-                    if (blokkInnhold.type === 'AVSNITT') {
-                      if (blokkInnhold.innhold.length === 0) {
-                        return <Textarea key={blokkInnhold.id} label="Redigerbar tekst" hideLabel />;
-                      }
-                      if (blokkInnhold.innhold.length > 0) {
-                        return (
-                          <Textarea key={blokkInnhold.id} label="Redigerbar tekst" hideLabel>
-                            {blokkInnhold.innhold.map((val) => {
-                              const formattertTekst = val as FormattertTekst;
-                              if (val.type === 'TEKST') {
-                                return formattertTekst.tekst;
-                              }
-                            })}
-                          </Textarea>
-                        );
-                      }
-                    }
-                    if (blokkInnhold.type === 'LISTE') {
-                      return (
-                        <ul key={blokkInnhold.id}>
-                          {blokkInnhold.innhold.map((val) => {
-                            if (val.type === 'TEKST') {
-                              const formattertTekst = val as FormattertTekst;
-                              return (
-                                <li key={val.id}>
-                                  <TextField value={formattertTekst.tekst} label="Redigerbar tekst" hideLabel />{' '}
-                                  <Button variant="danger" icon={<TrashIcon />}>
-                                    Slett
-                                  </Button>
-                                </li>
-                              );
-                            }
-                          })}
-                        </ul>
-                      );
-                    }
-                  }
-                  if (!kanRedigeres(readonly, innhold.kanRedigeres)) {
-                    if (blokkInnhold.type === 'AVSNITT')
-                      return (
-                        <div key={blokkInnhold.id}>
-                          {blokkInnhold.innhold.map((val) => {
-                            if (val.type === 'TEKST') {
-                              const formattertTekst = val as FormattertTekst;
-                              return (
-                                <BodyShort key={val.id} spacing>
-                                  {formattertTekst.tekst}
-                                </BodyShort>
-                              );
-                            }
-                          })}
-                        </div>
-                      );
+                  if (blokkInnhold.type === InnholdType.LISTE && !kanRedigeres(readonly, innhold.kanRedigeres)) {
+                    return (
+                      <ul className={'aap-brev-ikke-redigerbar-tekst'} key={blokkInnhold.id}>
+                        {blokkInnhold.innhold.map((innholdElement) => {
+                          if (innholdElement.type === InnholdType.TEKST) {
+                            const innholdTekst = innholdElement as BlokkInnholdTekst;
+                            return (
+                              <li key={innholdTekst.id}>
+                                <BodyShort spacing>{innholdTekst.tekst}</BodyShort>
+                              </li>
+                            );
+                          }
+                        })}
+                      </ul>
+                    );
+                  } else {
+                    return (
+                      <div key={blokkInnhold.id}>
+                        {blokkInnhold.innhold.map((blokkInnholdElement: BlokkInnhold) => {
+                          const blokkInnholdTekst = blokkInnholdElement as BlokkInnholdTekst;
+                          return (
+                            <TekstElement
+                              tekst={blokkInnholdTekst.tekst}
+                              erRedigerbar={!!kanRedigeres(readonly, innhold.kanRedigeres)}
+                              erListe={blokkInnhold.type === InnholdType.LISTE}
+                              spacing={false}
+                              nøkkel={blokkInnholdElement.id}
+                              oppdaterTekst={oppdaterBrev}
+                              key={blokkInnholdElement.id}
+                            />
+                          );
+                        })}
+                      </div>
+                    );
                   }
                 })}
               </div>
