@@ -5,20 +5,21 @@ import Image, { StaticImageData } from 'next/image';
 import { BodyShort, Button, Detail, Heading, Textarea, TextField } from '@navikt/ds-react';
 import { formaterDatoForFrontend } from '../lib/date';
 import { TrashIcon } from '@navikt/aksel-icons';
+import { v4 as uuidV4 } from 'uuid';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
   return !readonly && kanRedigeres;
 };
 
 export const BrevbyggerBeta = ({
-  brevmal,
-  mottaker,
-  saksnummer,
-  signatur,
-  logo,
-  onBrevChange,
-  readonly = false,
-}: {
+                                 brevmal,
+                                 mottaker,
+                                 saksnummer,
+                                 signatur,
+                                 logo,
+                                 onBrevChange,
+                                 readonly = false,
+                               }: {
   brevmal: Brev;
   mottaker: {
     ident: string;
@@ -33,31 +34,30 @@ export const BrevbyggerBeta = ({
   const updateBrev = () => {
     onBrevChange({
       ...brevmal,
-      // TODO: Gjøre ferdig mapping
-      /*tekstbolker: brevmal.tekstbolker.map((blokk) => {
-        if (blokk.id === tekstbolkId) {
-          return {
-            ...blokk,
-            innhold: blokk.innhold.map((innhold) => {
-              if (blokkInnholdId === innhold.id) {
-                // TODO: Mapping av innholdet her, siden textarea slår sammen flere avsnitt / listeelementer
-                return {
-                  ...innhold,
-                  innhold: innhold.blokker.map((innholdBlokk) => {
-                    return {
-                        ...innholdBlokk,
-                        
-                    }
-                };
-              }
-              return innhold;
-            }),
-          };
-        }
-        return blokk;
-      }),*/
+      tekstbolker: brevmal.tekstbolker.map((blokk) => {
+        return {
+          ...blokk,
+          id: blokk.id ?? uuidV4(),
+          innhold: blokk.innhold.map((innholdElement) => {
+            return {
+              ...innholdElement,
+              blokker: innholdElement.blokker.length > 0 ? innholdElement.blokker : defaultBlokker,
+            };
+          }),
+        };
+      }),
     });
   };
+
+  type InnholdType = 'LISTE' | 'AVSNITT'
+
+  const defaultBlokker = [
+    {
+      id: uuidV4(),
+      type: 'LISTE' as InnholdType,
+      innhold: [],
+    },
+  ];
 
   return (
     <div className="aap-brev-brevbygger">
@@ -87,11 +87,7 @@ export const BrevbyggerBeta = ({
                   </Heading>
                 )}
                 {kanRedigeres(readonly, innhold.kanRedigeres) && innhold.blokker.length === 0 && (
-                  <Textarea
-                    label="Redigerbar tekst"
-                    onChange={() => updateBrev()}
-                    hideLabel
-                  />
+                  <Textarea label="Redigerbar tekst" onChange={() => updateBrev()} hideLabel />
                 )}
                 {innhold.blokker.map((blokkInnhold) => {
                   if (kanRedigeres(readonly, innhold.kanRedigeres)) {
@@ -148,22 +144,6 @@ export const BrevbyggerBeta = ({
                           })}
                         </div>
                       );
-                  }
-                  if (blokkInnhold.type === 'LISTE') {
-                    return (
-                      <ul key={blokkInnhold.id}>
-                        {blokkInnhold.innhold.map((val) => {
-                          if (val.type === 'TEKST') {
-                            const formattertTekst = val as FormattertTekst;
-                            return (
-                              <li key={val.id}>
-                                <BodyShort spacing>{formattertTekst.tekst}</BodyShort>
-                              </li>
-                            );
-                          }
-                        })}
-                      </ul>
-                    );
                   }
                 })}
               </div>
