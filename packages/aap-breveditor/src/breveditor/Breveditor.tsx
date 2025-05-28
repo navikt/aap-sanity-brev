@@ -30,7 +30,7 @@ export const Breveditor = ({ initialValue, brukEditor, setContent, readOnly }: P
     onUpdate({ editor }) {
       setContent(editor.getJSON());
     },
-    editable: !readOnly,
+    editable: !readOnly && brukEditor,
   });
 
   if (!editor) {
