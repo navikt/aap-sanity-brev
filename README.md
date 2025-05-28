@@ -29,7 +29,20 @@ yarn dev
 
 ---
 
-## Publisere schema typer til GitHub package registry
+## Publisere pakker til GitHub package registry
+
+Dette repoet inneholder tre pakker:
+- @navikt/aap-breveditor
+- @navikt/aap-breveditor-css
+- @navikt/aap-sanity-schema-types
+
+Etter man har gjort endringer kan man publisere de på følgende måte:
+- Kjør `yarn changeset` og følg anvisninger. Det vil lages en midlertidig fil `.changeset/[vilkårlig navn].md` med endringene.
+- Kjør deretter `yarn changeset version`. Endringene legges nå i `CHANGELOG.md` for de pakkene som oppdateres.
+- Commit og push endringene. Det er en egen GitHub action som vil publisere schema typene ved commit og push til main.
+
+
+## Sanity schema
 
 Vi eksporterer typer fra Sanity schema og publiserer disse slik at andre applikasjoner som bruker Sanity dataene kan
 importere disse.
@@ -38,11 +51,9 @@ Ved endring av schema i Sanity må følgende gjøres for at det skal bygges og p
 
 ```
 yarn generateSchemaTypes
-yarn changeset
-yarn changeset version
 ```
 
-Det er en egen GitHub action som vil publisere schema typene ved commit og push til main.
+Deretter kan ny versjon av pakken @navikt/aap-sanity-schema-types publiseres
 
 ## Kode generert av GitHub Copilot
 

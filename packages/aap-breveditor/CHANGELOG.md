@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.3.3
+
+### Patch Changes
+
+- Skru på igjen read only på tekster som ikke skal kunne redigeres
+
 ## 0.3.2
 
 ### Patch Changes
