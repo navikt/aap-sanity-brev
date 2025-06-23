@@ -12,6 +12,7 @@ import { Blokk, Brev, Signatur } from '../types';
 import { v4 as uuidV4 } from 'uuid';
 
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
+import { InnholdType } from './enums';
 
 export const Brevbygger = ({
   brevmal,
@@ -33,15 +34,15 @@ export const Brevbygger = ({
   onBrevChange: (brev: Brev) => void;
   readOnly?: boolean;
 }) => {
-  const updateBrev = (content: JSONContent, innholdId: string) => {
+  const oppdaterBrev = (content: JSONContent, innholdId: string) => {
     const oppdatertInnhold = mapTipTapJsonContentToBlokkInnhold(content);
 
     const oppdatertFellesformat: Brev = {
       ...brevmal,
-      tekstbolker: brevmal.tekstbolker.map((blokk) => {
-        return {
-          ...blokk,
-          id: blokk.id ?? uuidV4(),
+          tekstbolker: brevmal.tekstbolker.map((blokk) => {
+            return {
+              ...blokk,
+              id: blokk.id ?? uuidV4(),
           innhold: blokk.innhold.map((innhold) => {
             return {
               ...innhold,
@@ -86,7 +87,7 @@ export const Brevbygger = ({
                     innhold.blokker.length > 0 ? innhold.blokker : defaultTomBlokk
                   )}
                   setContent={(content) => {
-                    updateBrev(content, innhold.id);
+                    oppdaterBrev(content, innhold.id);
                   }}
                   brukEditor={innhold.kanRedigeres}
                   readOnly={readOnly}
@@ -111,11 +112,11 @@ export const Brevbygger = ({
 const defaultTomBlokk: Blokk[] = [
   {
     id: uuidV4(),
-    type: 'AVSNITT',
+    type: InnholdType.AVSNITT,
     innhold: [
       {
         id: uuidV4(),
-        type: 'TEKST',
+        type: InnholdType.TEKST,
         tekst: 'Sett inn egen tekst her',
         formattering: [],
       },
