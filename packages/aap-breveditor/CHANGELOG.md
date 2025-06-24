@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.3.4
+
+### Patch Changes
+
+- Betaversjon av brevbygger
+
 ## 0.3.3
 
 ### Patch Changes

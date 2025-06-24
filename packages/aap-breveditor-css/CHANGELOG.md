@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.2.2
+
+### Patch Changes
+
+- Betaversjon av brevbygger
+
 ## 0.2.1
 
 ### Patch Changes
