@@ -55,6 +55,21 @@ export const Brevbygger = ({
     onBrevChange(oppdatertFellesformat);
   };
 
+  const defaultTomBlokk: Blokk[] = [
+    {
+      id: uuidV4(),
+      type: InnholdType.AVSNITT,
+      innhold: [
+        {
+          id: uuidV4(),
+          type: InnholdType.TEKST,
+          tekst: 'Sett inn egen tekst her',
+          formattering: [],
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="aap-brev-brevbygger">
       <div className="aap-brev-brev">
@@ -70,11 +85,9 @@ export const Brevbygger = ({
         </Heading>
         {brevmal.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
-            <div className="aap-brev-headerRow">
-              <Heading level="2" size="large">
+              <Heading className="aap-brev-headerRow" level="2" size="large">
                 {blokk.overskrift}
               </Heading>
-            </div>
             {blokk.innhold.map((innhold) => (
               <div key={innhold.id} className={innhold.kanRedigeres ? 'aap-brev-editableContent' : ''}>
                 {innhold.overskrift && (
@@ -108,18 +121,3 @@ export const Brevbygger = ({
     </div>
   );
 };
-
-const defaultTomBlokk: Blokk[] = [
-  {
-    id: uuidV4(),
-    type: InnholdType.AVSNITT,
-    innhold: [
-      {
-        id: uuidV4(),
-        type: InnholdType.TEKST,
-        tekst: 'Sett inn egen tekst her',
-        formattering: [],
-      },
-    ],
-  },
-];

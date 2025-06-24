@@ -9,10 +9,6 @@ import { v4 as uuidV4 } from 'uuid';
 import { BlokkInnholdTekst } from './types';
 import { InnholdType } from './enums';
 
-const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
-  return !readonly && kanRedigeres;
-};
-
 export const BrevbyggerBeta = ({
   brevmal,
   mottaker,
@@ -65,6 +61,10 @@ export const BrevbyggerBeta = ({
         }),
       };
     }),
+  };
+
+  const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
+    return !readonly && kanRedigeres;
   };
 
   const utledOppdatertBlokkInnhold = (blokkinnholdId: string, blokkinnholdTekst: string): BlokkInnhold => {
@@ -135,15 +135,13 @@ export const BrevbyggerBeta = ({
         </Heading>
         {mappetBrevmal.tekstbolker.map((blokk) => (
           <div key={blokk.id}>
-            <div className="aap-brev-headerRow">
-              <Heading level="2" size="large">
-                {blokk.overskrift}
-              </Heading>
-            </div>
+            <Heading className="aap-brev-headerRow" level="2" size="large">
+              {blokk.overskrift}
+            </Heading>
             {blokk.innhold.map((innhold) => (
               <div key={innhold.id}>
                 {innhold.overskrift && (
-                  <Heading level="3" size="medium">
+                  <Heading className="aap-brev-overskrift" level="3" size="medium">
                     {innhold.overskrift}
                   </Heading>
                 )}
