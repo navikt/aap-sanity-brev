@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
-import { BlokkInnhold, Brev, Signatur } from '../types';
 import { TekstElement } from './TekstElement';
 import Image, { StaticImageData } from 'next/image';
 import { BodyShort, Detail, Heading } from '@navikt/ds-react';
 import { formaterDatoForFrontend } from '../lib/date';
 import { v4 as uuidV4 } from 'uuid';
-import { BlokkInnholdTekst } from './types';
 import { InnholdType } from './enums';
+import { IkkeRedigerbarListe } from './IkkeRedigerbarListe';
+import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Signatur, Tekstbolk } from '../types';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
   return !readonly && kanRedigeres;
@@ -133,41 +133,28 @@ export const BrevbyggerBeta = ({
         <Heading level="1" size="xlarge">
           {mappetBrevmal.overskrift}
         </Heading>
-        {mappetBrevmal.tekstbolker.map((blokk) => (
+        {mappetBrevmal.tekstbolker.map((blokk: Tekstbolk) => (
           <div key={blokk.id}>
             <div className="aap-brev-headerRow">
               <Heading level="2" size="large">
                 {blokk.overskrift}
               </Heading>
             </div>
-            {blokk.innhold.map((innhold) => (
+            {blokk.innhold.map((innhold: Innhold) => (
               <div key={innhold.id}>
                 {innhold.overskrift && (
                   <Heading level="3" size="medium">
                     {innhold.overskrift}
                   </Heading>
                 )}
-                {innhold.blokker.map((blokkInnhold) => {
+                {innhold.blokker.map((blokkInnhold: Blokk) => {
                   if (blokkInnhold.type === InnholdType.LISTE && !kanRedigeres(readonly, innhold.kanRedigeres)) {
-                    return (
-                      <ul className={'aap-brev-ikke-redigerbar-tekst'} key={blokkInnhold.id}>
-                        {blokkInnhold.innhold.map((innholdElement) => {
-                          if (innholdElement.type === InnholdType.TEKST) {
-                            const innholdTekst = innholdElement as BlokkInnholdTekst;
-                            return (
-                              <li key={innholdTekst.id}>
-                                <BodyShort spacing>{innholdTekst.tekst}</BodyShort>
-                              </li>
-                            );
-                          }
-                        })}
-                      </ul>
-                    );
+                    return <IkkeRedigerbarListe blokkInnholdListe={blokkInnhold.innhold} key={blokkInnhold.id} />;
                   } else {
                     return (
                       <div key={blokkInnhold.id}>
                         {blokkInnhold.innhold.map((blokkInnholdElement: BlokkInnhold) => {
-                          const blokkInnholdTekst = blokkInnholdElement as BlokkInnholdTekst;
+                          const blokkInnholdTekst = blokkInnholdElement as FormattertTekst;
                           return (
                             <TekstElement
                               tekst={blokkInnholdTekst.tekst}
