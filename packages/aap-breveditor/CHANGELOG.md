@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.3.5
+
+### Patch Changes
+
+- Slår sammen redigerbare listeelementer til ett tekstelement for beta-brevbygger.
+
 ## 0.3.4
 
 ### Patch Changes
