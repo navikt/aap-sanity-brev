@@ -34,16 +34,41 @@ export const BrevbyggerBeta = ({
   readonly?: boolean;
 }) => {
   // TODO 2025-06-25
-  // midlertidig mapping for å legge inn tomme blokker for fritekst-felt.
+  // midlertidig mapping for å
+  // - legge inn tomme blokker for fritekst-felt.
+  // - slå sammen redigerebare liste-elementer til ett tekstfelt
   // flyttes til egen mapper-funksjon når breveditor byttes ut
   const mappetBrevmal: Brev = {
     ...brevmal,
-    tekstbolker: brevmal.tekstbolker.map((blokk) => {
+    tekstbolker: brevmal.tekstbolker.map((blokk: Tekstbolk) => {
       return {
         ...blokk,
-        innhold: blokk.innhold.map((innhold) => {
+        innhold: blokk.innhold.map((innhold: Innhold) => {
           if (innhold.blokker.length) {
-            return { ...innhold };
+            return {
+              ...innhold,
+              blokker: innhold.blokker.map((blokk: Blokk) => {
+                if (blokk.type === InnholdType.LISTE && innhold.kanRedigeres) {
+                  const tekst = blokk.innhold.reduce(
+                    (acc: string, curr: BlokkInnhold) => (acc += `- ${(curr as FormattertTekst).tekst}\n`),
+                    ''
+                  );
+                  return {
+                    id: uuidV4(),
+                    type: 'AVSNITT',
+                    innhold: [
+                      {
+                        id: uuidV4(),
+                        type: 'TEKST',
+                        tekst: tekst,
+                        formattering: [],
+                      },
+                    ],
+                  };
+                }
+                return { ...blokk };
+              }),
+            };
           }
           return {
             ...innhold,

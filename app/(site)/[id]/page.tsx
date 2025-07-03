@@ -101,7 +101,7 @@ export const mapTekstBolkBlokkInnholdFraSanity = (
         if (!innholdByRef) {
           return null;
         }
-        console.log('innholdByRef', { overskrift: innholdByRef.overskrift, kanRedigere: innholdByRef.kanRedigeres });
+        // console.log('innholdByRef', { overskrift: innholdByRef.overskrift, kanRedigere: innholdByRef.kanRedigeres });
         return {
           id: uuidV4(),
           overskrift: innholdByRef.overskrift ?? '',

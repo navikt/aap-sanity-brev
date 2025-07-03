@@ -10,7 +10,7 @@ export const BrevmalWrapper = ({ brevmal }: { brevmal: Brev }) => {
   const [mal, setMal] = useState(brevmal);
 
   return (
-    <Tabs defaultValue="standard">
+    <Tabs defaultValue="beta">
       <Tabs.List>
         <Tabs.Tab value="standard" label="Standard brevmal" />
         <Tabs.Tab value="beta" label="Beta brevmal" />
