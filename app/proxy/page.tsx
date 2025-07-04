@@ -7,7 +7,8 @@ const Page = async () => {
     return <div>Kun tilgjengelig lokalt</div>;
   }
 
-  const res = await fetch('http://localhost:8087/api/mal?brevtype=AVSLAG&sprak=NB');
+  // const res = await fetch('http://localhost:8087/api/mal?brevtype=AVSLAG&sprak=NB');
+  const res = await fetch('http://localhost:8087/api/mal?brevtype=VEDTAK_ENDRING&sprak=NB');
   if (res.ok) {
     const brevmal = await res.json();
     return (

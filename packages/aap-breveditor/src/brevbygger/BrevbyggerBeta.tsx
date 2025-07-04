@@ -8,6 +8,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { InnholdType } from './enums';
 import { IkkeRedigerbarListe } from './IkkeRedigerbarListe';
 import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Signatur, Tekstbolk } from '../types';
+import { Brevtittel } from './Brevtittel';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
   return !readonly && kanRedigeres;
@@ -91,7 +92,7 @@ export const BrevbyggerBeta = ({
       };
     }),
   };
-
+  console.log(mappetBrevmal);
   const utledOppdatertBlokkInnhold = (blokkinnholdId: string, blokkinnholdTekst: string): BlokkInnhold => {
     return {
       formattering: [],
@@ -145,6 +146,10 @@ export const BrevbyggerBeta = ({
     onBrevChange(oppdatertFellesformat);
   };
 
+  const oppdaterOverskrift = (text: string) => {
+    onBrevChange({ ...mappetBrevmal, overskrift: text });
+  };
+
   return (
     <div className="aap-brev-brevbygger">
       <div className="aap-brev-brev">
@@ -155,9 +160,11 @@ export const BrevbyggerBeta = ({
           <Detail>Dato: {formaterDatoForFrontend(new Date())}</Detail>
           {saksnummer && <Detail>Saksnnummer: {saksnummer}</Detail>}
         </div>
-        <Heading level="1" size="xlarge">
-          {mappetBrevmal.overskrift}
-        </Heading>
+        <Brevtittel
+          brevtittel={mappetBrevmal.overskrift ?? ''}
+          kanOverstyreBrevtittel={!!mappetBrevmal.kanOverstyreBrevtittel}
+          oppdaterBrevtittel={oppdaterOverskrift}
+        />
         {mappetBrevmal.tekstbolker.map((blokk: Tekstbolk) => (
           <div key={blokk.id}>
             <div className="aap-brev-headerRow">

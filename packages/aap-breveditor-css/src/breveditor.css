@@ -30,6 +30,7 @@
 .aap-brev-redigerbar-seksjon {
   display: flex;
   width: 200mm;
+  justify-content: space-between;
 }
 
 .aap-brev-redigerbar-tekst {
@@ -65,11 +66,11 @@
 
 .aap-brev-redigerbar-listeelement-tekst {
   margin-right: 1rem;
-  width: 100%
+  width: 100%;
 }
 
 .aap-brev-rediger-knapp {
-  margin: 0 0.25rem 0 0.30rem;
+  margin: 0 0.25rem 0 0.3rem;
 }
 
 .aap-brev-personalia {
