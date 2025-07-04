@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.4.1
+
+### Patch Changes
+
+- Oppgraderer react
+
 ## 0.4.0
 
 ### Minor Changes

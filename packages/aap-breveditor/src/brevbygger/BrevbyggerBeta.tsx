@@ -92,7 +92,7 @@ export const BrevbyggerBeta = ({
       };
     }),
   };
-  console.log(mappetBrevmal);
+
   const utledOppdatertBlokkInnhold = (blokkinnholdId: string, blokkinnholdTekst: string): BlokkInnhold => {
     return {
       formattering: [],
