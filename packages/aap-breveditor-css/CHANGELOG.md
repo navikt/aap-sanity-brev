@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.3.0
+
+### Minor Changes
+
+- Støtte for å redigere tittel i BrevbyggerBeta
+
 ## 0.2.2
 
 ### Patch Changes
