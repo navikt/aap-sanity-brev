@@ -62,7 +62,7 @@
     "@types/uuid": "^10.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^8.57.1",
-    "eslint-config-next": "15.1.4",
+    "eslint-config-next": "15.3.5",
     "husky": "^8.0.3",
     "lint-staged": "^15.3.0",
     "openapi-typescript": "^7.5.2",
