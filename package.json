@@ -52,7 +52,7 @@
   "devDependencies": {
     "@navikt/aap-brev-typescript-types": "^0.0.193",
     "@navikt/aap-felles-prettier": "^4.1.4",
-    "@sanity/eslint-config-studio": "^4.0.0",
+    "@sanity/eslint-config-studio": "^5.0.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
