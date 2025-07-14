@@ -3748,7 +3748,7 @@ __metadata:
     "@testing-library/react": "npm:^16.1.0"
     "@testing-library/user-event": "npm:^14.5.2"
     "@tiptap/core": "npm:^2.11.7"
-    "@tiptap/extension-text-style": "npm:^2.11.7"
+    "@tiptap/extension-text-style": "npm:^3.0.1"
     "@tiptap/extension-underline": "npm:^2.11.7"
     "@tiptap/react": "npm:^2.11.7"
     "@tiptap/starter-kit": "npm:^2.11.7"
@@ -6028,6 +6028,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tiptap/extension-text-style@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@tiptap/extension-text-style@npm:3.0.1"
+  peerDependencies:
+    "@tiptap/core": ^3.0.1
+  checksum: 10c0/3b4fbc5f4601c47df5542445f022b0c268fae5b82dca0508eeea6500e12778cbf59a02fb4657a22dd5185e320acbd281fabb41814d149ecabb34c60d50ceb379
+  languageName: node
+  linkType: hard
+
 "@tiptap/extension-text@npm:^2.11.7":
   version: 2.11.7
   resolution: "@tiptap/extension-text@npm:2.11.7"
@@ -6919,7 +6928,7 @@ __metadata:
     "@tiptap/extension-table-cell": "npm:^2.11.7"
     "@tiptap/extension-table-header": "npm:^2.11.7"
     "@tiptap/extension-table-row": "npm:^2.11.7"
-    "@tiptap/extension-text-style": "npm:^2.11.7"
+    "@tiptap/extension-text-style": "npm:^3.0.1"
     "@tiptap/extension-underline": "npm:^2.11.7"
     "@tiptap/react": "npm:^2.11.7"
     "@tiptap/starter-kit": "npm:^2.11.7"
