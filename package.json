@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
+  "type": "module",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
@@ -20,8 +21,8 @@
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
     "@changesets/cli": "^2.29.5",
-    "@navikt/aap-felles-css": "^4.1.4",
-    "@navikt/aap-felles-react": "^4.1.4",
+    "@navikt/aap-felles-css": "^5.1.3",
+    "@navikt/aap-felles-react": "^5.1.3",
     "@navikt/aksel-icons": "^7.9.1",
     "@navikt/ds-css": "^7.9.1",
     "@navikt/ds-react": "^7.9.1",
@@ -51,7 +52,7 @@
   },
   "devDependencies": {
     "@navikt/aap-brev-typescript-types": "^0.0.193",
-    "@navikt/aap-felles-prettier": "^4.1.4",
+    "@navikt/aap-felles-prettier": "^5.1.3",
     "@sanity/eslint-config-studio": "^5.0.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
