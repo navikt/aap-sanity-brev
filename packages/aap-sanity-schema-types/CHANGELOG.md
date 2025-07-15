@@ -1,5 +1,11 @@
 # @navikt/aap-sanity-schema-types
 
+## 0.1.1
+
+### Patch Changes
+
+- Deps
+
 ## 0.1.0
 
 ### Minor Changes

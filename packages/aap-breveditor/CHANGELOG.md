@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.4.2
+
+### Patch Changes
+
+- Deps
+
 ## 0.4.1
 
 ### Patch Changes

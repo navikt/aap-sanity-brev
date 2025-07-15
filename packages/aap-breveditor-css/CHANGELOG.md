@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.3.1
+
+### Patch Changes
+
+- Deps
+
 ## 0.3.0
 
 ### Minor Changes
