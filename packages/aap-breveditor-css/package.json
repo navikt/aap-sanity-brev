@@ -18,7 +18,7 @@
         "test": "echo \"No test specified\" && exit 0"
     },
     "devDependencies": {
-        "postcss": "^8.4.49",
+        "postcss": "^8.5.6",
         "postcss-cli": "^11.0.1",
         "postcss-combine-duplicated-selectors": "^10.0.3",
         "postcss-import": "^16.1.0"
