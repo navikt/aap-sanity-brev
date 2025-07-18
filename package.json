@@ -48,7 +48,7 @@
     "rxjs": "^7.8.1",
     "sanity": "^3.69.0",
     "styled-components": "^6.1.19",
-    "uuid": "^10.0.0"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@navikt/aap-brev-typescript-types": "^0.0.219",
