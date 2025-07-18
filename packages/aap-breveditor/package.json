@@ -35,7 +35,7 @@
         "@tiptap/starter-kit": "^2.11.7",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "uuid": "^10.0.0"
+        "uuid": "^11.1.0"
     },
     "devDependencies": {
         "@navikt/aap-brev-typescript-types": "^0.0.219",
