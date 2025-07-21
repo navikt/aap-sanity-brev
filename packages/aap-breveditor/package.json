@@ -28,7 +28,7 @@
         "@navikt/aksel-icons": "^7.9.1",
         "@navikt/ds-css": "^7.25.1",
         "@navikt/ds-react": "^7.9.1",
-        "@tiptap/core": "^2.11.7",
+        "@tiptap/core": "^3.0.7",
         "@tiptap/extension-text-style": "^3.0.1",
         "@tiptap/extension-underline": "^2.11.7",
         "@tiptap/react": "^2.11.7",
