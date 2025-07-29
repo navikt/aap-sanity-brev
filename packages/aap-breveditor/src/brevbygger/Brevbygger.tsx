@@ -4,13 +4,10 @@ import React from 'react';
 import { BodyShort, Detail, Heading } from '@navikt/ds-react';
 import Image, { StaticImageData } from 'next/image';
 import { Breveditor } from '../breveditor/Breveditor';
-
 import { formaterDatoForFrontend } from '../lib/date';
-
 import { JSONContent } from '@tiptap/core';
 import { Blokk, Brev, Signatur } from '../types';
 import { v4 as uuidV4 } from 'uuid';
-
 import { mapBlokkInnholdToTipTapJsonContent, mapTipTapJsonContentToBlokkInnhold } from '../tiptapMapper';
 import { InnholdType } from './enums';
 
