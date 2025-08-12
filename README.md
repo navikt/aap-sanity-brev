@@ -27,20 +27,28 @@ I tillegg må du kopiere `.env-template` til `.env.local` for å kunne kjøre lo
 yarn dev
 ```
 
+For testing lokalt mot aap-sanity-proxy:
+
+- Kjør opp [aap-brev-sanity-proxy](https://github.com/navikt/aap-brev-sanity-proxy) lokalt
+- Kjør `yarn dev` og naviger til http://localhost:3000/proxy/?mal=INNVILGELSE.
+  Sett ønsket brevtype i query param `mal`.
+
 ---
 
 ## Publisere pakker til GitHub package registry
 
 Dette repoet inneholder tre pakker:
+
 - @navikt/aap-breveditor
 - @navikt/aap-breveditor-css
 - @navikt/aap-sanity-schema-types
 
 Etter man har gjort endringer kan man publisere de på følgende måte:
-- Kjør `yarn changeset` og følg anvisninger. Det vil lages en midlertidig fil `.changeset/[vilkårlig navn].md` med endringene.
+
+- Kjør `yarn changeset` og følg anvisninger. Det vil lages en midlertidig fil `.changeset/[vilkårlig navn].md` med
+  endringene.
 - Kjør deretter `yarn changeset version`. Endringene legges nå i `CHANGELOG.md` for de pakkene som oppdateres.
 - Commit og push endringene. Det er en egen GitHub action som vil publisere schema typene ved commit og push til main.
-
 
 ## Sanity schema
 
