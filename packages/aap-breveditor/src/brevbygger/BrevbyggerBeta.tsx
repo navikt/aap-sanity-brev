@@ -88,11 +88,11 @@ export const BrevbyggerBeta = ({
                     return acc + mapBlokkInnhold(curr).tekst;
                   }, '');
                   return {
-                    id: uuidV4(),
+                    id: blokk.id,
                     type: 'AVSNITT',
                     innhold: [
                       {
-                        id: uuidV4(),
+                        id: blokk.innhold.length > 0 ? blokk.innhold[0].id : uuidV4(),
                         type: 'TEKST',
                         tekst: tekst,
                         formattering: [],
