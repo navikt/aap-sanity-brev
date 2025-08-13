@@ -141,14 +141,14 @@ export const BrevbyggerBeta = ({
                 return {
                   ...blokk,
                   id: blokk.id,
-                  innhold: blokk.innhold.map((innhold) => {
-                    if (innhold.id === brevElementId) {
+                  innhold: blokk.innhold.map((blokkInnhold) => {
+                    if (blokkInnhold.id === brevElementId) {
                       return {
-                        ...innhold,
+                        ...blokkInnhold,
                         tekst: blokkInnholdTekst,
                       };
                     }
-                    return innhold;
+                    return blokkInnhold;
                   }),
                 };
               }),
