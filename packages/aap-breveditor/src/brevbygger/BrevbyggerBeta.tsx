@@ -7,7 +7,7 @@ import { formaterDatoForFrontend } from '../lib/date';
 import { v4 as uuidV4 } from 'uuid';
 import { InnholdType } from './enums';
 import { IkkeRedigerbarListe } from './IkkeRedigerbarListe';
-import { Blokk, BlokkInnhold, Brev, FormattertTekst, Innhold, Signatur, Tekstbolk } from '../types';
+import { Blokk, BlokkInnhold, Brev, Faktagrunnlag, FormattertTekst, Innhold, Signatur, Tekstbolk } from '../types';
 import { Brevtittel } from './Brevtittel';
 
 const kanRedigeres = (readonly?: boolean, kanRedigeres?: boolean) => {
@@ -34,11 +34,19 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  // TODO 2025-06-25
-  // midlertidig mapping for å
-  // - legge inn tomme blokker for fritekst-felt.
-  // - slå sammen redigerebare liste-elementer til ett tekstfelt
-  // flyttes til egen mapper-funksjon når breveditor byttes ut
+  const mapBlokkInnhold = (blokkInnhold: BlokkInnhold): FormattertTekst => {
+    switch (blokkInnhold.type) {
+      case 'TEKST':
+        return blokkInnhold as FormattertTekst;
+      case 'FAKTAGRUNNLAG':
+        return {
+          type: 'TEKST',
+          id: blokkInnhold.id,
+          tekst: `<${(blokkInnhold as Faktagrunnlag).visningsnavn}>`,
+          formattering: [],
+        };
+    }
+  };
   const mappetBrevmal: Brev = {
     ...brevmal,
     tekstbolker: brevmal.tekstbolker.map((blokk: Tekstbolk) => {
@@ -49,9 +57,13 @@ export const BrevbyggerBeta = ({
             return {
               ...innhold,
               blokker: innhold.blokker.map((blokk: Blokk) => {
+                // midlertidig mapping for å
+                // - legge inn tomme blokker for fritekst-felt
+                // - slå sammen redigerebare liste-elementer til ett tekstfelt
+                // flyttes til egen mapper-funksjon når breveditor byttes ut
                 if (blokk.type === InnholdType.LISTE && innhold.kanRedigeres) {
                   const tekst = blokk.innhold.reduce(
-                    (acc: string, curr: BlokkInnhold) => (acc += `- ${(curr as FormattertTekst).tekst}\n`),
+                    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnhold(curr).tekst}\n`,
                     ''
                   );
                   return {
@@ -60,6 +72,26 @@ export const BrevbyggerBeta = ({
                     innhold: [
                       {
                         id: uuidV4(),
+                        type: 'TEKST',
+                        tekst: tekst,
+                        formattering: [],
+                      },
+                    ],
+                  };
+                }
+
+                // Slår sammen blokkInnhold i avsnitt dersom avsnittet kan redigeres.
+                // Støtter ikke formatering på redigerbare avsnitt.
+                if (blokk.type === InnholdType.AVSNITT && innhold.kanRedigeres) {
+                  const tekst = blokk.innhold.reduce((acc: string, curr: BlokkInnhold) => {
+                    return acc + mapBlokkInnhold(curr).tekst;
+                  }, '');
+                  return {
+                    id: blokk.id,
+                    type: 'AVSNITT',
+                    innhold: [
+                      {
+                        id: blokk.innhold.length > 0 ? blokk.innhold[0].id : uuidV4(),
                         type: 'TEKST',
                         tekst: tekst,
                         formattering: [],
@@ -93,48 +125,29 @@ export const BrevbyggerBeta = ({
     }),
   };
 
-  const utledOppdatertBlokkInnhold = (blokkinnholdId: string, blokkinnholdTekst: string): BlokkInnhold => {
-    return {
-      formattering: [],
-      id: blokkinnholdId,
-      tekst: blokkinnholdTekst,
-      type: InnholdType.TEKST,
-    };
-  };
-
   const oppdaterBrev = (brevElementId: string, oppdatertTekst: string) => {
     const blokkInnholdTekst = oppdatertTekst ?? '';
     const oppdatertFellesformat: Brev = {
       ...mappetBrevmal,
-      tekstbolker: mappetBrevmal.tekstbolker.map((blokk) => {
+      tekstbolker: mappetBrevmal.tekstbolker.map((tekstbolk) => {
         return {
-          ...blokk,
-          id: blokk.id ?? uuidV4(),
-          innhold: blokk.innhold.map((innhold) => {
-            if (innhold.id === brevElementId) {
-              const nyttBlokkInnholdId = uuidV4();
-              return {
-                ...innhold,
-                blokker: [
-                  {
-                    id: nyttBlokkInnholdId,
-                    innhold: [utledOppdatertBlokkInnhold(nyttBlokkInnholdId, blokkInnholdTekst)],
-                    type: InnholdType.AVSNITT,
-                    formattering: [],
-                  },
-                ],
-              };
-            }
+          ...tekstbolk,
+          id: tekstbolk.id,
+          innhold: tekstbolk.innhold.map((innhold) => {
             return {
               ...innhold,
               blokker: innhold.blokker.map((blokk) => {
                 return {
                   ...blokk,
-                  id: blokk.id ?? uuidV4(),
-                  innhold: blokk.innhold.map((innhold) => {
-                    return innhold.id === brevElementId
-                      ? utledOppdatertBlokkInnhold(brevElementId, blokkInnholdTekst)
-                      : innhold;
+                  id: blokk.id,
+                  innhold: blokk.innhold.map((blokkInnhold) => {
+                    if (blokkInnhold.id === brevElementId) {
+                      return {
+                        ...blokkInnhold,
+                        tekst: blokkInnholdTekst,
+                      };
+                    }
+                    return blokkInnhold;
                   }),
                 };
               }),
@@ -165,33 +178,33 @@ export const BrevbyggerBeta = ({
           kanOverstyreBrevtittel={!!mappetBrevmal.kanOverstyreBrevtittel}
           oppdaterBrevtittel={oppdaterOverskrift}
         />
-        {mappetBrevmal.tekstbolker.map((blokk: Tekstbolk) => (
-          <div key={blokk.id}>
+        {mappetBrevmal.tekstbolker.map((tekstbolk: Tekstbolk) => (
+          <div key={tekstbolk.id}>
             <div className="aap-brev-headerRow">
               <Heading level="2" size="large">
-                {blokk.overskrift}
+                {tekstbolk.overskrift}
               </Heading>
             </div>
-            {blokk.innhold.map((innhold: Innhold) => (
+            {tekstbolk.innhold.map((innhold: Innhold) => (
               <div key={innhold.id}>
                 {innhold.overskrift && (
                   <Heading level="3" size="medium">
                     {innhold.overskrift}
                   </Heading>
                 )}
-                {innhold.blokker.map((blokkInnhold: Blokk) => {
-                  if (blokkInnhold.type === InnholdType.LISTE && !kanRedigeres(readonly, innhold.kanRedigeres)) {
-                    return <IkkeRedigerbarListe blokkInnholdListe={blokkInnhold.innhold} key={blokkInnhold.id} />;
+                {innhold.blokker.map((blokk: Blokk) => {
+                  if (blokk.type === InnholdType.LISTE && !kanRedigeres(readonly, innhold.kanRedigeres)) {
+                    return <IkkeRedigerbarListe blokkInnholdListe={blokk.innhold} key={blokk.id} />;
                   } else {
                     return (
-                      <div key={blokkInnhold.id}>
-                        {blokkInnhold.innhold.map((blokkInnholdElement: BlokkInnhold) => {
+                      <div key={blokk.id}>
+                        {blokk.innhold.map((blokkInnholdElement: BlokkInnhold) => {
                           const blokkInnholdTekst = blokkInnholdElement as FormattertTekst;
                           return (
                             <TekstElement
                               tekst={blokkInnholdTekst.tekst}
                               erRedigerbar={!!kanRedigeres(readonly, innhold.kanRedigeres)}
-                              erListe={blokkInnhold.type === InnholdType.LISTE}
+                              erListe={blokk.type === InnholdType.LISTE}
                               spacing={false}
                               nøkkel={blokkInnholdElement.id}
                               oppdaterTekst={oppdaterBrev}
