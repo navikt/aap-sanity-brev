@@ -34,7 +34,6 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  // enkel mapping av manglende faktagrunnlag
   const mapBlokkInnhold = (blokkInnhold: BlokkInnhold): FormattertTekst => {
     switch (blokkInnhold.type) {
       case 'TEKST':
