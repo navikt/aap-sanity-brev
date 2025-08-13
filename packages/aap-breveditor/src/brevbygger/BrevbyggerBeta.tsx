@@ -82,7 +82,7 @@ export const BrevbyggerBeta = ({
                 }
 
                 // Slår sammen blokkInnhold i avsnitt dersom avsnittet kan redigeres.
-                // Støtter ikke formattering på redigerbare avsnitt.
+                // Støtter ikke formatering på redigerbare avsnitt.
                 if (blokk.type === InnholdType.AVSNITT && innhold.kanRedigeres) {
                   const tekst = blokk.innhold.reduce((acc: string, curr: BlokkInnhold) => {
                     return acc + mapBlokkInnhold(curr).tekst;
