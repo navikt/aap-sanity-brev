@@ -59,7 +59,7 @@ export const BrevbyggerBeta = ({
               ...innhold,
               blokker: innhold.blokker.map((blokk: Blokk) => {
                 // midlertidig mapping for å
-                // - legge inn tomme blokker for fritekst-felt.
+                // - legge inn tomme blokker for fritekst-felt
                 // - slå sammen redigerebare liste-elementer til ett tekstfelt
                 // flyttes til egen mapper-funksjon når breveditor byttes ut
                 if (blokk.type === InnholdType.LISTE && innhold.kanRedigeres) {
