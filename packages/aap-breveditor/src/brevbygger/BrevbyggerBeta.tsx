@@ -34,7 +34,7 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  const mapBlokkInnholdTilFormattertTekst = (blokkInnhold: BlokkInnhold): FormattertTekst => {
+  const mapBlokkInnholdTilFormatertTekst = (blokkInnhold: BlokkInnhold): FormattertTekst => {
     switch (blokkInnhold.type) {
       case 'TEKST':
         return blokkInnhold as FormattertTekst;
@@ -63,7 +63,7 @@ export const BrevbyggerBeta = ({
                 // flyttes til egen mapper-funksjon når breveditor byttes ut
                 if (blokk.type === InnholdType.LISTE && innhold.kanRedigeres) {
                   const tekst = blokk.innhold.reduce(
-                    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnholdTilFormattertTekst(curr).tekst}\n`,
+                    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnholdTilFormatertTekst(curr).tekst}\n`,
                     ''
                   );
                   return {
@@ -95,13 +95,13 @@ export const BrevbyggerBeta = ({
 
                           return acc.slice(0, acc.length - 1).concat({
                             ...accLast,
-                            tekst: accLast.tekst + mapBlokkInnholdTilFormattertTekst(current).tekst,
+                            tekst: accLast.tekst + mapBlokkInnholdTilFormatertTekst(current).tekst,
                           });
                         } else {
-                          return acc.concat(mapBlokkInnholdTilFormattertTekst(current));
+                          return acc.concat(mapBlokkInnholdTilFormatertTekst(current));
                         }
                       } else {
-                        return acc.concat(mapBlokkInnholdTilFormattertTekst(current));
+                        return acc.concat(mapBlokkInnholdTilFormatertTekst(current));
                       }
                     },
                     []
