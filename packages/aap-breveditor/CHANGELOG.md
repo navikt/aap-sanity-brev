@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.5.0
+
+### Minor Changes
+
+- La til støtte for å bruke Enter for å bekrefte endring av brevtittel
+
 ## 0.4.2
 
 ### Patch Changes
