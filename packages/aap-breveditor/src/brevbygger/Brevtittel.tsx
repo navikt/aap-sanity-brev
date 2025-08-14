@@ -36,6 +36,11 @@ export const Brevtittel = ({ brevtittel, kanOverstyreBrevtittel = false, oppdate
           onBlur={(event) => {
             validerOgOppdaterBrevtittel(event.currentTarget.value);
           }}
+          onKeyUp={(event) => {
+            if (event.key === 'Enter') {
+              validerOgOppdaterBrevtittel(event.currentTarget.value);
+            }
+          }}
           error={brevtittelFeil}
           hideLabel
           autoFocus
