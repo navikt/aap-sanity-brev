@@ -34,7 +34,7 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  const mapBlokkInnhold = (blokkInnhold: BlokkInnhold): FormattertTekst => {
+  const mapBlokkInnholdTilFormattertTekst = (blokkInnhold: BlokkInnhold): FormattertTekst => {
     switch (blokkInnhold.type) {
       case 'TEKST':
         return blokkInnhold as FormattertTekst;
@@ -63,7 +63,7 @@ export const BrevbyggerBeta = ({
                 // flyttes til egen mapper-funksjon når breveditor byttes ut
                 if (blokk.type === InnholdType.LISTE && innhold.kanRedigeres) {
                   const tekst = blokk.innhold.reduce(
-                    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnhold(curr).tekst}\n`,
+                    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnholdTilFormattertTekst(curr).tekst}\n`,
                     ''
                   );
                   return {
@@ -80,23 +80,36 @@ export const BrevbyggerBeta = ({
                   };
                 }
 
-                // Slår sammen blokkInnhold i avsnitt dersom avsnittet kan redigeres.
-                // Støtter ikke formatering på redigerbare avsnitt.
-                if (blokk.type === InnholdType.AVSNITT && innhold.kanRedigeres) {
-                  const tekst = blokk.innhold.reduce((acc: string, curr: BlokkInnhold) => {
-                    return acc + mapBlokkInnhold(curr).tekst;
-                  }, '');
+                // Gjør om manglende faktagrunnlag til tekst, og slår sammen BlokkInnhold som er faktagrunnlag
+                // med nabo-BlokkInnhold
+                if (
+                  blokk.type === InnholdType.AVSNITT &&
+                  innhold.kanRedigeres &&
+                  blokk.innhold.find((blokkInnhold) => blokkInnhold.type === 'FAKTAGRUNNLAG')
+                ) {
+                  const blokkInnhold = blokk.innhold.reduce(
+                    (acc: FormattertTekst[], current: BlokkInnhold, index: number) => {
+                      if (current.type === 'FAKTAGRUNNLAG' || blokk.innhold[index - 1]?.type === 'FAKTAGRUNNLAG') {
+                        if (acc.length > 0) {
+                          const accLast = acc[acc.length - 1];
+
+                          return acc.slice(0, acc.length - 1).concat({
+                            ...accLast,
+                            tekst: accLast.tekst + mapBlokkInnholdTilFormattertTekst(current).tekst,
+                          });
+                        } else {
+                          return acc.concat(mapBlokkInnholdTilFormattertTekst(current));
+                        }
+                      } else {
+                        return acc.concat(mapBlokkInnholdTilFormattertTekst(current));
+                      }
+                    },
+                    []
+                  );
+
                   return {
-                    id: blokk.id,
-                    type: 'AVSNITT',
-                    innhold: [
-                      {
-                        id: blokk.innhold.length > 0 ? blokk.innhold[0].id : uuidV4(),
-                        type: 'TEKST',
-                        tekst: tekst,
-                        formattering: [],
-                      },
-                    ],
+                    ...blokk,
+                    innhold: blokkInnhold,
                   };
                 }
                 return { ...blokk };
