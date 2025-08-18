@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.6.0
+
+### Minor Changes
+
+- La til mapping av blokkinnhold for korrekt visning i input felter i BrevbyggerBeta
+
 ## 0.5.0
 
 ### Minor Changes
