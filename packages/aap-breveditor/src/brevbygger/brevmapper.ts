@@ -1,5 +1,4 @@
 import { Blokk, BlokkInnhold, Brev, Faktagrunnlag, FormattertTekst, Innhold, Tekstbolk } from '../types';
-import { BlokkInnholdTekst } from './types';
 import { v4 as uuidV4 } from 'uuid';
 
 function mapBlokkInnholdTilFormatertTekst(blokkInnhold: BlokkInnhold): FormattertTekst {
@@ -16,31 +15,21 @@ function mapBlokkInnholdTilFormatertTekst(blokkInnhold: BlokkInnhold): Formatter
   }
 }
 
-function slåSammenListeElementer(blokk: { id: string; innhold: BlokkInnhold[]; type: 'AVSNITT' | 'LISTE' }) {
+function slåSammenListeElementer(blokk: Blokk) {
   return blokk.innhold.reduce(
     (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnholdTilFormatertTekst(curr).tekst}\n`,
     ''
   );
 }
 
-function mapFaktagrunnlag(blokk: { id: string; innhold: BlokkInnhold[]; type: 'AVSNITT' | 'LISTE' }) {
-  const blokkInnhold = blokk.innhold.reduce((acc: FormattertTekst[], current: BlokkInnhold, index: number) => {
-    if (current.type === 'FAKTAGRUNNLAG' || blokk.innhold[index - 1]?.type === 'FAKTAGRUNNLAG') {
-      if (acc.length > 0) {
-        const accLast = acc[acc.length - 1];
-
-        return acc.slice(0, acc.length - 1).concat({
-          ...accLast,
-          tekst: accLast.tekst + mapBlokkInnholdTilFormatertTekst(current).tekst,
-        });
-      } else {
-        return acc.concat(mapBlokkInnholdTilFormatertTekst(current));
-      }
-    } else {
-      return acc.concat(mapBlokkInnholdTilFormatertTekst(current));
-    }
-  }, []);
-  return blokkInnhold.flatMap((b) => (b as BlokkInnholdTekst).tekst);
+function slåSammenBlokkInnhold(blokkInnhold: BlokkInnhold[]): string {
+  if (blokkInnhold.length) {
+    const formaterteTekstblokker = blokkInnhold.map((blokkInnhold) => {
+      return mapBlokkInnholdTilFormatertTekst(blokkInnhold);
+    });
+    return formaterteTekstblokker.map((formattertTekst) => formattertTekst.tekst).join('');
+  }
+  return '';
 }
 
 function finnBlokkId(blokker: Blokk[]): string {
@@ -59,16 +48,11 @@ function finnInnholdId(blokker: Blokk[]): string {
 function mapBlokker(blokker: Blokk[], kanRedigeres: boolean): Blokk[] {
   if (kanRedigeres) {
     const joinedText = blokker
-      .flatMap((blokk) => {
+      .map((blokk) => {
         if (blokk.type === 'LISTE') {
           return slåSammenListeElementer(blokk);
-        } else if (
-          blokk.type === 'AVSNITT' &&
-          blokk.innhold.find((blokkInnhold) => blokkInnhold.type === 'FAKTAGRUNNLAG')
-        ) {
-          return mapFaktagrunnlag(blokk);
         } else {
-          return blokk.innhold.map((b) => (b as BlokkInnholdTekst).tekst).join();
+          return slåSammenBlokkInnhold(blokk.innhold);
         }
       })
       .join('\n\n');
@@ -88,9 +72,7 @@ function mapBlokker(blokker: Blokk[], kanRedigeres: boolean): Blokk[] {
       },
     ];
   } else {
-    return blokker.map((blokk: Blokk) => {
-      return { ...blokk };
-    });
+    return blokker;
   }
 }
 
