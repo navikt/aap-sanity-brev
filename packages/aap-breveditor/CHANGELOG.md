@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.7.0
+
+### Minor Changes
+
+- La til sammenslåing av innholdstekster innenfor samme redigerbare blokk i brevmapper for brevbygger
+
 ## 0.6.0
 
 ### Minor Changes
