@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.8.0
+
+### Minor Changes
+
+- Slo sammen BlokkInnhold før oppdeling i avsnitt for redigerbart innhold
+
 ## 0.7.0
 
 ### Minor Changes
