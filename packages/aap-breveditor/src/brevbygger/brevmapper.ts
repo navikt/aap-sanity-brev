@@ -68,7 +68,7 @@ function mapBlokker(blokker: Blokk[], kanRedigeres: boolean): Blokk[] {
         ) {
           return mapFaktagrunnlag(blokk);
         } else {
-          return blokk.innhold.map((b) => (b as BlokkInnholdTekst).tekst);
+          return blokk.innhold.map((b) => (b as BlokkInnholdTekst).tekst).join();
         }
       })
       .join('\n\n');
