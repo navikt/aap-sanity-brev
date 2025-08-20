@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TekstElement } from './TekstElement';
 import Image, { StaticImageData } from 'next/image';
 import { BodyShort, Detail, Heading } from '@navikt/ds-react';
@@ -34,7 +34,17 @@ export const BrevbyggerBeta = ({
   onBrevChange: (brev: Brev) => void;
   readonly?: boolean;
 }) => {
-  const mappetBrevmal: Brev = mapBrevmal(brevmal);
+  const [init, setInit] = useState(true);
+  let mappetBrevmal: Brev = brevmal;
+  if (init) {
+    mappetBrevmal = mapBrevmal(brevmal);
+  }
+  useEffect(() => {
+    if (init) {
+      onBrevChange(mappetBrevmal);
+      setInit(false);
+    }
+  }, [init, mappetBrevmal, onBrevChange]);
 
   const oppdaterBrev = (brevElementId: string, oppdatertTekst: string) => {
     const blokkInnholdTekst = oppdatertTekst ?? '';
