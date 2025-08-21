@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.9.0
+
+### Minor Changes
+
+- La inn bedre formatering av lister i input felt i brevmapper
+
 ## 0.8.0
 
 ### Minor Changes
