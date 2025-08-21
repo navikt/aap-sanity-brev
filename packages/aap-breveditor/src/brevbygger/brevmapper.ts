@@ -16,9 +16,14 @@ function mapBlokkInnholdTilFormatertTekst(blokkInnhold: BlokkInnhold): Formatter
 }
 
 function slåSammenListeElementer(blokk: Blokk) {
-  return blokk.innhold.reduce(
-    (acc: string, curr: BlokkInnhold) => acc + `- ${mapBlokkInnholdTilFormatertTekst(curr).tekst}\n`,
-    ''
+  return blokk.innhold.reduce((acc: string, curr: BlokkInnhold, index: number) => {
+    const erSisteElement = index == blokk.innhold.length - 1;
+    let formatertElement = acc + `- ${mapBlokkInnholdTilFormatertTekst(curr).tekst}`;
+    if (!erSisteElement) {
+      formatertElement += '\n'
+    }
+    return formatertElement;
+    }, ''
   );
 }
 
