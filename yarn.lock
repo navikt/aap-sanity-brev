@@ -6222,12 +6222,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-table-row@npm:^2.11.7":
-  version: 2.11.7
-  resolution: "@tiptap/extension-table-row@npm:2.11.7"
+"@tiptap/extension-table-row@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "@tiptap/extension-table-row@npm:3.4.2"
   peerDependencies:
-    "@tiptap/core": ^2.7.0
-  checksum: 10c0/b71a0cbc68cafca9f85900311bf4c32870256e40fe212ad230ec56f032f523c13a4ffb03f4a8ff2813cd1d1aefaaedf9fa8be8efde436dc4dbda065213ef1ae6
+    "@tiptap/extension-table": ^3.4.2
+  checksum: 10c0/2279b8ad6021838fb403783872e22a9fc48d5c600edd2b12ab494efd3b57983d07b69c9d3b02bf890e19096f1242caa8514ac32601638411b0deb47eb6d3246e
   languageName: node
   linkType: hard
 
@@ -7174,7 +7174,7 @@ __metadata:
     "@tiptap/extension-table": "npm:^2.11.7"
     "@tiptap/extension-table-cell": "npm:^2.11.7"
     "@tiptap/extension-table-header": "npm:^2.11.7"
-    "@tiptap/extension-table-row": "npm:^2.11.7"
+    "@tiptap/extension-table-row": "npm:^3.4.2"
     "@tiptap/extension-text-style": "npm:^3.0.1"
     "@tiptap/extension-underline": "npm:^2.11.7"
     "@tiptap/react": "npm:^2.11.7"
