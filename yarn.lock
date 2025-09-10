@@ -4029,7 +4029,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.1.0"
     "@testing-library/user-event": "npm:^14.5.2"
-    "@tiptap/core": "npm:^2.11.7"
+    "@tiptap/core": "npm:^3.4.2"
     "@tiptap/extension-text-style": "npm:^3.0.1"
     "@tiptap/extension-underline": "npm:^2.11.7"
     "@tiptap/react": "npm:^2.11.7"
@@ -6022,6 +6022,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tiptap/core@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "@tiptap/core@npm:3.4.2"
+  peerDependencies:
+    "@tiptap/pm": ^3.4.2
+  checksum: 10c0/da60f88603423c5c878276591e026e5458c4844557a28fc140d927dcc0611ea90cb05dff2a9d8f67ee34bb33c1ee686ae4c2c2e7bacfa1833bc548835f237267
+  languageName: node
+  linkType: hard
+
 "@tiptap/extension-blockquote@npm:^2.11.7":
   version: 2.11.7
   resolution: "@tiptap/extension-blockquote@npm:2.11.7"
@@ -7170,7 +7179,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.1.0"
     "@testing-library/user-event": "npm:^14.5.2"
-    "@tiptap/core": "npm:^2.11.7"
+    "@tiptap/core": "npm:^3.4.2"
     "@tiptap/extension-table": "npm:^2.11.7"
     "@tiptap/extension-table-cell": "npm:^2.11.7"
     "@tiptap/extension-table-header": "npm:^2.11.7"
