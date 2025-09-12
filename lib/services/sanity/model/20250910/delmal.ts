@@ -1,6 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {valgRef} from './valgRef'
 import {periodetekstRef} from './periodetekstRef'
+import {betingetTekst} from './betingetTekst'
 
 export const delmal = defineType({
   title: 'Delmal',
@@ -19,6 +20,7 @@ export const delmal = defineType({
       of: [
         valgRef,
         periodetekstRef,
+        betingetTekst,
         {
           type: 'block',
           of: [

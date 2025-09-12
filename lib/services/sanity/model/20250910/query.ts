@@ -57,6 +57,15 @@ export const query = groq`
           periodetekst -> {
             ...
           }
+        },
+        _type == 'betingetTekst' => {
+          ...,
+          tekst -> {
+            ...
+          },
+          grupper[] -> {
+            ...
+          }
         }
       }
     }

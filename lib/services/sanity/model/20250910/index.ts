@@ -7,5 +7,6 @@ import {faktagrunnlag} from './faktagrunnlag'
 import {periodetekst} from './periodetekst'
 import {valgGruppe} from './valgGruppe'
 import {gruppertTekstRef} from './gruppertTekstRef'
+import {betingetTekst} from './betingetTekst'
 
-export const schemaTypes = [tekst, fritekst, valg, mal, delmal, faktagrunnlag, periodetekst, valgGruppe, gruppertTekstRef]
+export const schemaTypes = [tekst, fritekst, valg, mal, delmal, faktagrunnlag, periodetekst, valgGruppe, gruppertTekstRef, betingetTekst]
