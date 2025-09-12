@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {tekst} from './tekst'
 
 export const valg = defineType({
   name: 'valg',
@@ -10,7 +9,7 @@ export const valg = defineType({
       name: 'valg',
       title: 'Valg',
       type: 'array',
-      of: [{type: 'reference', to: tekst}, {type: 'fritekst'}],
+      of: [{type: 'gruppertTekstRef'}, {type: 'fritekst'}],
     }),
   ],
 })

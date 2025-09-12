@@ -29,22 +29,28 @@ export const query = groq`
               _type == 'fritekst' => {
                 ...
               },
-              _type == 'reference' => @-> {
-                title,
-                teksteditor[] {
-                  ...,
-                  children[] {
+              _type == 'gruppertTekstRef' => {
+                ...,
+                valg -> {
+                  title,
+                  teksteditor[] {
                     ...,
-                    _type != 'faktagrunnlag' => {
-                      ...
-                    },
-                    _type == 'faktagrunnlag' => @-> {
+                    children[] {
+                      ...,
+                      _type != 'faktagrunnlag' => {
                         ...
+                      },
+                      _type == 'faktagrunnlag' => @-> {
+                          ...
+                      }
                     }
+                  }
+                },
+                valgGruppe -> {
+                  ...
                   }
                 }
               }
-            }
           }
         },
         _type == 'periodetekstRef' => {
