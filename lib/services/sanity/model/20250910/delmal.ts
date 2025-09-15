@@ -1,7 +1,8 @@
-import {defineField, defineType} from 'sanity'
-import {valgRef} from './valgRef'
-import {periodetekstRef} from './periodetekstRef'
-import {betingetTekst} from './betingetTekst'
+import { defineField, defineType } from 'sanity';
+import { valgRef } from './valgRef';
+import { periodetekstRef } from './periodetekstRef';
+import { betingetTekst } from './betingetTekst';
+import { paragrafOptions } from 'lib/services/sanity/model/20250910/paragrafOptions';
 
 export const delmal = defineType({
   title: 'Delmal',
@@ -12,6 +13,14 @@ export const delmal = defineType({
       title: 'Tittel',
       name: 'tittel',
       type: 'string',
+    }),
+    defineField({
+      name: 'paragraf',
+      title: 'Paragraf',
+      type: 'string',
+      options: {
+        list: paragrafOptions,
+      },
     }),
     defineField({
       title: 'Editor',
@@ -28,11 +37,11 @@ export const delmal = defineType({
               type: 'reference',
               title: 'Referanse til faktagrunnlag',
               name: 'faktagrunnlag',
-              to: [{type: 'faktagrunnlag'}],
+              to: [{ type: 'faktagrunnlag' }],
             },
           ],
         },
       ],
     }),
   ],
-})
+});
