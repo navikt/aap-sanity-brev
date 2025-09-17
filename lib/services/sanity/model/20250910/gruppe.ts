@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const valgGruppe = defineType({
-  title: 'Gruppering av valg',
-  name: 'valgGruppe',
+export const gruppe = defineType({
+  title: 'Gruppering',
+  name: 'gruppe',
   type: 'document',
   fields: [
     defineField({

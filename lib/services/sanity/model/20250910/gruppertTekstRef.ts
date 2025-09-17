@@ -7,15 +7,15 @@ export const gruppertTekstRef = defineField({
   fields: [
     defineField({
       title: 'Tekst',
-      name: 'valg',
+      name: 'tekst',
       type: 'reference',
       to: [{type: 'tekst'}],
     }),
     defineField({
-      title: 'Valgt gruppe',
-      name: 'valgGruppe',
+      title: 'Gruppe',
+      name: 'gruppe',
       type: 'reference',
-      to: [{type: 'valgGruppe'}],
+      to: [{type: 'gruppe'}],
     }),
   ],
 })

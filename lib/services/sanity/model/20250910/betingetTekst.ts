@@ -15,7 +15,7 @@ export const betingetTekstRef = defineField({
       name: 'grupper',
       title: 'Grupper',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'valgGruppe'}}],
+      of: [{type: 'reference', to: {type: 'gruppe'}}],
     }),
   ],
 })

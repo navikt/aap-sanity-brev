@@ -31,7 +31,7 @@ export const query = groq`
               },
               _type == 'gruppertTekstRef' => {
                 ...,
-                valg -> {
+                tekst -> {
                   title,
                   teksteditor[] {
                     ...,
@@ -46,7 +46,7 @@ export const query = groq`
                     }
                   }
                 },
-                valgGruppe -> {
+                gruppe -> {
                   ...
                   }
                 }

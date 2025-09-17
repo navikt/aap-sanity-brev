@@ -5,7 +5,7 @@ import { delmal } from './delmal';
 import { mal } from './mal';
 import { faktagrunnlag } from './faktagrunnlag';
 import { periodetekst } from './periodetekst';
-import { valgGruppe } from './valgGruppe';
+import { gruppe } from './gruppe';
 import { gruppertTekstRef } from './gruppertTekstRef';
 import { betingetTekstRef } from './betingetTekst';
 
@@ -17,7 +17,7 @@ export const schemaTypes = [
   delmal,
   faktagrunnlag,
   periodetekst,
-  valgGruppe,
+  gruppe,
   gruppertTekstRef,
   betingetTekstRef,
 ];
