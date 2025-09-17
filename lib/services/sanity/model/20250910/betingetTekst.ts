@@ -1,8 +1,8 @@
 import {defineField} from 'sanity'
 
-export const betingetTekst = defineField({
-  name: 'betingetTekst',
-  title: 'BetingetTekst',
+export const betingetTekstRef = defineField({
+  name: 'betingetTekstRef',
+  title: 'BetingetTekstRef',
   type: 'object',
   fields: [
     defineField({

@@ -7,8 +7,7 @@ import { faktagrunnlag } from './faktagrunnlag';
 import { periodetekst } from './periodetekst';
 import { valgGruppe } from './valgGruppe';
 import { gruppertTekstRef } from './gruppertTekstRef';
-import { betingetTekst } from './betingetTekst';
-import { paragrafOptions } from 'lib/services/sanity/model/20250910/paragrafOptions';
+import { betingetTekstRef } from './betingetTekst';
 
 export const schemaTypes = [
   tekst,
@@ -20,6 +19,5 @@ export const schemaTypes = [
   periodetekst,
   valgGruppe,
   gruppertTekstRef,
-  betingetTekst,
-  paragrafOptions,
+  betingetTekstRef,
 ];

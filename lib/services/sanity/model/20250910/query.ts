@@ -58,7 +58,7 @@ export const query = groq`
             ...
           }
         },
-        _type == 'betingetTekst' => {
+        _type == 'betingetTekstRef' => {
           ...,
           tekst -> {
             ...

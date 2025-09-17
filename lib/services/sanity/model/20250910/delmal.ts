@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 import { valgRef } from './valgRef';
 import { periodetekstRef } from './periodetekstRef';
-import { betingetTekst } from './betingetTekst';
-import { paragrafOptions } from 'lib/services/sanity/model/20250910/paragrafOptions';
+import { betingetTekstRef } from './betingetTekst';
+import { paragrafOptions } from './paragrafOptions';
 
 export const delmal = defineType({
   title: 'Delmal',
@@ -29,7 +29,7 @@ export const delmal = defineType({
       of: [
         valgRef,
         periodetekstRef,
-        betingetTekst,
+        betingetTekstRef,
         {
           type: 'block',
           of: [
