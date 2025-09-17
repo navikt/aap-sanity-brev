@@ -14,7 +14,7 @@ export const query = groq`
         _type == 'block' => {
           children[] {
             ...,
-            _type != 'block' => {
+            _type != 'faktagrunnlag' => {
               ...
             },
             _type == 'faktagrunnlag' => @-> {
@@ -55,13 +55,37 @@ export const query = groq`
         },
         _type == 'periodetekstRef' => {
           periodetekst -> {
-            ...
+            ...,
+            teksteditor[] {
+              ...,
+              children[] {
+                ...,
+                _type != 'faktagrunnlag' => {
+                  ...
+                },
+                _type == 'faktagrunnlag' => @-> {
+                ...
+                }
+              }
+            }
           }
         },
         _type == 'betingetTekstRef' => {
           ...,
           tekst -> {
-            ...
+            ...,
+            teksteditor[] {
+              ...,
+              children[] {
+                ...,
+                _type != 'faktagrunnlag' => {
+                  ...
+                },
+                _type == 'faktagrunnlag' => @-> {
+                ...
+                }
+              }
+            }
           },
           grupper[] -> {
             ...
