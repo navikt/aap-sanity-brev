@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {periodetekstRef} from './periodetekstRef'
 
 export const tekst = defineType({
   title: 'Tekst',
@@ -16,7 +15,6 @@ export const tekst = defineType({
       name: 'teksteditor',
       type: 'array',
       of: [
-        periodetekstRef,
         {
           type: 'block',
           of: [
