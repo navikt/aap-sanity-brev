@@ -2,6 +2,7 @@ import groq from 'groq'
 
 export const query = groq`
 *[_type=="mal"] {
+  ...,
   overskrift,
   delmaler[] {
     ...,
@@ -12,19 +13,22 @@ export const query = groq`
       teksteditor[] {
         ...,
         _type == 'block' => {
+          ...,
           children[] {
             ...,
             _type != 'faktagrunnlag' => {
               ...
             },
             _type == 'faktagrunnlag' => @-> {
-            ...
-              }
+              ...
+            }
           }
         },
         _type == 'valgRef' => {
+          ...,
           obligatorisk,
           valg -> {
+            ...,
             valg[] {
               _type == 'fritekst' => {
                 ...
@@ -32,6 +36,7 @@ export const query = groq`
               _type == 'gruppertTekstRef' => {
                 ...,
                 tekst -> {
+                  ...,
                   title,
                   teksteditor[] {
                     ...,
