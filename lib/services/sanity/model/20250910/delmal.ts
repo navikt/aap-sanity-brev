@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity';
 import { valgRef } from './valgRef';
 import { periodetekstRef } from './periodetekstRef';
-import { betingetTekstRef } from './betingetTekst';
+import { betingetTekstRef } from './betingetTekstRef';
 import { paragrafOptions } from './paragrafOptions';
 
 export const delmal = defineType({

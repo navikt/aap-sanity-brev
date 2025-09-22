@@ -7,7 +7,7 @@ import { faktagrunnlag } from './faktagrunnlag';
 import { periodetekst } from './periodetekst';
 import { gruppe } from './gruppe';
 import { gruppertTekstRef } from './gruppertTekstRef';
-import { betingetTekstRef } from './betingetTekst';
+import { betingetTekstRef } from './betingetTekstRef';
 
 export const schemaTypes = [
   tekst,
