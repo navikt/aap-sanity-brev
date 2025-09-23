@@ -1,4 +1,5 @@
 import {defineField} from 'sanity'
+import {valg} from './valg'
 
 export const valgRef = defineField({
   name: 'valgRef',
@@ -9,7 +10,7 @@ export const valgRef = defineField({
       title: 'Valg',
       name: 'valg',
       type: 'reference',
-      to: [{type: 'valg'}],
+      to: [valg],
     }),
     defineField({
       title: 'Obligatorisk',

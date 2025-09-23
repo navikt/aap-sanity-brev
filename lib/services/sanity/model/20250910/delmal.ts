@@ -10,8 +10,8 @@ export const delmal = defineType({
   type: 'document',
   fields: [
     defineField({
-      title: 'Tittel',
-      name: 'tittel',
+      title: 'Overskrift',
+      name: 'overskrift',
       type: 'string',
     }),
     defineField({

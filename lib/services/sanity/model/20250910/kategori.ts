@@ -1,13 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
-export const gruppe = defineType({
-  title: 'Gruppering',
-  name: 'gruppe',
+export const kategori = defineType({
+  title: 'Kategori',
+  name: 'kategori',
   type: 'document',
   fields: [
     defineField({
-      title: 'Gruppenavn',
-      name: 'gruppenavn',
+      title: 'Visningsnavn',
+      name: 'visningsnavn',
       type: 'string',
     }),
     defineField({

@@ -9,7 +9,7 @@ export const query = groq`
     obligatorisk,
     delmal -> {
       ...,
-      tittel,
+      overskrift,
       teksteditor[] {
         ...,
         _type == 'block' => {
@@ -29,15 +29,16 @@ export const query = groq`
           obligatorisk,
           valg -> {
             ...,
-            valg[] {
+            beskrivelse,
+            alternativer[] {
               _type == 'fritekst' => {
                 ...
               },
-              _type == 'gruppertTekstRef' => {
+              _type == 'kategorisertTekstRef' => {
                 ...,
                 tekst -> {
                   ...,
-                  title,
+                  beskrivelse,
                   teksteditor[] {
                     ...,
                     children[] {
@@ -51,7 +52,7 @@ export const query = groq`
                     }
                   }
                 },
-                gruppe -> {
+                kategori -> {
                   ...
                   }
                 }
@@ -92,7 +93,7 @@ export const query = groq`
               }
             }
           },
-          grupper[] -> {
+          kategorier[] -> {
             ...
           }
         }

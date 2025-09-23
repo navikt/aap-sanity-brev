@@ -1,4 +1,5 @@
 import {defineField} from 'sanity'
+import {delmal} from './delmal'
 
 export const delmalRef = defineField({
   name: 'delmalRef',
@@ -9,7 +10,7 @@ export const delmalRef = defineField({
       title: 'delmal',
       name: 'delmal',
       type: 'reference',
-      to: [{type: 'delmal'}],
+      to: [delmal],
     }),
     defineField({
       title: 'Obligatorisk',

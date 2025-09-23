@@ -1,10 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {faktagrunnlag} from './faktagrunnlag'
 
 export const periodetekst = defineType({
   title: 'Periodetekst',
   name: 'periodetekst',
   type: 'document',
   fields: [
+    defineField({
+      title: 'Beskrivelse',
+      name: 'beskrivelse',
+      type: 'string',
+    }),
     defineField({
       title: 'Editor',
       name: 'teksteditor',
@@ -43,7 +49,7 @@ export const periodetekst = defineType({
               type: 'reference',
               title: 'Referanse til faktagrunnlag',
               name: 'faktagrunnlag',
-              to: [{type: 'faktagrunnlag'}],
+              to: [faktagrunnlag],
             },
           ],
         },

@@ -1,4 +1,5 @@
 import {defineField} from 'sanity'
+import {periodetekst} from './periodetekst'
 
 export const periodetekstRef = defineField({
   name: 'periodetekstRef',
@@ -9,7 +10,7 @@ export const periodetekstRef = defineField({
       title: 'Periodetekst',
       name: 'periodetekst',
       type: 'reference',
-      to: [{type: 'periodetekst'}],
+      to: [periodetekst],
     })
   ],
 })

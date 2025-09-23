@@ -1,4 +1,6 @@
 import {defineField} from 'sanity'
+import {tekst} from './tekst'
+import {kategori} from './kategori'
 
 export const betingetTekstRef = defineField({
   name: 'betingetTekstRef',
@@ -9,13 +11,13 @@ export const betingetTekstRef = defineField({
       title: 'Tekst',
       name: 'tekst',
       type: 'reference',
-      to: [{type: 'tekst'}],
+      to: [tekst],
     }),
     defineField({
-      name: 'grupper',
-      title: 'Grupper',
+      name: 'kategorier',
+      title: 'Kategorier',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'gruppe'}}],
+      of: [{type: 'reference', to: kategori}],
     }),
   ],
 })

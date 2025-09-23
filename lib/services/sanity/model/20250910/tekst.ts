@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {faktagrunnlag} from './faktagrunnlag'
 
 export const tekst = defineType({
   title: 'Tekst',
@@ -6,8 +7,8 @@ export const tekst = defineType({
   type: 'document',
   fields: [
     defineField({
-      title: 'Tekst',
-      name: 'title',
+      title: 'Beskrivelse',
+      name: 'beskrivelse',
       type: 'string',
     }),
     defineField({
@@ -22,7 +23,7 @@ export const tekst = defineType({
               type: 'reference',
               title: 'Referanse til faktagrunnlag',
               name: 'faktagrunnlag',
-              to: [{type: 'faktagrunnlag'}],
+              to: [faktagrunnlag],
             },
           ],
         },

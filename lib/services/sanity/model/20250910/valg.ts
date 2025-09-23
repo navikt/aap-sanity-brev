@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {gruppertTekstRef} from './gruppertTekstRef'
+import {kategorisertTekstRef} from './kategorisertTekstRef'
 import {fritekst} from './fritekst'
 
 export const valg = defineType({
@@ -8,10 +8,15 @@ export const valg = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'valg',
-      title: 'Valg',
+      title: 'Beskrivelse',
+      name: 'beskrivelse',
+      type: 'string',
+    }),
+    defineField({
+      name: 'alternativer',
+      title: 'Alternativer',
       type: 'array',
-      of: [gruppertTekstRef, fritekst],
+      of: [kategorisertTekstRef, fritekst],
     }),
   ],
 })

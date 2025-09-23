@@ -4,7 +4,7 @@ import { delmal } from './delmal';
 import { mal } from './mal';
 import { faktagrunnlag } from './faktagrunnlag';
 import { periodetekst } from './periodetekst';
-import { gruppe } from './gruppe';
+import { kategori } from './kategori';
 
 export const schemaTypes = [
   tekst,
@@ -13,5 +13,5 @@ export const schemaTypes = [
   delmal,
   faktagrunnlag,
   periodetekst,
-  gruppe,
+  kategori,
 ];
