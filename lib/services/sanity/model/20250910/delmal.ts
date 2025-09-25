@@ -20,6 +20,12 @@ export const delmal = defineType({
   },
   fields: [
     defineField({
+      title: 'Intern tittel',
+      name: 'internTittel',
+      description: 'Vises kun i Sanity',
+      type: 'string',
+    }),
+    defineField({
       title: 'Overskrift',
       name: 'overskrift',
       type: 'internationalizedArrayString',
