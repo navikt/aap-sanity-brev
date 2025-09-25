@@ -1,5 +1,4 @@
-import {defineField, defineType} from 'sanity'
-import {faktagrunnlag} from './faktagrunnlag'
+import { defineField, defineType } from 'sanity';
 
 export const tekst = defineType({
   title: 'Tekst',
@@ -14,20 +13,7 @@ export const tekst = defineType({
     defineField({
       title: 'Editor',
       name: 'teksteditor',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          of: [
-            {
-              type: 'reference',
-              title: 'Referanse til faktagrunnlag',
-              name: 'faktagrunnlag',
-              to: [faktagrunnlag],
-            },
-          ],
-        },
-      ],
+      type: 'internationalizedArrayBlockEditor',
     }),
   ],
-})
+});
