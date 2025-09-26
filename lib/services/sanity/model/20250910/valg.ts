@@ -13,7 +13,7 @@ export const valg = defineType({
       type: 'string',
     }),
     defineField({
-      title: 'Teknisk navn',
+      title: 'Språk',
       name: 'language',
       type: 'string',
       readOnly: true,
