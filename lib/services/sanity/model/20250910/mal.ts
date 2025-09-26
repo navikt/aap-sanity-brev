@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {delmalRef} from './delmalRef'
+import { defineField, defineType } from 'sanity';
+import { delmalRef } from './delmalRef';
 
 export const mal = defineType({
   title: 'Mal',
@@ -7,15 +7,32 @@ export const mal = defineType({
   type: 'document',
   fields: [
     defineField({
+      title: 'Intern tittel',
+      name: 'internTittel',
+      description: 'Vises kun i Sanity',
+      type: 'string',
+    }),
+    defineField({
       title: 'Overskrift',
       name: 'overskrift',
-      type: 'string',
+      type: 'internationalizedArrayString',
+    }),
+    defineField({
+      title: 'Journalposttittel',
+      name: 'journalposttittel',
+      type: 'string', // enum?
+    }),
+    defineField({
+      title: 'Sendes automatisk',
+      name: 'sendesAutomatisk',
+      description: 'Styrer om brevet sendes automatisk eller om det må via en saksbehandler',
+      type: 'boolean',
     }),
     defineField({
       title: 'Delmaler',
       name: 'delmaler',
       type: 'array',
-      of: [delmalRef]
-    })
+      of: [delmalRef],
+    }),
   ],
-})
+});
