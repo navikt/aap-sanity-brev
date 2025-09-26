@@ -51,6 +51,7 @@ export const delmal = defineType({
     //     valgRef,
     //     periodetekstRef,
     //     betingetTekstRef,
+    //     fritekst,
     //     {
     //       type: 'block',
     //       of: [

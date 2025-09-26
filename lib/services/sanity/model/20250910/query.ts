@@ -96,6 +96,9 @@ export const query = groq`
           kategorier[] -> {
             ...
           }
+        },
+        _type == 'fritekst' => {
+          ...
         }
       }
     }
