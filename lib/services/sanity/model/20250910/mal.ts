@@ -23,9 +23,9 @@ export const mal = defineType({
       type: 'string', // enum?
     }),
     defineField({
-      title: 'Sendes automatisk',
-      name: 'sendesAutomatisk',
-      description: 'Styrer om brevet sendes automatisk eller om det må via en saksbehandler',
+      title: 'Kan sendes automatisk',
+      name: 'kanSendesAutomatisk',
+      description: 'Styrer om brevet kan sendes automatisk eller om det må via en saksbehandler',
       type: 'boolean',
     }),
     defineField({
