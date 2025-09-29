@@ -8,6 +8,7 @@ import { internationalizedArray } from 'sanity-plugin-internationalized-array';
 import { valgRef } from './schemaTypes/valgRef';
 import { periodetekstRef } from './schemaTypes/periodetekstRef';
 import { betingetTekstRef } from './schemaTypes/betingetTekstRef';
+import { fritekst } from './schemaTypes/fritekst';
 import { faktagrunnlag } from './schemaTypes/faktagrunnlag';
 
 const defaultLanguage = 'nb';
@@ -72,6 +73,7 @@ export default defineConfig({
             valgRef,
             periodetekstRef,
             betingetTekstRef,
+            fritekst,
             {
               type: 'block',
               of: [
