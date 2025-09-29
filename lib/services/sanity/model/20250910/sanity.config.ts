@@ -19,6 +19,8 @@ export const supportedLanguages = [
   { id: 'en', title: 'English' },
 ];
 
+const gammelBrevmodell = ['brevtype', 'innhold', 'tekstbolk'];
+
 const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilder[] => {
   return paragrafOptions.map((opt) =>
     structureBuilder
@@ -53,7 +55,11 @@ export default defineConfig({
             s.divider().title('Delmaler pr paragraf'),
             ...byggParagrafBlokker(s),
             s.divider().title('Andre tekster'),
-            ...s.documentTypeListItems(),
+            // @ts-ignore (TODO fix denne)
+            ...s.documentTypeListItems().filter((item) => !gammelBrevmodell.includes(item.getId())),
+            s.divider().title('Gammel modell'),
+            // @ts-ignore (TODO fix denne)
+            ...s.documentTypeListItems().filter((item) => gammelBrevmodell.includes(item.getId())),
           ]),
     }),
     visionTool(),
