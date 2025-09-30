@@ -1,5 +1,5 @@
 import { ListItemBuilder, StructureBuilder, structureTool } from 'sanity/structure';
-import { paragrafOptions } from './schemaTypes/paragrafOptions';
+import { paragrafOptions } from './paragrafOptions';
 import { ParagraphIcon } from '@navikt/aksel-icons';
 
 const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilder[] => {

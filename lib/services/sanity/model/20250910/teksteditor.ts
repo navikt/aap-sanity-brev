@@ -3,6 +3,7 @@ import { valgRef } from './valgRef';
 import { periodetekstRef } from './periodetekstRef';
 import { betingetTekstRef } from './betingetTekstRef';
 import { fritekst } from './fritekst';
+import { Faktagrunnlag } from 'lib/services/sanity/model/faktagrunnlag/faktagrunnlagSchema';
 
 export const teksteditor = defineField({
   name: 'teksteditor',
@@ -19,7 +20,7 @@ export const teksteditor = defineField({
           type: 'reference',
           title: 'Referanse til faktagrunnlag',
           name: 'faktagrunnlag',
-          to: [{ type: 'faktagrunnlag' }],
+          to: [Faktagrunnlag],
         },
       ],
     },

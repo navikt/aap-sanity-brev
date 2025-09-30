@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import { faktagrunnlag } from './faktagrunnlag';
+import { Faktagrunnlag } from 'lib/services/sanity/model/faktagrunnlag/faktagrunnlagSchema';
 
 export const blockEditor = defineField({
   name: 'blockEditor',
@@ -12,7 +12,7 @@ export const blockEditor = defineField({
           type: 'reference',
           title: 'Referanse til faktagrunnlag',
           name: 'faktagrunnlag',
-          to: [faktagrunnlag],
+          to: [Faktagrunnlag],
         },
       ],
     },

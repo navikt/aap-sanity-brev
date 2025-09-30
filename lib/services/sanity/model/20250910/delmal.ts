@@ -43,27 +43,5 @@ export const delmal = defineType({
       name: 'teksteditor',
       type: 'internationalizedArrayTeksteditor',
     }),
-    // defineField({
-    //   title: 'Editor',
-    //   name: 'teksteditor',
-    //   type: 'array',
-    //   of: [
-    //     valgRef,
-    //     periodetekstRef,
-    //     betingetTekstRef,
-    //     fritekst,
-    //     {
-    //       type: 'block',
-    //       of: [
-    //         {
-    //           type: 'reference',
-    //           title: 'Referanse til faktagrunnlag',
-    //           name: 'faktagrunnlag',
-    //           to: [{type: 'faktagrunnlag'}],
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // }),
   ],
 });

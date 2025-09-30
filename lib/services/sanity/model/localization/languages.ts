@@ -1,3 +1,5 @@
+export const defaultLanguage = 'nb';
+
 export const supportedLanguages = [
   { id: 'nb', title: 'Norsk bokmål', isDefault: true },
   { id: 'nn', title: 'Norsk nynorsk' },
