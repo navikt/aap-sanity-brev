@@ -19,6 +19,9 @@ const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilde
   );
 };
 
+// Faktagrunnlag gjenbrukes
+const gammelBrevmodell = ['brevtype', 'content', 'innhold', 'localestring', 'tekstbolk'];
+
 export const studioStructure = () =>
   structureTool({
     structure: (s) =>
