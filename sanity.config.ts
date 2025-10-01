@@ -1,8 +1,6 @@
 import { createAuthStore, defineConfig } from 'sanity';
 import { visionTool } from '@sanity/vision';
-import { presentationTool } from 'sanity/presentation';
 import { dataset, projectId } from 'lib/services/sanity/env';
-import { locate } from 'lib/services/sanity/presentation/locate';
 
 import { schemaTypes } from './schemas';
 import { documentInternationalization } from '@sanity/document-internationalization';
@@ -18,16 +16,6 @@ export default defineConfig({
   dataset,
   plugins: [
     studioStructure(),
-    presentationTool({
-      resolve: {
-        locations: locate,
-      },
-      previewUrl: {
-        previewMode: {
-          enable: '/api/draft',
-        },
-      },
-    }),
     visionTool(),
     documentInternationalization({
       supportedLanguages,
