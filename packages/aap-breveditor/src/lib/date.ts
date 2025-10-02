@@ -8,6 +8,6 @@ const DATO_FORMATER = {
   ddMMyyyy_HHmmss: 'dd.MM.yyyy HH:mm:ss',
 };
 
-export function formaterDatoForFrontend(dato: Date | string): string {
+export function formaterDatoForFrontend(dato: Date): string {
   return format(dato, DATO_FORMATER.ddMMyyyy, { locale: nb });
 }

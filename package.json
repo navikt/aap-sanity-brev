@@ -27,8 +27,8 @@
     "@navikt/ds-css": "^7.25.1",
     "@navikt/ds-react": "^7.9.1",
     "@portabletext/editor": "^1.20.0",
-    "@sanity/document-internationalization": "^3.3.1",
-    "@sanity/vision": "^3.69.0",
+    "@sanity/document-internationalization": "^4.0.0",
+    "@sanity/vision": "^4.10.1",
     "@tiptap/core": "^2.11.7",
     "@tiptap/extension-table": "^2.11.7",
     "@tiptap/extension-table-cell": "^2.11.7",
@@ -41,12 +41,12 @@
     "changeset": "^0.2.6",
     "date-fns": "^4.1.0",
     "next": "15.3.5",
-    "next-sanity": "^9.10.6",
+    "next-sanity": "^11.4.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-is": "^19.1.0",
     "rxjs": "^7.8.1",
-    "sanity": "^3.69.0",
+    "sanity": "^4.10.1",
     "styled-components": "^6.1.19",
     "uuid": "^11.1.0"
   },
@@ -73,7 +73,8 @@
     "vitest": "^3.2.4"
   },
   "resolutions": {
-    "prosemirror-model": "1.24.1"
+    "prosemirror-model": "1.24.1",
+    "vite": "7.0.4"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",

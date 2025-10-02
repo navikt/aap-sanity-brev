@@ -1,35 +1,41 @@
 import { createAuthStore, defineConfig } from 'sanity';
 import { visionTool } from '@sanity/vision';
-import { presentationTool } from 'sanity/presentation';
-import { structureTool } from 'sanity/structure';
 import { dataset, projectId } from 'lib/services/sanity/env';
-import { locate } from 'lib/services/sanity/presentation/locate';
 
 import { schemaTypes } from './schemas';
 import { documentInternationalization } from '@sanity/document-internationalization';
-import { supportedLanguages } from 'lib/services/sanity/model/localization/languages';
+import { defaultLanguage, supportedLanguages } from 'lib/services/sanity/model/localization/languages';
+import { studioStructure } from 'lib/services/sanity/model/20250910/structure';
+import { internationalizedArray } from 'sanity-plugin-internationalized-array';
+import { teksteditor } from 'lib/services/sanity/model/20250910/teksteditor';
+import { blockEditor } from 'lib/services/sanity/model/20250910/blockEditor';
 
 export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
   plugins: [
-    structureTool(),
-    presentationTool({
-      resolve: {
-        locations: locate,
-      },
-      previewUrl: {
-        previewMode: {
-          enable: '/api/draft',
-        },
-      },
-    }),
+    studioStructure(),
     visionTool(),
     documentInternationalization({
       supportedLanguages,
       schemaTypes: ['innhold'],
       languageField: 'language',
+    }),
+    internationalizedArray({
+      languages: supportedLanguages,
+      defaultLanguages: [defaultLanguage],
+      fieldTypes: ['string'],
+    }),
+    internationalizedArray({
+      languages: supportedLanguages,
+      defaultLanguages: [defaultLanguage],
+      fieldTypes: [teksteditor],
+    }),
+    internationalizedArray({
+      languages: supportedLanguages,
+      defaultLanguages: [defaultLanguage],
+      fieldTypes: [blockEditor],
     }),
   ],
 
