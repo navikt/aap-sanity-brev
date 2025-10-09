@@ -8,6 +8,7 @@ export const tekst = defineType({
     defineField({
       title: 'Beskrivelse',
       name: 'beskrivelse',
+      description: 'Brukes i brevbygger',
       type: 'string',
     }),
     defineField({

@@ -10,6 +10,7 @@ export const valg = defineType({
     defineField({
       title: 'Beskrivelse',
       name: 'beskrivelse',
+      description: 'Brukes i brevbygger',
       type: 'string',
     }),
     defineField({

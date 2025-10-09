@@ -28,6 +28,7 @@ export const delmal = defineType({
     defineField({
       title: 'Overskrift',
       name: 'overskrift',
+      description: 'Vises i brevet',
       type: 'internationalizedArrayString',
     }),
     defineField({
