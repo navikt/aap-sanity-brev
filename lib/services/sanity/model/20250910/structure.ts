@@ -2,6 +2,10 @@ import { ListItemBuilder, StructureBuilder, structureTool } from 'sanity/structu
 import { paragrafOptions } from './paragrafOptions';
 import { ParagraphIcon } from '@navikt/aksel-icons';
 
+const today = new Date();
+// Dagens dato vil alltid vi siste versjon av api
+const apiVersion = `${today.getFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+
 const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilder[] => {
   return paragrafOptions.map((opt) =>
     structureBuilder
@@ -12,6 +16,7 @@ const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilde
       .child(
         structureBuilder
           .documentList()
+          .apiVersion(apiVersion)
           .title(opt.title)
           .filter(`_type == 'delmal' && paragraf == "${opt.value}"`)
           .menuItems(structureBuilder.documentTypeList('delmal').getMenuItems())
