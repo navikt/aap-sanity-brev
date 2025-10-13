@@ -1,10 +1,23 @@
-import {defineField} from 'sanity'
-import {delmal} from './delmal'
+import { defineField } from 'sanity';
+import { delmal } from './delmal';
 
 export const delmalRef = defineField({
   name: 'delmalRef',
   title: 'DelmalRef',
   type: 'object',
+  preview: {
+    select: {
+      title: 'delmal.internTittel',
+      paragraf: 'delmal.paragraf',
+    },
+    prepare(selection) {
+      const { title, paragraf } = selection;
+      return {
+        title: title,
+        subtitle: `§ ${paragraf}`,
+      };
+    },
+  },
   fields: [
     defineField({
       title: 'delmal',
@@ -19,4 +32,4 @@ export const delmalRef = defineField({
       initialValue: false,
     }),
   ],
-})
+});
