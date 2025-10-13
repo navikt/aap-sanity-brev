@@ -1,11 +1,23 @@
-import {defineField} from 'sanity'
-import {kategori} from './kategori'
-import {tekst} from './tekst'
+import { defineField } from 'sanity';
+import { kategori } from './kategori';
+import { tekst } from './tekst';
 
 export const kategorisertTekstRef = defineField({
   name: 'kategorisertTekstRef',
   title: 'KategorisertTekstRef',
   type: 'object',
+  preview: {
+    select: {
+      title: 'tekst.beskrivelse',
+      kategori: 'kategori.visningsnavn',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title,
+        subtitle: selection.kategori,
+      };
+    },
+  },
   fields: [
     defineField({
       title: 'Tekst',
@@ -20,4 +32,4 @@ export const kategorisertTekstRef = defineField({
       to: [kategori],
     }),
   ],
-})
+});
