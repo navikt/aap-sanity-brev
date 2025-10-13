@@ -1,10 +1,20 @@
-import {defineField} from 'sanity'
-import {valg} from './valg'
+import { defineField } from 'sanity';
+import { valg } from './valg';
 
 export const valgRef = defineField({
   name: 'valgRef',
   title: 'ValgRef',
   type: 'object',
+  preview: {
+    select: {
+      title: 'valg.beskrivelse',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title,
+      };
+    },
+  },
   fields: [
     defineField({
       title: 'Valg',
@@ -19,4 +29,4 @@ export const valgRef = defineField({
       initialValue: false,
     }),
   ],
-})
+});
