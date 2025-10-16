@@ -14,7 +14,7 @@ export const delmalRef = defineField({
       const { title, paragraf } = selection;
       return {
         title: title,
-        subtitle: `§ ${paragraf}`,
+        subtitle: paragraf ? `§ ${paragraf}` : '',
       };
     },
   },

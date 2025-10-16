@@ -7,14 +7,14 @@ export const delmal = defineType({
   type: 'document',
   preview: {
     select: {
-      title: 'overskrift.0.value',
+      title: 'internTittel',
       paragraf: 'paragraf',
     },
     prepare(selection) {
       const { title, paragraf } = selection;
       return {
         title: title,
-        subtitle: `§ ${paragraf}`,
+        subtitle: paragraf ? `§ ${paragraf}` : '',
       };
     },
   },
