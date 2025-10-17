@@ -7,7 +7,7 @@ export const delmalRef = defineField({
   type: 'object',
   preview: {
     select: {
-      title: 'delmal.internTittel',
+      title: 'delmal.beskrivelse',
       paragraf: 'delmal.paragraf',
     },
     prepare(selection) {

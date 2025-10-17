@@ -11,6 +11,15 @@ export const mal = defineType({
       name: 'internTittel',
       description: 'Vises kun i Sanity',
       type: 'string',
+      deprecated: {
+        reason: 'Erstattes av "Beskrivelse"',
+      },
+    }),
+    defineField({
+      title: 'Beskrivelse',
+      name: 'beskrivelse',
+      description: 'Brukes i Sanity og brevbygger',
+      type: 'string',
     }),
     defineField({
       title: 'Overskrift',
