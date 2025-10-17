@@ -28,7 +28,7 @@ export const delmal = defineType({
     }),
     defineField({
       title: 'Beskrivelse',
-      name: 'Beskrivelse',
+      name: 'beskrivelse',
       description: 'Brukes i Sanity og brevbygger',
       type: 'string',
     }),
