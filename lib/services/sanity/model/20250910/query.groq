@@ -1,6 +1,7 @@
 *[_type=="mal"] {
   ...,
   _id,
+  beskrivelse,
   "overskrift": (overskrift[_key == $lang].value)[0],
   journalposttittel,
   kanSendesAutomatisk,
@@ -11,6 +12,7 @@
     delmal -> {
       ...,
       _id,
+      beskrivelse,
       "overskrift": (overskrift[_key == $lang].value)[0],
       "teksteditor": (teksteditor[_key == $lang].value)[0][] {
         ...,
