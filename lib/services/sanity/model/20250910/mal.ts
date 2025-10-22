@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 import { delmalRef } from './delmalRef';
 
 export const mal = defineType({
-  title: 'Mal',
+  title: 'Hovedmal',
   name: 'mal',
   type: 'document',
   fields: [
