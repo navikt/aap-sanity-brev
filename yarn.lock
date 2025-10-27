@@ -6237,13 +6237,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-table@npm:^2.11.7":
-  version: 2.11.7
-  resolution: "@tiptap/extension-table@npm:2.11.7"
+"@tiptap/extension-table@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "@tiptap/extension-table@npm:3.8.0"
   peerDependencies:
-    "@tiptap/core": ^2.7.0
-    "@tiptap/pm": ^2.7.0
-  checksum: 10c0/a81c2016afd113d0fa5fd9ced8291e6661db92899844ffc807d2f6aeb53fd2ba66923a0276bc58ef274671cbc07cb0b3f2227350c65aa12c732fbbb9afec279e
+    "@tiptap/core": ^3.8.0
+    "@tiptap/pm": ^3.8.0
+  checksum: 10c0/972a9e160cab61b00d09135bebd3906b8a50c61fce8b45e0bcc81de0908a8b2ee2aec66575e91d896fbf7eedf71af1e21ab751ec837ec1996d971d221d411c92
   languageName: node
   linkType: hard
 
@@ -7211,7 +7211,7 @@ __metadata:
     "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:^14.6.1"
     "@tiptap/core": "npm:^2.11.7"
-    "@tiptap/extension-table": "npm:^2.11.7"
+    "@tiptap/extension-table": "npm:^3.8.0"
     "@tiptap/extension-table-cell": "npm:^2.11.7"
     "@tiptap/extension-table-header": "npm:^2.11.7"
     "@tiptap/extension-table-row": "npm:^2.11.7"
