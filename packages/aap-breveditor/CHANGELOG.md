@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.9.1
+
+### Patch Changes
+
+- Bygg ny versjon med react 19.2.0
+
 ## 0.9.0
 
 ### Minor Changes

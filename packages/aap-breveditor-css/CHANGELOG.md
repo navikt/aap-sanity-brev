@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.4.1
+
+### Patch Changes
+
+- Bygg ny versjon med react 19.2.0
+
 ## 0.4.0
 
 ### Minor Changes
