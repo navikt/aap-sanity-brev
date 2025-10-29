@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.10.0
+
+### Minor Changes
+
+- Sletter BrevEditor og TipTap
+
 ## 0.9.1
 
 ### Patch Changes
