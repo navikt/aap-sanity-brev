@@ -1,3 +1,4 @@
 {
-    "generates": "packages/aap-sanity-schema-types/sanity-schema.d.ts"
+  "path": "./lib/services/sanity/model/",
+  "generates": "packages/aap-sanity-schema-types/sanity-schema.d.ts"
 }

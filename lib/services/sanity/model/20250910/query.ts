@@ -1,4 +1,6 @@
-*[_type=="mal"] {
+import { defineQuery } from 'next-sanity';
+
+const MalQuery = defineQuery(`*[_type=="mal"] {
   ...,
   _id,
   beskrivelse,
@@ -144,4 +146,4 @@
       }
     }
   }
-}[0]
+}[0]`);
