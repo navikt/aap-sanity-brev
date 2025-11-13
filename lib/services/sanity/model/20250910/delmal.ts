@@ -20,13 +20,6 @@ export const delmal = defineType({
   },
   fields: [
     defineField({
-      title: 'Intern tittel',
-      name: 'internTittel',
-      description: 'Vises kun i Sanity',
-      type: 'string',
-      deprecated: { reason: 'Feltet erstattes av "Beskrivelse"' },
-    }),
-    defineField({
       title: 'Beskrivelse',
       name: 'beskrivelse',
       description: 'Brukes i Sanity og brevbygger',
