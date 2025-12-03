@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.10.1
+
+### Patch Changes
+
+- security-patch
+
 ## 0.10.0
 
 ### Minor Changes
