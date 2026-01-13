@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { validerOversettelser } from 'lib/services/sanity/model/20250910/validering';
 
 export const tekst = defineType({
   title: 'Tekst',
@@ -15,21 +16,7 @@ export const tekst = defineType({
       title: 'Editor',
       name: 'teksteditor',
       type: 'internationalizedArrayBlockEditor',
-      validation: (rule) =>
-        rule.custom<{value?: any; _type: string; _key: string}[]>((oversettelser) => {
-          if (oversettelser.length === 0) {
-            return {
-              message: 'Må ha minst en oversettelse',
-            }
-          }
-
-          if (!oversettelser.every((oversettelse) => oversettelse.value)) {
-            return {
-              message: 'Alle valgte oversettelser må ha innhold',
-            }
-          }
-          return true
-        }),
+      validation: validerOversettelser,
     }),
   ],
 });

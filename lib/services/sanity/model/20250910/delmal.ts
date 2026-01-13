@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { paragrafOptions } from './paragrafOptions';
+import { validerOversettelser } from 'lib/services/sanity/model/20250910/validering';
 
 export const delmal = defineType({
   title: 'Delmal',
@@ -43,6 +44,7 @@ export const delmal = defineType({
       title: 'Editor',
       name: 'teksteditor',
       type: 'internationalizedArrayTeksteditor',
+      validation: validerOversettelser,
     }),
   ],
 });
