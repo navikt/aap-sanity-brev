@@ -4,7 +4,7 @@ import { ParagraphIcon } from '@navikt/aksel-icons';
 
 const today = new Date();
 // Dagens dato vil alltid vi siste versjon av api
-const apiVersion = `${today.getFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+const apiVersion = today.toISOString().slice(0, 10);
 
 const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilder[] => {
   return paragrafOptions.map((opt) =>
