@@ -1,18 +1,15 @@
-FROM node:24-alpine
+# Bruker Chainguard secure base image, https://sikkerhet.nav.no/docs/sikker-utvikling/baseimages
 
-ENV NODE_ENV production
-
-RUN addgroup --system --gid 1069 nodejs
-RUN adduser --system --uid 1069 nextjs
+FROM europe-north1-docker.pkg.dev/cgr-nav/pull-through/nav.no/node:24-slim
 
 WORKDIR /app
-COPY --chown=nextjs:nodejs .next/standalone ./
-COPY --chown=nextjs:nodejs .next/static ./.next/static
+COPY .next/standalone ./
+COPY .next/static ./.next/static
 
-USER nextjs
+ENV NODE_ENV=production
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 
-CMD ["node", "server.js"]
+CMD ["server.js"]
