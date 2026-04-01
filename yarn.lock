@@ -4115,7 +4115,7 @@ __metadata:
   resolution: "@navikt/aap-breveditor@workspace:packages/aap-breveditor"
   dependencies:
     "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
-    "@navikt/aksel-icons": "npm:^7.9.1"
+    "@navikt/aksel-icons": "npm:^8.9.0"
     "@navikt/ds-css": "npm:^7.25.1"
     "@navikt/ds-react": "npm:^7.9.1"
     "@testing-library/dom": "npm:^10.4.1"
@@ -4161,6 +4161,13 @@ __metadata:
   version: 7.9.1
   resolution: "@navikt/aksel-icons@npm:7.9.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.9.1%2F10d623cfc6f0786e7ae238ddf73491be74afe282"
   checksum: 10c0/75c3ab6ab8d7bff0f262fd9e8146d66eb93c5ed82124918343ee8e1887d262330391f5729ef068ed126d3a536a61153132d78fdaf38279cc54b499195eeb170e
+  languageName: node
+  linkType: hard
+
+"@navikt/aksel-icons@npm:^8.9.0":
+  version: 8.9.0
+  resolution: "@navikt/aksel-icons@npm:8.9.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F8.9.0%2F6aa76719a9783fd0de5c01291adc8b920d2cf065"
+  checksum: 10c0/0a0b7776fd09e554e5232d9f321878286781baf221cbad75412f874884c4a8de314ef2b48ee3cc3ed40cf9692f80419564ba0558f8458b0847089c5736176bf8
   languageName: node
   linkType: hard
 
@@ -7262,7 +7269,7 @@ __metadata:
     "@changesets/cli": "npm:^2.29.5"
     "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
     "@navikt/aap-felles-prettier": "npm:^5.6.0"
-    "@navikt/aksel-icons": "npm:^7.9.1"
+    "@navikt/aksel-icons": "npm:^8.9.0"
     "@navikt/ds-css": "npm:^7.25.1"
     "@navikt/ds-react": "npm:^7.9.1"
     "@portabletext/editor": "npm:^1.20.0"

@@ -25,7 +25,7 @@
         "test": "vitest --run"
     },
     "dependencies": {
-        "@navikt/aksel-icons": "^7.9.1",
+        "@navikt/aksel-icons": "^8.9.0",
         "@navikt/ds-css": "^7.25.1",
         "@navikt/ds-react": "^7.9.1",
         "@tiptap/core": "^2.11.7",
