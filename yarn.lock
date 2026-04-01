@@ -4141,13 +4141,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^5.1.3":
-  version: 5.3.0
-  resolution: "@navikt/aap-felles-prettier@npm:5.3.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.3.0%2F0a2046128bd400c4c3df674dd1a7b38b16ea99a9"
+"@navikt/aap-felles-prettier@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "@navikt/aap-felles-prettier@npm:5.6.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.6.0%2F574d397d68ef3ffd5a49835be5279ba5f5262393"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
     prettier: "npm:^3.3.3"
-  checksum: 10c0/8ddc037c82a3d0dbb633dbedce1f34b9eb06d770c26f4d77f65a2994ed8a7a3c32cd6e6215418032b8f8774f04ff35243b4112dd2258cfabe7d00fb4e3a54d7b
+  checksum: 10c0/d47d82459370d073465a965b1d03ac7db6a87f5feeed1a57c191fefdf86f92c94070033f53e7576f896aafae65c44a02a0c513a676db886c6decafdb21332ad9
   languageName: node
   linkType: hard
 
@@ -7261,7 +7261,7 @@ __metadata:
   dependencies:
     "@changesets/cli": "npm:^2.29.5"
     "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
-    "@navikt/aap-felles-prettier": "npm:^5.1.3"
+    "@navikt/aap-felles-prettier": "npm:^5.6.0"
     "@navikt/aksel-icons": "npm:^7.9.1"
     "@navikt/ds-css": "npm:^7.25.1"
     "@navikt/ds-react": "npm:^7.9.1"
@@ -10954,20 +10954,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data@npm:^4.0.0":
-  version: 4.0.4
-  resolution: "form-data@npm:4.0.4"
-  dependencies:
-    asynckit: "npm:^0.4.0"
-    combined-stream: "npm:^1.0.8"
-    es-set-tostringtag: "npm:^2.1.0"
-    hasown: "npm:^2.0.2"
-    mime-types: "npm:^2.1.12"
-  checksum: 10c0/373525a9a034b9d57073e55eab79e501a714ffac02e7a9b01be1c820780652b16e4101819785e1e18f8d98f0aee866cc654d660a435c378e16a72f2e7cac9695
-  languageName: node
-  linkType: hard
-
-"form-data@npm:^4.0.4":
+"form-data@npm:^4.0.0, form-data@npm:^4.0.4":
   version: 4.0.4
   resolution: "form-data@npm:4.0.4"
   dependencies:
