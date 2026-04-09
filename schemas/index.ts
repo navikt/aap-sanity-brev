@@ -8,7 +8,6 @@ import { tekst } from 'lib/services/sanity/model/20250910/tekst';
 import { valg } from 'lib/services/sanity/model/20250910/valg';
 import { mal } from 'lib/services/sanity/model/20250910/mal';
 import { delmal } from 'lib/services/sanity/model/20250910/delmal';
-import { periodetekst } from 'lib/services/sanity/model/20250910/periodetekst';
 import { kategori } from 'lib/services/sanity/model/20250910/kategori';
 
 export const schemaTypes = [
@@ -25,6 +24,5 @@ export const schemaTypes = [
   valg,
   mal,
   delmal,
-  periodetekst,
   kategori,
 ];

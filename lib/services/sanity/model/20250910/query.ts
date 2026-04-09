@@ -86,29 +86,6 @@ const MalQuery = defineQuery(`*[_type=="mal"] {
               }
           }
         },
-        _type == 'periodetekstRef' => {
-          periodetekst -> {
-            ...,
-            _key,
-            "teksteditor": (teksteditor[_key == $lang].value)[0][] {
-              ...,
-              children[] {
-                ...,
-                _type != 'faktagrunnlag' => {
-                  ...
-                },
-                _type == 'faktagrunnlag' => @-> {
-                  ...,
-                  _key,
-                  _id,
-                  datatype,
-                  tekniskNavn,
-                  visningsnavn
-                }
-              }
-            }
-          }
-        },
         _type == 'betingetTekstRef' => {
           ...,
           tekst -> {
