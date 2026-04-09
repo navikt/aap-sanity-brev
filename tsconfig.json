@@ -23,6 +23,7 @@
       "lib/*": ["./lib/*"],
       "components/*": ["./components/*"],
       "packages/*": ["./packages/*"],
+      "public/*": ["./public/*"],
       "test-utils": ["./test-utils"],
       "sanity.config": ["./sanity.config"]
     }
