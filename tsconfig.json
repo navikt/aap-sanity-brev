@@ -23,7 +23,8 @@
       "lib/*": ["./lib/*"],
       "components/*": ["./components/*"],
       "packages/*": ["./packages/*"],
-      "test-utils": ["./test-utils"]
+      "test-utils": ["./test-utils"],
+      "sanity.config": ["./sanity.config"]
     }
   },
   "include": [
