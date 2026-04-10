@@ -34,12 +34,12 @@ export const studioStructure = () =>
         .list()
         .title('Innhold')
         .items([
-          s.divider().title('Delmaler pr paragraf'),
+          s.divider(),
           ...byggParagrafBlokker(s),
-          s.divider().title('Andre tekster'),
+          s.divider(),
           // @ts-ignore (TODO fix denne)
           ...s.documentTypeListItems().filter((item) => !gammelBrevmodell.includes(item.getId())),
-          s.divider().title('Gammel modell'),
+          s.divider(),
           // @ts-ignore (TODO fix denne)
           ...s.documentTypeListItems().filter((item) => gammelBrevmodell.includes(item.getId())),
         ]),
