@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.11.0
+
+### Minor Changes
+
+- Fjerner tiptap
+
 ## 0.10.1
 
 ### Patch Changes
