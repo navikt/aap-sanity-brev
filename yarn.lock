@@ -4340,6 +4340,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/aap-breveditor-css@workspace:packages/aap-breveditor-css"
   dependencies:
+    "@navikt/aksel": "npm:^8.9.1"
     postcss: "npm:^8.5.9"
     postcss-cli: "npm:^11.0.1"
     postcss-combine-duplicated-selectors: "npm:^10.0.3"
