@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor-css
 
+## 0.6.0
+
+### Minor Changes
+
+- Oppgraderer til aksel versjon 8
+
 ## 0.5.0
 
 ### Minor Changes

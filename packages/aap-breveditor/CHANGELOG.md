@@ -1,5 +1,11 @@
 # @navikt/aap-breveditor
 
+## 0.13.0
+
+### Minor Changes
+
+- Oppgraderer til aksel versjon 8
+
 ## 0.12.0
 
 ### Minor Changes
