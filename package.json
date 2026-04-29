@@ -64,7 +64,8 @@
   },
   "resolutions": {
     "prosemirror-model": "1.24.1",
-    "vite": "7.0.4"
+    "vite": "7.0.4",
+    "@codemirror/state": "6.5.2"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
