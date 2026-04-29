@@ -9,11 +9,14 @@ export const tabell = defineType({
       title: 'Visningsnavn',
       name: 'visningsnavn',
       type: 'string',
+      description: 'Vises kun i Sanity.',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'Teknisk navn',
       name: 'tekniskNavn',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'Kolonner',
@@ -28,16 +31,19 @@ export const tabell = defineType({
             defineField({
               title: 'Overskrift',
               name: 'overskrift',
-              type: 'string',
+              type: 'internationalizedArrayString',
+              validation: (Rule) => Rule.required(),
             }),
             defineField({
               title: 'Teknisk navn',
               name: 'tekniskNavn',
               type: 'string',
+              validation: (Rule) => Rule.required(),
             }),
           ],
         }),
       ],
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });
