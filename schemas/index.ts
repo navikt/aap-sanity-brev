@@ -9,6 +9,7 @@ import { valg } from 'lib/services/sanity/model/20250910/valg';
 import { mal } from 'lib/services/sanity/model/20250910/mal';
 import { delmal } from 'lib/services/sanity/model/20250910/delmal';
 import { kategori } from 'lib/services/sanity/model/20250910/kategori';
+import { tabell } from 'lib/services/sanity/model/20250910/tabell';
 
 export const schemaTypes = [
   // Gammel struktur:
@@ -25,4 +26,5 @@ export const schemaTypes = [
   mal,
   delmal,
   kategori,
+  tabell,
 ];
