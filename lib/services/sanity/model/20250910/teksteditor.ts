@@ -3,6 +3,7 @@ import { valgRef } from './valgRef';
 import { betingetTekstRef } from './betingetTekstRef';
 import { fritekst } from './fritekst';
 import { Faktagrunnlag } from 'lib/services/sanity/model/faktagrunnlag/faktagrunnlagSchema';
+import { tabell } from './tabell';
 
 export const teksteditor = defineField({
   name: 'teksteditor',
@@ -11,6 +12,12 @@ export const teksteditor = defineField({
     valgRef,
     betingetTekstRef,
     fritekst,
+    {
+      type: 'reference',
+      title: 'Tabell',
+      name: 'tabell',
+      to: [tabell],
+    },
     {
       type: 'block',
       of: [
@@ -23,4 +30,4 @@ export const teksteditor = defineField({
       ],
     },
   ],
-})
+});
