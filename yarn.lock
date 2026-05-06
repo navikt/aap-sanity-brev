@@ -6793,13 +6793,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@types/uuid@npm:10.0.0"
-  checksum: 10c0/9a1404bf287164481cb9b97f6bb638f78f955be57c40c6513b7655160beb29df6f84c915aaf4089a1559c216557dc4d2f79b48d978742d3ae10b937420ddac60
-  languageName: node
-  linkType: hard
-
 "@types/uuid@npm:^8.0.0":
   version: 8.3.4
   resolution: "@types/uuid@npm:8.3.4"
@@ -7292,7 +7285,6 @@ __metadata:
     "@testing-library/user-event": "npm:^14.6.1"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:^19.2.3"
-    "@types/uuid": "npm:^10.0.0"
     "@vitejs/plugin-react": "npm:^4.7.0"
     changeset: "npm:^0.2.6"
     date-fns: "npm:^4.1.0"
@@ -7311,7 +7303,6 @@ __metadata:
     sanity: "npm:^4.22.0"
     styled-components: "npm:^6.1.19"
     typescript: "npm:^5.9.3"
-    uuid: "npm:^14.0.0"
     vite-tsconfig-paths: "npm:^4.3.2"
     vitest: "npm:^4.1.4"
   languageName: unknown
@@ -18791,16 +18782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.0.4":
-  version: 11.0.4
-  resolution: "uuid@npm:11.0.4"
-  bin:
-    uuid: dist/esm/bin/uuid
-  checksum: 10c0/3c13591c4dedaa3741f925e284df5974e3d6e0b1cb0f6f75f98c36f9c01d2a414350364fd067613ef600a21c6973dab0506530d4f499ff878f32a06f84569ead
-  languageName: node
-  linkType: hard
-
-"uuid@npm:^11.1.0":
+"uuid@npm:^11.0.4, uuid@npm:^11.1.0":
   version: 11.1.0
   resolution: "uuid@npm:11.1.0"
   bin:
