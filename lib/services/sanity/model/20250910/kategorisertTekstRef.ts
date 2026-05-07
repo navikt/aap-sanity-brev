@@ -24,6 +24,7 @@ export const kategorisertTekstRef = defineField({
       name: 'tekst',
       type: 'reference',
       to: [tekst],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'Kategori',
