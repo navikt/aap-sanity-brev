@@ -30,7 +30,7 @@
         "@navikt/ds-react": "^8.13.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "uuid": "^14.0.0"
+        "uuid": "^14.0.1"
     },
     "devDependencies": {
         "@navikt/aap-brev-typescript-types": "^0.0.219",
