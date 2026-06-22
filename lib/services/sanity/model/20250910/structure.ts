@@ -34,9 +34,9 @@ export const studioStructure = () =>
         .list()
         .title('Innhold')
         .items([
-          s.divider().title('Delmaler pr paragraf'),
-          ...byggParagrafBlokker(s),
-          s.divider().title('Andre tekster'),
+          // s.divider().title('Delmaler pr paragraf'),
+          // ...byggParagrafBlokker(s),
+          // s.divider().title('Andre tekster'),
           // @ts-ignore (TODO fix denne)
           ...s.documentTypeListItems().filter((item) => !gammelBrevmodell.includes(item.getId())),
           s.divider().title('Gammel modell'),
