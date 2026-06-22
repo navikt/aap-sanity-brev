@@ -7115,7 +7115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^5.1.1":
+"@vitejs/plugin-react@npm:^5.1.1, @vitejs/plugin-react@npm:^5.2.0":
   version: 5.2.0
   resolution: "@vitejs/plugin-react@npm:5.2.0"
   dependencies:
@@ -7285,7 +7285,7 @@ __metadata:
     "@types/react": "npm:19.2.17"
     "@types/react-dom": "npm:^19.2.3"
     "@types/uuid": "npm:^11.0.0"
-    "@vitejs/plugin-react": "npm:^6.0.2"
+    "@vitejs/plugin-react": "npm:^5.2.0"
     changeset: "npm:^0.2.6"
     date-fns: "npm:^4.1.0"
     eslint: "npm:^9.39.4"
