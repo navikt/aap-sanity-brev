@@ -7908,7 +7908,7 @@ __metadata:
     react: "npm:^19.2.7"
     react-dom: "npm:^19.2.7"
     react-is: "npm:^19.2.7"
-    rxjs: "npm:^7.8.1"
+    rxjs: "npm:^7.8.2"
     sanity: "npm:5.31.1"
     styled-components: "npm:^6.1.19"
     typescript: "npm:^5.9.3"
