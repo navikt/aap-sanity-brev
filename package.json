@@ -59,7 +59,7 @@
     "openapi-typescript": "^7.13.0",
     "prettier": "^3.8.4",
     "typescript": "^5.9.3",
-    "vite-tsconfig-paths": "^4.3.2",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.9"
   },
   "resolutions": {
