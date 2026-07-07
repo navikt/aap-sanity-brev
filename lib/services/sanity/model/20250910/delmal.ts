@@ -13,7 +13,7 @@ export const delmal = defineType({
     prepare(selection) {
       const { title } = selection;
       return {
-        title: title,
+        title,
       };
     },
   },
