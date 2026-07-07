@@ -7872,7 +7872,7 @@ __metadata:
     "@changesets/cli": "npm:^2.31.0"
     "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
     "@navikt/aap-felles-prettier": "npm:^5.6.2"
-    "@navikt/aksel-icons": "npm:^8.13.0"
+    "@navikt/aksel-icons": "npm:^8.14.0"
     "@navikt/ds-css": "npm:^8.13.0"
     "@navikt/ds-react": "npm:^8.14.0"
     "@portabletext/editor": "npm:^1.20.0"
