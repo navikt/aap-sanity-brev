@@ -1,27 +1,62 @@
 import { ListItemBuilder, StructureBuilder, structureTool } from 'sanity/structure';
-import { paragrafOptions } from './paragrafOptions';
-import { ParagraphIcon } from '@navikt/aksel-icons';
 
 const today = new Date();
 // Dagens dato vil alltid vi siste versjon av api
 const apiVersion = today.toISOString().slice(0, 10);
 
-const byggParagrafBlokker = (structureBuilder: StructureBuilder): ListItemBuilder[] => {
-  return paragrafOptions.map((opt) =>
+type DistribusjonstypeTelling = {
+  automatiske: number;
+  besluttes: number;
+  mangler: number;
+};
+
+const grupperMaler = (
+  structureBuilder: StructureBuilder,
+  distribusjonstypeTelling: DistribusjonstypeTelling
+): ListItemBuilder[] => {
+  const malMenyvalg = structureBuilder.documentTypeList('mal').getMenuItems();
+  const automatiskTittel = `Sendes automatisk (${distribusjonstypeTelling.automatiske})`;
+  const besluttesTittel = `Må besluttes (${distribusjonstypeTelling.besluttes})`;
+  const manglerTittel = `MANGLER (${distribusjonstypeTelling.mangler})`;
+
+  return [
     structureBuilder
       .listItem()
-      .icon(ParagraphIcon)
-      .title(opt.title)
-      .id(opt.value)
+      .title(automatiskTittel)
+      .id('mal-automatiske')
       .child(
         structureBuilder
           .documentList()
           .apiVersion(apiVersion)
-          .title(opt.title)
-          .filter(`_type == 'delmal' && paragraf == "${opt.value}"`)
-          .menuItems(structureBuilder.documentTypeList('delmal').getMenuItems())
-      )
-  );
+          .title(automatiskTittel)
+          .filter(`_type == 'mal' && kanSendesAutomatisk == true`)
+          .menuItems(malMenyvalg)
+      ),
+    structureBuilder
+      .listItem()
+      .title(besluttesTittel)
+      .id('mal-besluttes')
+      .child(
+        structureBuilder
+          .documentList()
+          .apiVersion(apiVersion)
+          .title(besluttesTittel)
+          .filter(`_type == 'mal' && kanSendesAutomatisk == false`)
+          .menuItems(malMenyvalg)
+      ),
+    structureBuilder
+      .listItem()
+      .title(manglerTittel)
+      .id('mal-mangler')
+      .child(
+        structureBuilder
+          .documentList()
+          .apiVersion(apiVersion)
+          .title(manglerTittel)
+          .filter(`_type == 'mal' && !defined(kanSendesAutomatisk)`)
+          .menuItems(malMenyvalg)
+      ),
+  ];
 };
 
 // Faktagrunnlag gjenbrukes
@@ -29,18 +64,30 @@ const gammelBrevmodell = ['brevtype', 'content', 'innhold', 'localestring', 'tek
 
 export const studioStructure = () =>
   structureTool({
-    structure: (s) =>
-      s
+    structure: async (s, context) => {
+      const client = context.getClient({ apiVersion });
+      const distribusjonstypeTelling = await client.fetch<DistribusjonstypeTelling>(
+        `{
+          "automatiske": count(*[_type == "mal" && kanSendesAutomatisk == true]),
+          "besluttes": count(*[_type == "mal" && kanSendesAutomatisk == false]),
+          "mangler": count(*[_type == "mal" && !defined(kanSendesAutomatisk)])
+        }`
+      );
+
+      return s
         .list()
         .title('Innhold')
         .items([
-          // s.divider().title('Delmaler pr paragraf'),
-          // ...byggParagrafBlokker(s),
-          // s.divider().title('Andre tekster'),
-          // @ts-ignore (TODO fix denne)
-          ...s.documentTypeListItems().filter((item) => !gammelBrevmodell.includes(item.getId())),
+          s.divider().title('Hovedmaler'),
+          ...grupperMaler(s, distribusjonstypeTelling),
+          s.divider().title('Brevbyggerinnhold'),
+          ...s
+            .documentTypeListItems()
+            // @ts-expect-error
+            .filter((item) => !gammelBrevmodell.includes(item.getId()) && item.getId() !== 'mal'),
           s.divider().title('Gammel modell'),
-          // @ts-ignore (TODO fix denne)
+          // @ts-expect-error
           ...s.documentTypeListItems().filter((item) => gammelBrevmodell.includes(item.getId())),
-        ]),
+        ]);
+    },
   });
