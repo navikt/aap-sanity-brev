@@ -8,13 +8,11 @@ export const delmalRef = defineField({
   preview: {
     select: {
       title: 'delmal.beskrivelse',
-      paragraf: 'delmal.paragraf',
     },
     prepare(selection) {
-      const { title, paragraf } = selection;
+      const { title } = selection;
       return {
         title: title,
-        subtitle: paragraf ? `§ ${paragraf}` : '',
       };
     },
   },
