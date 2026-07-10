@@ -32,5 +32,11 @@ export const kategorisertTekstRef = defineField({
       type: 'reference',
       to: [kategori],
     }),
+    defineField({
+      title: 'Er standard valg',
+      name: 'erDefault',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
 });
