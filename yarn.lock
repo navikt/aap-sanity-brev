@@ -4525,10 +4525,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-brev-typescript-types@npm:^0.0.219":
-  version: 0.0.219
-  resolution: "@navikt/aap-brev-typescript-types@npm:0.0.219::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-brev-typescript-types%2F0.0.219%2Fca5592a3ee9cdf54db1622adb966c2ea6f07442b"
-  checksum: 10c0/9ee9d02bf9c922c6260f000505edc73e1da662051887f412975ae7f224dc202ea3f013e0fec38257a44d2cd537a6373bae9f75107208c10879c9d6b4438d1202
+"@navikt/aap-brev-typescript-types@npm:^0.0.567":
+  version: 0.0.567
+  resolution: "@navikt/aap-brev-typescript-types@npm:0.0.567::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-brev-typescript-types%2F0.0.567%2Fe8dabc48da1cbe9ec552631f550dc145d054a870"
+  checksum: 10c0/a7680739f45ae3e4dc09de13350060c3f3716065bb5814798a193ff6b36c66cec47e184dc2f679a1f5e2c7fc827ca785862a0fc24c807abd2046cd3c7a3adcfc
   languageName: node
   linkType: hard
 
@@ -4547,7 +4547,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/aap-breveditor@workspace:packages/aap-breveditor"
   dependencies:
-    "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
+    "@navikt/aap-brev-typescript-types": "npm:^0.0.567"
     "@navikt/aksel-icons": "npm:^8.13.0"
     "@navikt/ds-css": "npm:^8.13.0"
     "@navikt/ds-react": "npm:^8.14.0"
@@ -7808,7 +7808,7 @@ __metadata:
   resolution: "aap-kelvin-brev@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.31.0"
-    "@navikt/aap-brev-typescript-types": "npm:^0.0.219"
+    "@navikt/aap-brev-typescript-types": "npm:^0.0.567"
     "@navikt/aap-felles-prettier": "npm:^5.6.3"
     "@navikt/aksel-icons": "npm:^8.13.0"
     "@navikt/ds-css": "npm:^8.13.0"
