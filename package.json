@@ -60,7 +60,7 @@
     "prettier": "^3.8.4",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "resolutions": {
     "prosemirror-model": "1.24.1",
