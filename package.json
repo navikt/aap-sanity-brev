@@ -20,7 +20,7 @@
   ],
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
-    "@changesets/cli": "^2.31.0",
+    "@changesets/cli": "^2.31.1",
     "@navikt/aksel-icons": "^8.13.0",
     "@navikt/ds-css": "^8.13.0",
     "@navikt/ds-react": "^8.14.0",
