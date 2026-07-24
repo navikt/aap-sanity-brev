@@ -4569,13 +4569,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^5.6.3":
-  version: 5.6.3
-  resolution: "@navikt/aap-felles-prettier@npm:5.6.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.6.3%2Fd3e4b673c657391a0ce7bd0ede0140dd046fac20"
+"@navikt/aap-felles-prettier@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "@navikt/aap-felles-prettier@npm:5.7.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.7.0%2F9321804e72fee1a7bd6af58784e8ef109afc642f"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
     prettier: "npm:^3.3.3"
-  checksum: 10c0/844cf2d75d1ebb5e14a4c36b6531a8140fe7d7df7ae175fbb1b497daaf570a13ab694a02deecdf240fd6e4448443b93853085455c31fa9c71c5f4c018547ece9
+  checksum: 10c0/e1988675d57e80b9a89fc90fea5e545dbd275e598be309b41db776a43ffc954d88089bdd796497ca4458963cd9a0901049748c5e00739084f0b20824ee7dde76
   languageName: node
   linkType: hard
 
@@ -7809,7 +7809,7 @@ __metadata:
   dependencies:
     "@changesets/cli": "npm:^2.31.1"
     "@navikt/aap-brev-typescript-types": "npm:^0.0.567"
-    "@navikt/aap-felles-prettier": "npm:^5.6.3"
+    "@navikt/aap-felles-prettier": "npm:^5.7.0"
     "@navikt/aksel-icons": "npm:^8.13.0"
     "@navikt/ds-css": "npm:^8.13.0"
     "@navikt/ds-react": "npm:^8.14.0"
@@ -15626,11 +15626,11 @@ __metadata:
   linkType: hard
 
 "prettier@npm:^3.3.3":
-  version: 3.9.5
-  resolution: "prettier@npm:3.9.5"
+  version: 3.9.6
+  resolution: "prettier@npm:3.9.6"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/0349dd9e6d8010965de6f69e6b6ee2484b8caf78c66675afced6c75ad60ff24c3a2a4f41153fb8adeaee4d8f539641b48cebc71d283cec4d146e9962126c5ceb
+  checksum: 10c0/9f7ddae234035868f3daab3dc34e6de7e54622185afb017378029f0c09a9c023248ccf6f34def0b17a0538e18c47aa1b3188bab72965d1bf735919baa0747e99
   languageName: node
   linkType: hard
 
