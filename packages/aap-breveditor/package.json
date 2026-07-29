@@ -33,7 +33,7 @@
         "uuid": "^14.0.1"
     },
     "devDependencies": {
-        "@navikt/aap-brev-typescript-types": "^0.0.572",
+        "@navikt/aap-brev-typescript-types": "^0.0.573",
         "@testing-library/dom": "^10.4.1",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
