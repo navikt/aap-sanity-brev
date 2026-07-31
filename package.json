@@ -30,7 +30,7 @@
     "@sanity/vision": "5.31.1",
     "changeset": "^0.2.6",
     "date-fns": "^4.4.0",
-    "next": "16.2.9",
+    "next": "16.2.11",
     "next-sanity": "^11.6.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
