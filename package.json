@@ -21,9 +21,9 @@
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
     "@changesets/cli": "^2.31.1",
-    "@navikt/aksel-icons": "^8.15.0",
-    "@navikt/ds-css": "^8.15.0",
-    "@navikt/ds-react": "^8.15.0",
+    "@navikt/aksel-icons": "^8.16.1",
+    "@navikt/ds-css": "^8.16.1",
+    "@navikt/ds-react": "^8.16.1",
     "@portabletext/editor": "^1.20.0",
     "@sanity/cli": "5.14.1",
     "@sanity/document-internationalization": "5.0.0",
