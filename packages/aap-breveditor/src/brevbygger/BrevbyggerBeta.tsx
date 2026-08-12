@@ -82,7 +82,7 @@ export const BrevbyggerBeta = ({
           <Detail>Navn: {mottaker.navn}</Detail>
           <Detail>Fødselsnummer: {mottaker.ident}</Detail>
           <Detail>Dato: {formaterDatoForFrontend(new Date())}</Detail>
-          {saksnummer && <Detail>Saksnnummer: {saksnummer}</Detail>}
+          {saksnummer && <Detail>Saksnummer: {saksnummer}</Detail>}
         </div>
         <Brevtittel
           brevtittel={mappetBrevmal.overskrift ?? ''}
