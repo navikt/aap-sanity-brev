@@ -9,13 +9,11 @@ export const delmal = defineType({
   preview: {
     select: {
       title: 'beskrivelse',
-      paragraf: 'paragraf',
     },
     prepare(selection) {
-      const { title, paragraf } = selection;
+      const { title } = selection;
       return {
-        title: title,
-        subtitle: paragraf ? `§ ${paragraf}` : '',
+        title,
       };
     },
   },

@@ -1,5 +1,6 @@
 import { defineField } from 'sanity';
 import { delmal } from './delmal';
+import { DelmalRefPreview } from 'lib/services/sanity/model/20250910/components/DelmalRefPreview';
 
 export const delmalRef = defineField({
   name: 'delmalRef',
@@ -8,15 +9,12 @@ export const delmalRef = defineField({
   preview: {
     select: {
       title: 'delmal.beskrivelse',
-      paragraf: 'delmal.paragraf',
+      content: 'delmal.teksteditor',
     },
-    prepare(selection) {
-      const { title, paragraf } = selection;
-      return {
-        title: title,
-        subtitle: paragraf ? `§ ${paragraf}` : '',
-      };
-    },
+  },
+  components: {
+    // @ts-expect-error
+    preview: DelmalRefPreview,
   },
   fields: [
     defineField({
