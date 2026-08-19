@@ -1,6 +1,7 @@
-import { defineField, defineType } from 'sanity';
-import { paragrafOptions } from './paragrafOptions';
 import { validerOversettelser } from 'lib/services/sanity/model/20250910/validering';
+import { defineField, defineType } from 'sanity';
+
+import { paragrafOptions } from './paragrafOptions';
 
 export const delmal = defineType({
   title: 'Delmal',
@@ -21,7 +22,13 @@ export const delmal = defineType({
     defineField({
       title: 'Beskrivelse',
       name: 'beskrivelse',
-      description: 'Brukes i Sanity og brevbygger',
+      description: 'Brukes i Sanity',
+      type: 'string',
+    }),
+    defineField({
+      title: 'Brevbyggertittel',
+      name: 'brevbyggerTittel',
+      description: 'Brukes i brevbygger',
       type: 'string',
     }),
     defineField({
