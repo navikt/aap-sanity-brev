@@ -1,10 +1,11 @@
 import { defineField, defineType } from 'sanity';
-import { kategorisertTekstRef } from './kategorisertTekstRef';
+
 import { fritekst } from './fritekst';
+import { kategorisertTekstRef } from './kategorisertTekstRef';
 
 export const valg = defineType({
   name: 'valg',
-  title: 'Valg',
+  title: 'Undervalg',
   type: 'document',
   fields: [
     defineField({

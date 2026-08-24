@@ -1,10 +1,11 @@
 import { defineField } from 'sanity';
-import { tekst } from './tekst';
+
 import { kategori } from './kategori';
+import { tekst } from './tekst';
 
 export const betingetTekstRef = defineField({
   name: 'betingetTekstRef',
-  title: 'BetingetTekstRef',
+  title: 'Betinget tekst',
   type: 'object',
   preview: {
     select: {
