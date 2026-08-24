@@ -1,9 +1,10 @@
 import { defineField } from 'sanity';
+
 import { valg } from './valg';
 
 export const valgRef = defineField({
   name: 'valgRef',
-  title: 'ValgRef',
+  title: 'Valg',
   type: 'object',
   preview: {
     select: {
