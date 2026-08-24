@@ -39,7 +39,7 @@
     "rxjs": "^7.8.2",
     "sanity": "5.31.1",
     "sanity-plugin-internationalized-array": "4.0.8",
-    "styled-components": "^6.5.2",
+    "styled-components": "^6.5.3",
     "uuid": "^14.0.1"
   },
   "devDependencies": {
