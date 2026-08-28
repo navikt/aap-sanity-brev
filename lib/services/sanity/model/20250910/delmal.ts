@@ -41,6 +41,7 @@ export const delmal = defineType({
       name: 'paragraf',
       title: 'Paragraf',
       type: 'string',
+      deprecated: { reason: 'Ikke i bruk' },
       options: {
         list: paragrafOptions,
       },
