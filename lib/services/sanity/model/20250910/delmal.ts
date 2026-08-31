@@ -1,8 +1,6 @@
 import { validerOversettelser } from 'lib/services/sanity/model/20250910/validering';
 import { defineField, defineType } from 'sanity';
 
-import { paragrafOptions } from './paragrafOptions';
-
 export const delmal = defineType({
   title: 'Delmal',
   name: 'delmal',
@@ -36,15 +34,6 @@ export const delmal = defineType({
       name: 'overskrift',
       description: 'Vises i brevet',
       type: 'internationalizedArrayString',
-    }),
-    defineField({
-      name: 'paragraf',
-      title: 'Paragraf',
-      type: 'string',
-      deprecated: { reason: 'Ikke i bruk' },
-      options: {
-        list: paragrafOptions,
-      },
     }),
     defineField({
       title: 'Editor',
