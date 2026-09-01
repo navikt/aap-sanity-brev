@@ -43,7 +43,7 @@
     "uuid": "^14.0.2"
   },
   "devDependencies": {
-    "@navikt/aap-brev-typescript-types": "^0.0.606",
+    "@navikt/aap-brev-typescript-types": "^0.0.608",
     "@navikt/aap-felles-prettier": "^5.10.0",
     "@sanity/eslint-config-studio": "^6.0.0",
     "@testing-library/dom": "^10.4.1",
