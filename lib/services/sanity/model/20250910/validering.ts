@@ -1,4 +1,4 @@
-import { Rule } from '@sanity/types';
+import { Rule } from 'sanity';
 
 export const validerOversettelser = (rule: Rule): Rule =>
   rule.custom<{ value?: any; _type: string; _key: string }[] | undefined>((oversettelser) => {
