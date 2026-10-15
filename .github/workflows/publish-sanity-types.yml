@@ -46,7 +46,7 @@ jobs:
           AUTH_TOKEN: '${{secrets.GITHUB_TOKEN}}'
       - name: Create release Pull Request or publish to NPM
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: yarn changeset version
           publish: yarn changeset publish
