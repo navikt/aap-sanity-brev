@@ -1,96 +1,113 @@
- 
- classDiagram
-     direction TB
- 
-     class mal["mal · Hovedmal"] {
-         <<document>>
-         +string beskrivelse
-         +i18n overskrift
-         +string journalposttittel
-         +boolean kanSendesAutomatisk
-     }
- 
-     class delmalRef["delmalRef"] {
-         <<object>>
-         +ref delmal
-         +boolean obligatorisk
-     }
- 
-     class delmal["delmal · Delmal"] {
-         <<document>>
-         +string beskrivelse
-         +i18n overskrift
-         +string paragraf
-     }
- 
-     class teksteditor["teksteditor"] {
-         <<i18n array field>>
-         valgRef
-         betingetTekstRef
-         fritekst
-         block~faktagrunnlag~
-     }
- 
-     class valgRef["valgRef"] {
-         <<object>>
-         +ref valg
-         +boolean obligatorisk
-     }
- 
-     class valg["valg · Valg"] {
-         <<document>>
-         +string beskrivelse
-         +string language
-     }
- 
-     class kategorisertTekstRef["kategorisertTekstRef"] {
-         <<object>>
-         +ref tekst
-         +ref kategori
-     }
- 
-     class betingetTekstRef["betingetTekstRef"] {
-         <<object>>
-         +ref tekst
-         +kategori[] kategorier
-     }
- 
-     class fritekst["fritekst"] {
-         <<object>>
-         +string fritekst
-     }
- 
-     class tekst["tekst · Tekst"] {
-         <<document>>
-         +string beskrivelse
-         +blockEditor teksteditor
-     }
- 
-     class kategori["kategori · Kategori"] {
-         <<document>>
-         +string visningsnavn
-         +string tekniskNavn
-     }
- 
-     class faktagrunnlag["faktagrunnlag · Faktagrunnlag"] {
-         <<document>>
-         +string visningsnavn
-         +string datatype
-         +string tekniskNavn
-     }
- 
-     mal "1" *-- "*" delmalRef : delmaler
-     delmalRef --> "1" delmal
-     delmal *-- "1" teksteditor
-     teksteditor *-- "*" valgRef
-     teksteditor *-- "*" betingetTekstRef
-     teksteditor *-- "*" fritekst
-     teksteditor ..> faktagrunnlag : inline block ref
-     valgRef --> "1" valg
-     valg *-- "*" kategorisertTekstRef : alternativer
-     valg *-- "*" fritekst : alternativer
-     kategorisertTekstRef --> "1" tekst
-     kategorisertTekstRef --> "1" kategori
-     betingetTekstRef --> "1" tekst
-     betingetTekstRef --> "*" kategori : kategorier
-     tekst ..> faktagrunnlag : inline block ref
+%% Generated from 20250910. Run "yarn schema:model" to update.
+classDiagram
+    direction TB
+
+    class mal["mal · Hovedmal"] {
+        <<document>>
+        +string beskrivelse
+        +i18nString overskrift
+        +string journalposttittel
+        +boolean kanSendesAutomatisk
+    }
+
+    class betingetTekstRef["betingetTekstRef · Betinget tekst"] {
+        <<object>>
+        +ref tekst
+        +ref[] kategorier
+    }
+
+    class blockEditor["blockEditor"] {
+        <<array field>>
+        +ref[] tabell
+    }
+
+    class delmal["delmal · Delmal"] {
+        <<document>>
+        +string beskrivelse
+        +string brevbyggerTittel
+        +i18nString overskrift
+    }
+
+    class delmalRef["delmalRef · DelmalRef"] {
+        <<object>>
+        +ref delmal
+        +boolean obligatorisk
+    }
+
+    class faktagrunnlag["faktagrunnlag · Faktagrunnlag"] {
+        <<document>>
+        +string visningsnavn
+        +string datatype
+        +string tekniskNavn
+    }
+
+    class fritekst["fritekst"] {
+        <<object>>
+        +string fritekst
+    }
+
+    class kategori["kategori · Kategori"] {
+        <<document>>
+        +string visningsnavn
+        +string tekniskNavn
+    }
+
+    class kategorisertTekstRef["kategorisertTekstRef · KategorisertTekstRef"] {
+        <<object>>
+        +ref tekst
+        +ref kategori
+    }
+
+    class kolonne["kolonne · Kolonne"] {
+        <<object>>
+        +i18nString overskrift
+        +string tekniskNavn
+    }
+
+    class tabell["tabell · Tabell"] {
+        <<document>>
+        +string visningsnavn
+        +string tekniskNavn
+    }
+
+    class tekst["tekst · Tekst"] {
+        <<document>>
+        +string beskrivelse
+    }
+
+    class teksteditor["teksteditor"] {
+        <<array field>>
+        +ref[] tabell
+    }
+
+    class valg["valg · Undervalg"] {
+        <<document>>
+        +string beskrivelse
+        +string language
+    }
+
+    class valgRef["valgRef · Valg"] {
+        <<object>>
+        +ref valg
+        +boolean obligatorisk
+    }
+
+    betingetTekstRef "1" --> "*" kategori : kategorier
+    betingetTekstRef "1" --> "1" tekst : tekst
+    blockEditor ..> faktagrunnlag : inline reference
+    blockEditor "1" --> "*" tabell : tabell
+    delmalRef "1" --> "1" delmal : delmal
+    delmal "1" *-- "1" teksteditor : teksteditor
+    kategorisertTekstRef "1" --> "1" kategori : kategori
+    kategorisertTekstRef "1" --> "1" tekst : tekst
+    mal "1" *-- "*" delmalRef : delmaler
+    tabell "1" *-- "*" kolonne : kolonner
+    teksteditor ..> faktagrunnlag : inline reference
+    teksteditor "1" --> "*" tabell : tabell
+    teksteditor "1" *-- "*" betingetTekstRef : teksteditor
+    teksteditor "1" *-- "*" fritekst : teksteditor
+    teksteditor "1" *-- "*" valgRef : teksteditor
+    tekst "1" *-- "1" blockEditor : teksteditor
+    valg "1" *-- "*" fritekst : alternativer
+    valg "1" *-- "*" kategorisertTekstRef : alternativer
+    valgRef "1" --> "1" valg : valg

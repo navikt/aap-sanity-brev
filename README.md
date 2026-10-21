@@ -63,6 +63,15 @@ yarn generateSchemaTypes
 
 Deretter kan ny versjon av pakken @navikt/aap-sanity-schema-types publiseres
 
+Generer klassediagram i Mermaid fra Sanity-schema:
+
+```sh
+yarn schema:model
+```
+
+Modellen skrives til `lib/services/sanity/model/model.mermaid`. Se tilgjengelige valg med
+`yarn schema:model --help`.
+
 ## Kode generert av GitHub Copilot
 
 Dette repoet bruker GitHub Copilot til å generere kode.
