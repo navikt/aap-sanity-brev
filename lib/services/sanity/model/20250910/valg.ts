@@ -13,6 +13,7 @@ export const valg = defineType({
       name: 'beskrivelse',
       description: 'Brukes i brevbygger',
       type: 'string',
+
     }),
     defineField({
       title: 'Språk',
@@ -26,6 +27,13 @@ export const valg = defineType({
       title: 'Alternativer',
       type: 'array',
       of: [kategorisertTekstRef, fritekst],
+      validation: (Rule) =>
+        Rule.custom((alternativer: { _type: string; erDefault?: boolean }[] | undefined) => {
+          const antallDefault = (alternativer ?? []).filter(
+            (a) => a._type === 'kategorisertTekstRef' && a.erDefault === true
+          ).length;
+          return antallDefault <= 1 ? true : 'Kun ett alternativ kan være standard valg';
+        }),
     }),
   ],
 });
