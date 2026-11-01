@@ -25,9 +25,9 @@
         "test": "vitest --run"
     },
     "dependencies": {
-        "@navikt/aksel-icons": "^8.18.0",
-        "@navikt/ds-css": "^8.18.0",
-        "@navikt/ds-react": "^8.18.0",
+        "@navikt/aksel-icons": "^8.21.0",
+        "@navikt/ds-css": "^8.21.0",
+        "@navikt/ds-react": "^8.21.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
         "uuid": "^14.0.2"
